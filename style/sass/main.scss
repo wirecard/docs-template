@@ -1,0 +1,145 @@
+@import "fonts/wirecard";
+@import "settings/main";
+@import "components/asciidoc";
+@import "components/awesome-icons";
+@import "mixins";
+
+dt, th.tableblock, td.content, div.footnote {
+    // NOTE text-rendering is already set for p
+    text-rendering: optimizeLegibility;
+}
+
+// QUESTION should we tighten letter spacing of text in footnotes?
+h1, h2, p, td.content, span.alt {
+    letter-spacing: -0.01em;
+}
+
+p, td.content, div.footnote {
+    strong {
+        // NOTE needs to apply anywhere we have bold prose
+        letter-spacing: -0.005em;
+    }
+}
+
+// NOTE include blockquote for when it doesn't have a nested p
+p, blockquote, dt, td.content, span.alt {
+    font-size: 1.0625rem;
+}
+
+p {
+    margin-bottom: 1.25rem;
+}
+
+// restore font size in sidebar block and regular table cells
+.sidebarblock p, .sidebarblock dt, .sidebarblock td.content, p.tableblock {
+    font-size: 1em;
+}
+
+.exampleblock > .content {
+    // white
+    //background-color: #fff;
+    //border-color: $panel-border-color;
+    //@include single-box-shadow($panel-border-color, 0, 1px, 2px);
+
+    // light yellow
+    background-color: #fffef7; // from rgb(252,247,227), analogous to #f8f8f7
+    border-color: $panel-border-color;
+    @include single-box-shadow($panel-border-color, 0, 1px, 4px);
+}
+
+@import "components/print";
+
+
+// ======================== //
+// ======== CUSTOM ======== //
+// ======================== //
+
+
+// ======================== //
+// ========= MAIN ========= //
+// ======================== //
+
+body {
+    overscroll-behavior: none;
+}
+
+// HEADER
+/* hide global headline which appears on all pages */
+div#header > h1 {
+    display: none;
+}
+/* increase size of h2, h3, h4, h5, relative to now missing h1 */
+@media only screen and (min-width: 768px) {
+    h2 { font-size: 2.75em; }
+    h3 { font-size: 2.3125em; }
+    h4, #toctitle, .sidebarblock > .content > .title { font-size: 1.6875em; }
+    h5 { font-size: 1.4375em; }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    // font-size: 125%;
+    // color: $coral;
+    > a.link {
+        &:hover {
+            color: $coral;
+        }
+    }
+}
+
+// LINKS
+a {
+    &:hover {
+        color: $coral;
+    }
+}
+
+// LISTS
+ul, ol, dl {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 1.25em;
+    list-style-position: outside;
+    font-family: inherit;
+}
+
+
+// FOOTER
+body#Home > #footer { display: block; }
+#footer {
+    display: none; /* hide by default, show only on home page */
+    background-color: rgba(0,0,0,.05);
+    #footer-text {
+        color: $gray2;
+        text-align: right;
+    }
+}
+
+// ======================== //
+// == INPUTS/BUTTONS/ETC == //
+// ======================== //
+@import "elements/default";
+
+// ======================== //
+// ======= STARTPAGE ====== //
+// ======================== //
+@import "pages/startpage";
+
+// ======================== //
+// ====== SAMPLE TABS ===== //
+// ======================== //
+@import "elements/sample-tabs";
+
+// ======================== //
+// === TABLE OF CONTENT === //
+// ======================== //
+@import "elements/global-toc";
+
+// ======================== //
+// === HIGHLIGHT HASH H === //
+// ======================== //
+@import "elements/highlight-hash";
+
+// ======================== //
+// ========= SEARCH ======= //
+// ======================== //
+@import "elements/search";

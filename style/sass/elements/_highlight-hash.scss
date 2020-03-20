@@ -1,0 +1,11 @@
+h2:target, h3:target, h4:target, h5:target, h6:target {
+  animation-name: headline-target-animation;
+  animation-duration: 0.8s;
+  animation-delay: 0.5s;
+}
+
+@keyframes headline-target-animation {  
+  50%  {
+    opacity: 0.2;
+  }
+}

@@ -1,0 +1,92 @@
+// GENERAL
+$border: 1px solid $sky;
+$border-radius: 5px;
+
+// TABS
+.xmlTabWrap, .jsonTabWrap, .nvpTabWrap {
+    background-color: white;
+    border: $border;
+    border-radius: $border-radius;
+    padding: 10px;
+    margin-top: -1px; // border alignment
+}
+.nvpTabWrap pre {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+h7.tab-content {
+    &.tab-xml, &.tab-json, &.tab-nvp {
+        display: none;
+    }
+}
+div.btn-samples-row {
+    color: $sky;
+    background-color: white;
+    border: $border;
+    border-radius: $border-radius;
+    margin-bottom: 10px;
+
+    button.btn-samples-tab {
+        padding: .6em 3em .4em;
+        background-color: white;
+        transition: all 0.25s ease;
+        border: none;
+
+        &.active {
+            background-color: $sky;
+            color: white;
+            font-weight: bold;
+            transition: all 0.25s ease;
+            border: none;
+        }
+        &:hover {
+            font-weight: bold;
+        }
+    }
+}
+
+// REQUEST/RESPONSE DETAILS
+table.r-details {
+    // Caption
+    > caption {
+        border-radius: $border-radius;
+        &::after {
+            content: '\f107';
+            font-family: FontAwesome;
+            float: right;
+            margin-right: .5em;
+        }
+        &.r-details-expanded {
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+            &::after {
+                content: '\f106';
+                font-family: FontAwesome;
+            }
+            ~ thead {
+                display: table-header-group;
+            }
+            ~ tbody {
+                display: table-row-group;
+            }
+        }
+        ~ thead, ~ tbody {
+            display: none;
+        }
+
+        &.title.hide-show-enabled {
+            font-style: normal;
+            font-weight: bold;
+            font-size: larger;
+            color: white;
+            background-color: $sky;
+            border: 0;
+            margin: 0;
+            padding: .25em 0 .2em .5em;
+            cursor: pointer;
+        }
+    }
+}

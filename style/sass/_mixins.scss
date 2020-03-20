@@ -1,0 +1,45 @@
+@mixin transform($trans) {
+    -webkit-transform: $trans;
+    -ms-transform: $trans;
+    transform: $trans;
+}
+
+@mixin rotate($degrees) {
+    @include transform(rotate($degrees));
+}
+
+@mixin scaleAndRotate($scale, $degrees) {
+    scale: $scale;
+    -ms-transform: rotate($degrees) scale($scale);
+    -webkit-transform: scale($scale, $scale) rotate($degrees);
+}
+
+// transition-property, transition-duration, transition-timing-function, and transition-delay.
+@mixin transition($property, $duration, $timing-function, $delay) {
+    -webkit-transition: $property $duration $timing-function $delay;
+    -moz-transition: $property $duration $timing-function $delay;
+    -ms-transition: $property $duration $timing-function $delay;
+    -o-transition: $property $duration $timing-function $delay;
+    transition: $property $duration $timing-function $delay;
+}
+
+@mixin transition($property, $duration, $timing-function) {
+    -webkit-transition: $property $duration $timing-function;
+    -moz-transition: $property $duration $timing-function;
+    -ms-transition: $property $duration $timing-function;
+    -o-transition: $property $duration $timing-function;
+    transition: $property $duration $timing-function;
+}
+
+@mixin blur($var) {
+    filter: blur($var);
+    -webkit-filter: blur($var);
+    -moz-filter: blur($var);
+    -o-filter: blur($var);
+    -ms-filter: blur($var);
+}
+
+@mixin backdrop-blur($var) {
+    backdrop-filter: blur($var);
+    -webkit-backdrop-filter: blur($var);
+}

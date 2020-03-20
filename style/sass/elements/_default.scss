@@ -1,0 +1,37 @@
+@import "settings/colors";
+
+// REMOVE HEADER
+div#header {
+    display: none;
+}
+
+// INPUT -> TEXT/SEARCH
+input[type="text"], input[type="search"] {
+    display: block;
+    border-radius: 5px;
+    border: 1px solid $gray3;
+    padding: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    &::placeholder {
+        color: $gray2;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+// BUTTON
+button {
+    border-radius: 5px;
+    background-color: white;
+
+    &.primary {
+        color: $sky;
+        border: 1px solid $sky;
+    }
+    &.secondary, &.close {
+        color: $coral;
+        border: 1px solid $coral;
+    }
+}

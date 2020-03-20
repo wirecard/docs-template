@@ -1,0 +1,30 @@
+@import "settings/colors";
+@import "elements/coderay-theme";
+
+pre.CodeRay.highlight {
+    border: solid 2px $gray1;
+    border-radius: 5px;
+    > code {
+        font-family: 'Ubuntu Mono', monospace;
+        font-size: 0.8em;
+    }
+}
+
+.listingblock code[data-lang]::before {
+    display: block;
+
+    font-family: 'Ubuntu Mono', monospace;
+    background-color: $gray1;
+    color: $sky;
+    font-size: 1rem;
+    font-weight: bold;
+
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    // make up for border
+    top: 1px;
+    right: 1px;
+
+    padding: 3px 5px;
+    opacity: unset !important;
+}
