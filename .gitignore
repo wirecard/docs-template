@@ -1,0 +1,22 @@
+tmp/
+
+blob_header.js
+blob_footer.js
+node_modules/
+
+### Sass ###
+ie.css
+print.css
+screen.css
+
+# Created by https://www.gitignore.io/api/sass
+# Edit at https://www.gitignore.io/?templates=sass
+
+### Sass ###
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
+# End of https://www.gitignore.io/api/sass
+

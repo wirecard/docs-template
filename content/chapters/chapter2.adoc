@@ -1,0 +1,11 @@
+[#second]
+= Second Section
+
+Example document number 2.
+
+[#admonitions_and_icons]
+== Admonitions and Icons
+
+[TIP]
+Use http://asciidoctor.org[Asciidoctor] for the best AsciiDoc experience.footnote:[Not to mention the best looking output!]
+Then icon:twitter[role=aqua] about it!

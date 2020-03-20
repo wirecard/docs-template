@@ -1,0 +1,26 @@
+:Date: $Date$
+:Revision: $Id$
+
+:!table-caption:
+
+:toc-title:
+
+// Fix for font-awesome (does not work with local font-awesome otherwise)
+:icons: font
+:!iconfont-remote:
+:iconfont-cdn: css/font-awesome.css
+:!webfonts:
+
+:sectanchors:
+:sectlinks:
+
+ifndef::backend-pdf[:multipage-level: 1]
+
+// Content Start
+= Hello, AsciiDoc!
+Doc Writer <doc@example.com>
+
+An introduction to http://asciidoc.org[AsciiDoc].
+
+include::chapters/chapter1.adoc[leveloffset=+1]
+include::chapters/chapter2.adoc[leveloffset=+1]
