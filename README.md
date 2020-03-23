@@ -18,7 +18,7 @@ This template contains several built-in solutions, tests and styles which can be
 In order to include a custom logo, simply replace the file `content/images/logo.png`.
 
 #### Style
-You can either change the CSS files directly, or use the [SASS/SCSS pipeline](style/README.md) in `style/`.
+You can either change the CSS files directly, or use the [SASS/SCSS pipeline](style/) in `style/`.
 
 | **File**                  | **Usage**                |
 |---------------------------|--------------------------|
@@ -28,16 +28,19 @@ You can either change the CSS files directly, or use the [SASS/SCSS pipeline](st
 
 #### Fonts
 Please note that the Wirecard font _DINWebPro_ is licensed Wirecard CEE GmbH and **may not** be used for other projects unless a license is purchased.
-For the monospace font family, the template default is _Ubuntu Mono_.
+For the monospace font family, the template default is _Ubuntu Mono**.
 
 #### Javascript
 This template bundles a variety of Javascript solutions:
+**Vendor**:
 * `jquery`: Version 3.4.1
 * `lunr.js`: The toolchain creates a lunr search index and `lunr.js` the library to use the search index
+* `swup.min.js`: Page switch (exchange content without navigating to a new page)
+
+**Custom**:
 * `navigation.js`: Table of Content navigation
 * `sample-tabs.js`: Tab views for XML, JSON and NVP samples of the same request
 * `search.js`: Lunr frontend integration
-* `swup.min.js`: Page switch (exchange content without navigating to a new page)
 
 
 #### HTML
