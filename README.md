@@ -31,7 +31,8 @@ Please note that the Wirecard font _DINWebPro_ is licensed Wirecard CEE GmbH and
 For the monospace font family, the template default is _Ubuntu Mono**.
 
 #### Javascript
-This template bundles a variety of Javascript solutions:
+This template bundles a variety of Javascript solutions.
+
 **Vendor**:
 * `jquery`: Version 3.4.1
 * `lunr.js`: The toolchain creates a lunr search index and `lunr.js` the library to use the search index
