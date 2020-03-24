@@ -50,9 +50,10 @@ jobs:
       if: steps.extract_branch.outputs.branch != 'master'
       run: |
         mkdir -p public/${{ steps.extract_branch.outputs.branch }}
-        mv public/{*.html,css/,js/,fonts/,images/,icons/,lunr*.json} public/${{ steps.extract_branch.outputs.branch }}
+        mv public/{*.html,css/,js/,fonts/,images/,icons/,lunr*.json} public/${{ steps.extract_branch.outputs.branch }} || true
 
     - name: Deploy (Github Pages)
+      if: false
       uses: crazy-max/ghaction-github-pages@v1.2.5
       with:
         target_branch: gh-pages
