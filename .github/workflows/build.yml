@@ -3,7 +3,7 @@ name: Build Template
 on: [push, pull_request]
 
 jobs:
-  run:
+  build:
     runs-on: ubuntu-latest
     env:
       TOOLCHAIN_PATH: 'toolchain'

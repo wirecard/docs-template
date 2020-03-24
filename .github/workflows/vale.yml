@@ -1,0 +1,20 @@
+name: Bale
+on: [push, pull_request]
+
+jobs:
+  vale:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Get Vale styles
+      run: bash .scripts/get_vale_styles.sh
+
+    - name: Vale
+      uses: errata-ai/vale-action@v1.0.4
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      with:
+        # config: .vale.ini # tries to fetch remote config
+        files:  content
