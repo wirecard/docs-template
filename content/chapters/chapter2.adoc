@@ -7,5 +7,5 @@ Example document number 2.
 == Admonitions and Icons
 
 [TIP]
-Use http://asciidoctor.org[Asciidoctor] for the best AsciiDoc experience.footnote:[Not to mention the best looking output!]
+Use http://asciidoctor.org[Asciidoctor] for the best AsciiDoc experience. Not to mention the best looking output!
 Then icon:twitter[role=aqua] about it!
