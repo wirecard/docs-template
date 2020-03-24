@@ -1,4 +1,4 @@
-name: docs.wirecard.com
+name: Build Template
 
 on: [push, pull_request]
 
@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TOOLCHAIN_PATH: 'toolchain'
+
     steps:
     - name: Extract branch name
       shell: bash
@@ -60,10 +61,3 @@ jobs:
       env:
         GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
 
-    - name: Upload logs
-      if: always()
-      uses: actions/upload-artifact@v1
-      with:
-        name: logs
-        path: /tmp/logs
-    
