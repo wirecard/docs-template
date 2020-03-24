@@ -1,4 +1,4 @@
-name: Bale
+name: Vale
 on: [push, pull_request]
 
 jobs:
