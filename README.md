@@ -11,13 +11,13 @@ In order to use the toolchain, use the button **Use this template** at the top,
 this will create a fork of this template which you can customize.
 
 
-### Customize
+## Customize
 This template contains several built-in solutions, tests and styles which can be customized.
 
-#### Logo
+### Logo
 In order to include a custom logo, simply replace the file `content/images/logo.png`.
 
-#### Style
+### Style
 You can either change the CSS files directly, or use the [SASS/SCSS pipeline](style/) in `style/`.
 
 | **File**                  | **Usage**                |
@@ -26,11 +26,11 @@ You can either change the CSS files directly, or use the [SASS/SCSS pipeline](st
 | `font-awesome.css`        | Font Awesome icons       |
 | `coderay-asciidoctor.css` | Source code highlighting |
 
-#### Fonts
+### Fonts
 Please note that the Wirecard font _DINWebPro_ is licensed Wirecard CEE GmbH and **may not** be used for other projects unless a license is purchased.
 For the monospace font family, the template default is _Ubuntu Mono**.
 
-#### Javascript
+### Javascript
 This template bundles a variety of Javascript solutions.
 
 **Vendor**:
@@ -44,7 +44,7 @@ This template bundles a variety of Javascript solutions.
 * `search.js`: Lunr frontend integration
 
 
-#### HTML
+### HTML
 Injecting custom HTML is done via three HTML templates:
 1. `docinfo.html`: HTML header code
 2. `docinfo-search.html`: HTML Table of Content, Search overlay and Logo stubs
