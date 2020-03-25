@@ -9,3 +9,119 @@ Example document number 2.
 [TIP]
 Use http://asciidoctor.org[Asciidoctor] for the best AsciiDoc experience. Not to mention the best looking output!
 Then icon:twitter[role=aqua] about it!
+
+== Sample Switch
+
+[discrete.sample-tabs]
+=== Hello World
+
+[#HelloWorld_C]
+[discrete.tab-content.tab]
+==== C
+
+[.r-details]
+.Details
+[cols="1v,2"]
+|===
+2+| General
+
+e| Language | C
+e| Compiler | ``gcc``, ``clang``
+
+2+h| API
+e| Content-Type | `application/json`
+e| Accept       | `application/json`
+|===
+
+//.C
+[source,c,subs=attributes+]
+----
+#include <stdlib.h>
+#include <stdio.h>
+ 
+int main(void)
+{
+  printf("Hello world!\n");
+  return EXIT_SUCCESS;
+}
+----
+
+
+[#HelloWorld_Cpp]
+[discrete.tab-content.tab]
+==== C++
+
+[.r-details]
+.Details
+[cols="1v,2"]
+|===
+2+| General
+
+e| Language | C++
+e| Compiler | ``g++``, ``clang++``
+
+2+h| API
+e| Content-Type | `application/json`
+e| Accept       | `application/json`
+|===
+
+[source,c++,subs=attributes+]
+----
+#include <iostream>
+ 
+int main () {
+  std::cout << "Hello world!" << std::endl;
+}
+----
+
+[#HelloWorld_Ruby]
+[discrete.tab-content.tab]
+==== Ruby
+
+[.r-details]
+.Details
+[cols="1v,2"]
+|===
+2+| General
+
+e| Language    | Ruby
+e| Interpreter | ``ruby``
+e| Version     | 2.6+
+
+2+h| API
+e| Content-Type | `application/json`
+e| Accept       | `application/json`
+|===
+
+[source,ruby,subs=attributes+]
+----
+#!/usr/bin/env ruby
+
+puts 'Hello World!'
+----
+
+[#HelloWorld_Python]
+[discrete.tab-content.tab]
+==== Python
+
+[.r-details]
+.Details
+[cols="1v,2"]
+|===
+2+| General
+
+e| Language    | Python
+e| Interpreter | ``python``
+e| Version     | 3.7+
+
+2+h| API
+e| Content-Type | `application/json`
+e| Accept       | `application/json`
+|===
+
+[source,python,subs=attributes+]
+----
+#!/usr/bin/env python3
+
+print("Hello World!")
+----
