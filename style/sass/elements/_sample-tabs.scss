@@ -3,14 +3,19 @@ $border: 1px solid $sky;
 $border-radius: 5px;
 
 // TABS
-.xmlTabWrap, .jsonTabWrap, .nvpTabWrap {
+h2,h3,h4,h5,h6,h7 {
+    &.discrete.tab-content.tab {
+        display: none;
+    }
+}
+.tabs-wrapper {
     background-color: white;
     border: $border;
     border-radius: $border-radius;
     padding: 10px;
     margin-top: -1px; // border alignment
 }
-.nvpTabWrap pre {
+.tab-wrapper pre {
     white-space: pre-wrap;       /* css-3 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
     white-space: -pre-wrap;      /* Opera 4-6 */
@@ -18,7 +23,7 @@ $border-radius: 5px;
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 h7.tab-content {
-    &.tab-xml, &.tab-json, &.tab-nvp {
+    &.tab {
         display: none;
     }
 }

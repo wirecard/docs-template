@@ -1314,39 +1314,42 @@ button.secondary, button.close { color: #ff7373; border: 1px solid #ff7373; }
 /* line 178, ../../style/sass/pages/_startpage.scss */
 .intro > p { font-size: 23px; }
 
-/* line 6, ../../style/sass/elements/_sample-tabs.scss */
-.xmlTabWrap, .jsonTabWrap, .nvpTabWrap { background-color: white; border: 1px solid #2983fb; border-radius: 5px; padding: 10px; margin-top: -1px; }
+/* line 7, ../../style/sass/elements/_sample-tabs.scss */
+h2.discrete.tab-content.tab, h3.discrete.tab-content.tab, .discrete.tab-content.tab#toctitle, .sidebarblock > .content > .discrete.tab-content.tab.title, h4.discrete.tab-content.tab, h5.discrete.tab-content.tab, h6.discrete.tab-content.tab, h7.discrete.tab-content.tab { display: none; }
 
-/* line 13, ../../style/sass/elements/_sample-tabs.scss */
-.nvpTabWrap pre { white-space: pre-wrap; /* css-3 */ white-space: -moz-pre-wrap; /* Mozilla, since 1999 */ white-space: -pre-wrap; /* Opera 4-6 */ white-space: -o-pre-wrap; /* Opera 7 */ word-wrap: break-word; /* Internet Explorer 5.5+ */ }
+/* line 11, ../../style/sass/elements/_sample-tabs.scss */
+.tabs-wrapper { background-color: white; border: 1px solid #2983fb; border-radius: 5px; padding: 10px; margin-top: -1px; }
 
-/* line 21, ../../style/sass/elements/_sample-tabs.scss */
-h7.tab-content.tab-xml, h7.tab-content.tab-json, h7.tab-content.tab-nvp { display: none; }
+/* line 18, ../../style/sass/elements/_sample-tabs.scss */
+.tab-wrapper pre { white-space: pre-wrap; /* css-3 */ white-space: -moz-pre-wrap; /* Mozilla, since 1999 */ white-space: -pre-wrap; /* Opera 4-6 */ white-space: -o-pre-wrap; /* Opera 7 */ word-wrap: break-word; /* Internet Explorer 5.5+ */ }
 
-/* line 25, ../../style/sass/elements/_sample-tabs.scss */
+/* line 26, ../../style/sass/elements/_sample-tabs.scss */
+h7.tab-content.tab { display: none; }
+
+/* line 30, ../../style/sass/elements/_sample-tabs.scss */
 div.btn-samples-row { color: #2983fb; background-color: white; border: 1px solid #2983fb; border-radius: 5px; margin-bottom: 10px; }
-/* line 32, ../../style/sass/elements/_sample-tabs.scss */
+/* line 37, ../../style/sass/elements/_sample-tabs.scss */
 div.btn-samples-row button.btn-samples-tab { padding: .6em 3em .4em; background-color: white; transition: all 0.25s ease; border: none; }
-/* line 38, ../../style/sass/elements/_sample-tabs.scss */
+/* line 43, ../../style/sass/elements/_sample-tabs.scss */
 div.btn-samples-row button.btn-samples-tab.active { background-color: #2983fb; color: white; font-weight: bold; transition: all 0.25s ease; border: none; }
-/* line 45, ../../style/sass/elements/_sample-tabs.scss */
+/* line 50, ../../style/sass/elements/_sample-tabs.scss */
 div.btn-samples-row button.btn-samples-tab:hover { font-weight: bold; }
 
-/* line 54, ../../style/sass/elements/_sample-tabs.scss */
+/* line 59, ../../style/sass/elements/_sample-tabs.scss */
 table.r-details > caption { border-radius: 5px; }
-/* line 56, ../../style/sass/elements/_sample-tabs.scss */
+/* line 61, ../../style/sass/elements/_sample-tabs.scss */
 table.r-details > caption::after { content: '\f107'; font-family: FontAwesome; float: right; margin-right: .5em; }
-/* line 62, ../../style/sass/elements/_sample-tabs.scss */
+/* line 67, ../../style/sass/elements/_sample-tabs.scss */
 table.r-details > caption.r-details-expanded { border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; }
-/* line 65, ../../style/sass/elements/_sample-tabs.scss */
+/* line 70, ../../style/sass/elements/_sample-tabs.scss */
 table.r-details > caption.r-details-expanded::after { content: '\f106'; font-family: FontAwesome; }
-/* line 69, ../../style/sass/elements/_sample-tabs.scss */
+/* line 74, ../../style/sass/elements/_sample-tabs.scss */
 table.r-details > caption.r-details-expanded ~ thead { display: table-header-group; }
-/* line 72, ../../style/sass/elements/_sample-tabs.scss */
+/* line 77, ../../style/sass/elements/_sample-tabs.scss */
 table.r-details > caption.r-details-expanded ~ tbody { display: table-row-group; }
-/* line 76, ../../style/sass/elements/_sample-tabs.scss */
+/* line 81, ../../style/sass/elements/_sample-tabs.scss */
 table.r-details > caption ~ thead, table.r-details > caption ~ tbody { display: none; }
-/* line 80, ../../style/sass/elements/_sample-tabs.scss */
+/* line 85, ../../style/sass/elements/_sample-tabs.scss */
 table.r-details > caption.title.hide-show-enabled { font-style: normal; font-weight: bold; font-size: larger; color: white; background-color: #2983fb; border: 0; margin: 0; padding: .25em 0 .2em .5em; cursor: pointer; }
 
 /* line 3, ../../style/sass/elements/_global-toc.scss */
