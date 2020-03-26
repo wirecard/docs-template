@@ -26,6 +26,22 @@ You can either change the CSS files directly, or use the [SASS/SCSS pipeline](st
 | `font-awesome.css`        | Font Awesome icons       |
 | `coderay-asciidoctor.css` | Source code highlighting |
 
+#### CDN
+By default, Font Awesome is loaded via CDN.
+This template serves FontAwesome with the other stylesheets and fonts.
+
+Steps to disable loading via CDN:
+1. add `font-awesome.css` to the `css/` folder 
+2. the Font Awesome font files to `fonts/`
+3. add the following to your `index.adoc` below `:icons: font`:
+```
+:!iconfont-remote:
+:iconfont-cdn: css/font-awesome.css
+:!webfonts:
+```
+
+Remove these three lines to switch back to the Asciidoctor default and load FontAwesome via CDN again.
+
 ### Fonts
 Please note that the Wirecard font _DINWebPro_ is licensed Wirecard CEE GmbH and **may not** be used for other projects unless a license is purchased.
 For the monospace font family, the template default is _Ubuntu Mono**.
@@ -33,12 +49,12 @@ For the monospace font family, the template default is _Ubuntu Mono**.
 ### Javascript
 This template bundles a variety of Javascript solutions.
 
-**Vendor**:
+#### Vendor
 * `jquery`: Version 3.4.1
 * `lunr.js`: The toolchain creates a lunr search index and `lunr.js` the library to use the search index
 * `swup.min.js`: Page switch (exchange content without navigating to a new page)
 
-**Custom**:
+#### Custom
 * `navigation.js`: Table of Content navigation
 * `sample-tabs.js`: Tab views for XML, JSON and NVP samples of the same request
 * `search.js`: Lunr frontend integration
