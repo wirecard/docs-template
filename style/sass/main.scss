@@ -122,7 +122,8 @@ ul, ol, dl {
 }
 
 // TABLES
-table.tableblock tbody td.tableblock div.paragraph p {
+td.tableblock div.content div.paragraph p {
+    // NOTE fix for wrong font-size in p because no .tableblock class
     font-size: 1em !important;
 }
 
