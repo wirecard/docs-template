@@ -121,6 +121,11 @@ ul, ol, dl {
     font-family: inherit;
 }
 
+// TABLES
+table.tableblock tbody td.tableblock div.paragraph p {
+    font-size: 1em !important;
+}
+
 
 // FOOTER
 body#Home > #footer { display: block; }

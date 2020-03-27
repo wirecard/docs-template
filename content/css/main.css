@@ -1224,12 +1224,15 @@ a:hover { color: #ff7373; }
 /* line 116, ../../style/sass/main.scss */
 ul, ol, dl { font-size: 1em; line-height: 1.6; margin-bottom: 1.25em; list-style-position: outside; font-family: inherit; }
 
-/* line 126, ../../style/sass/main.scss */
+/* line 125, ../../style/sass/main.scss */
+table.tableblock tbody td.tableblock div.paragraph p { font-size: 1em !important; }
+
+/* line 131, ../../style/sass/main.scss */
 body#Home > #footer { display: block; }
 
-/* line 127, ../../style/sass/main.scss */
+/* line 132, ../../style/sass/main.scss */
 #footer { display: none; /* hide by default, show only on home page */ background-color: rgba(0, 0, 0, 0.05); }
-/* line 130, ../../style/sass/main.scss */
+/* line 135, ../../style/sass/main.scss */
 #footer #footer-text { color: #a2aaad; text-align: right; }
 
 /* line 4, ../../style/sass/elements/_default.scss */
