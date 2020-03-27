@@ -63,6 +63,10 @@ body {
     overscroll-behavior: none;
 }
 
+div#content {
+    min-height: 100vh;
+}
+
 // HEADER
 /* hide global headline which appears on all pages */
 div#header > h1 {
@@ -77,11 +81,26 @@ div#header > h1 {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    // font-size: 125%;
-    // color: $coral;
-    > a.link {
+    > a {
+        // general a tags
         &:hover {
-            color: $coral;
+            color: $primary;
+        }
+        // anchor
+        &.anchor {
+            display: none;
+        }
+        // header
+        &.link {
+            &:hover {
+                &::after {
+                    font-family: "FontAwesome";
+                    content: "\f0c1" !important;
+                    line-height: inherit;
+                    font-size: smaller;
+                    padding-left: 10px;
+                }
+            }
         }
     }
 }

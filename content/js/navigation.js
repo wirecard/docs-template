@@ -2,15 +2,26 @@
  * BASIC TOC FUNCTIONALITY
  */
 
-document.addEventListener('DOMContentLoaded', enableToc);
+/**
+ * Waits for whole DOM to be loaded before enabling TOC functionality and
+ * adds event to links inside the page in div#content
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  enableToc();
+  initPageLinks();
+});
 
+/**
+ * Is called on each page switch and also if page is opened by itself
+ * Looks for a given hash in the URL and initializes the TOC on that position
+ */
 function enableToc() {
-
+  console.log('enableToc');
   /* scroll toc to currents main section */
   const pageID = document.querySelector('body').getAttribute('id');
 
   /* TODO: doesn#t work. minor issue but check why */
-  document.querySelector('#toc_cb_' + pageID).scrollIntoView({behavior: "smooth"});
+  document.querySelector('#toc_cb_' + pageID).scrollIntoView({ behavior: "smooth" });
 
   /* if page is openen with a deep link (hash), check the correct box (if it exists) */
   var hash = window.location.hash.substring(1);
@@ -23,18 +34,22 @@ function enableToc() {
   var tocLinks = document.querySelectorAll('#toc label > a');
   tocLinks.forEach(function (link) {
     link.addEventListener('click', function (e) {
-      tickBox(this);
+      toggleBox(this);
+      closeOverlay();
     })
   })
   document.tocInitialized = true;
 }
 
-function tickBox(anchorElement) {
+/**
+ * Toggles a specific TOC checkbox belonging to an anchor.
+ * @param {Element} anchorElement specifies which TOC anchor was clicked
+ */
+function toggleBox(anchorElement) {
+  console.log('toggleBox')
+  console.log(anchorElement)
   var parent = anchorElement.parentNode;
   var checkbox = parent.previousElementSibling;
-  if (checkbox.disabled) {
-    //return true;
-  }
   var setTo = !checkbox.checked;
   /* uncheck same level end below checkboxes */
   var sameLevelCheckboxes = parent.parentNode.parentNode.querySelectorAll(':scope > li input[type=checkbox]');
@@ -46,8 +61,12 @@ function tickBox(anchorElement) {
   return true;
 }
 
-/* uncheck all "sibling" checkboxes on same level and 
-    check the corresponding checkbox belonging to clicked <a> */
+/**
+ * Similar to toggleBox() but used for initializing the TOC.
+ * e.g. after a switch or fresh page load, to a certain position.
+ * Always sets checked to true and recursively goes through parent boxes.
+ * @param {Element} anchorElement specifies which TOC anchor is the base
+ */
 function initBoxes(anchorElement) {
   try {
     var parent = anchorElement.parentNode;
@@ -77,20 +96,60 @@ function initBoxes(anchorElement) {
   }
 }
 
+/**
+ * Links in div#content need a click event that triggers.
+ * ticking of correct boxes after a page switch (== replacement of div#content).
+ * Checks if id corresponding to URL page.html#anchor is available in TOC.
+ * If yes, click it.
+ * If no, take page from page.html#anchor, click TOC accordingly and scroll to #anchor
+ */
+function initPageLinks() {
+  console.log('initPageLinks');
+  const pageID = window.location.pathname.slice(1, -5).replace(/.*\//,'');
+  const pageRootElementAnchor = document.querySelector('#toc_cb_' + pageID + ' + label > a');
+  document.querySelectorAll('div#content a').forEach(a => {
+    if (a.hasAttribute('class')) return;
+    if (a.href.startsWith(window.location.origin) === false) return;
+
+    a.addEventListener('click', function (e) {
+      console.log('click triggered')
+      const id = a.href.split('.html#') ? a.href.split('.html#')[1] : a.href.splice(0, -5);
+      console.log(id)
+      var toc_anchor = document.querySelector('#toc_li_' + id + ' a');
+      console.log(toc_anchor);
+      if (toc_anchor) {
+        initBoxes(toc_anchor);
+      }
+      else {
+        initBoxes(pageRootElementAnchor);
+      }
+      scrollToHash(id);
+    })
+  });
+}
+
+
 
 
 /**
  * SCROLLSPY FOR TOC
  */
 
-/* trigger initialization when page is loaded completely */
+/**
+ * Waits for page to load completely, not just TOC.
+ * Necessary for position caching of elements used for scrollspy performance.
+ */
 document.onreadystatechange = function () {
   if (document.readyState === 'complete') {
     initializeScrollspy();
+    refreshTitle();
   }
 }
 
-/* trigger re-initialization on window resize event */
+/**
+ * Scrollspy needs to be reinitialized when user resizes the window.
+ * For performance reasons this is throttled to max once in 500ms.
+ */
 var resizeTimeout;
 window.onresize = () => {
   window.clearTimeout(resizeTimeout);
@@ -99,7 +158,17 @@ window.onresize = () => {
   }, 500);
 }
 
+/**
+ * Initializes scollspy functionality.
+ * Caches all headings elements in current document.
+ * First Removes its own event listener from window to avoid bubbling expensive scroll event.
+ * Adds event listener again to trigger handleScrollEvent()
+ */
 function initializeScrollspy() {
+  console.log('initializeScrollspy')
+  document.scrollspy = {
+    disabled: false
+  }
   /* cache all headline elements */
   document.headingsSelector = ['div#content h4', 'div#content h5', 'div#content h6']
   document.headingsElementsArray = [];
@@ -107,23 +176,35 @@ function initializeScrollspy() {
     document.headingsElementsArray.push(element);
   });
 
-  console.log(document.headingsElementsArray);
-
   /* remove existing eventlistener (for pageswitch) before adding it again */
   window.removeEventListener('scroll', handleScrollEvent, { scrollspy: true });
   window.addEventListener('scroll', handleScrollEvent, { scrollspy: true });
 }
 
+/**
+ * Triggered on every scroll event.
+ * Calculates whether scoll position is within area of section a cached headline belongs to.
+ * Resets TOC to that specific section.
+ */
+var ssTimer;
 function handleScrollEvent() {
-  document.headingsElementsArray.forEach(element => {
-    const etopY = element.offsetTop - 50;
-    const ebottomY = etopY + element.parentElement.offsetHeight;
-    if (window.scrollY >= etopY && window.scrollY <= ebottomY) {
-      const anchorElement = document.querySelectorAll('#toc_cb_' + element.id + ' + label > a')[0];
-      if (anchorElement !== null) {
-        initBoxes(anchorElement);
+  if (document.scrollspy.disabled) {
+    return true;
+  }
+  if(window.scrollY === 0) {
+    removeHash();
+  }
+  requestAnimationFrame(() => {
+    document.headingsElementsArray.forEach(element => {
+      const etopY = element.offsetTop - 50;
+      const ebottomY = etopY + element.parentElement.offsetHeight;
+      if (window.scrollY >= etopY && window.scrollY <= ebottomY) {
+        const anchorElement = document.querySelectorAll('#toc_cb_' + element.id + ' + label > a')[0];
+        if (anchorElement) {
+          initBoxes(anchorElement);
+        }
       }
-    }
+    })
   });
 }
 
@@ -152,23 +233,21 @@ function getParents(element, filter = '*', stop = false) {
   return parents.reverse();
 }
 
-/* loop through cached heading elements starting at the end
-   until scrollposition is no longer larger than element position
-   highlight last element */
-// function handleScrollEvent() {
-//   //window.cancelIdleCallback(document.scrollHandleTimer);
-//   window.clearTimeout(document.scrollHandleTimer);
-//   //document.scrollHandleTimer = window.requestIdleCallback(() => {
-//   document.scrollHandleTimer = window.setTimeout(() => {
-//     /* deep copy elements stack */
-//     var elementsStack = JSON.parse(JSON.stringify(document.headingsElementsArray.reverse()));
-//     var elementPosition = 0;
-//     while (window.scrollY > elementPosition && elementsStack.length > 1) {
-//       elementPosition = elementsStack.pop().offsetTop;
-//     }
-//     var elementToHighlight = elementsStack.pop().id;
-//     console.log('highlight ' + elementToHighlight)
-//     //}, {timeout: 3000 });
-//   }, 500);
-// }
-
+/**
+ * Removes hash from URL without changing scoll position
+ * and without affecting browser history
+ */
+function removeHash() {
+  var scrollV, scrollH, loc = window.location;
+  if ('pushState' in history)
+      history.pushState('', document.title, loc.pathname + loc.search);
+  else {
+      // Prevent scrolling by storing the page's current scroll offset
+      scrollV = document.body.scrollTop;
+      scrollH = document.body.scrollLeft;
+      loc.hash = '';
+      // Restore the scroll offset, should be flicker free
+      document.body.scrollTop = scrollV;
+      document.body.scrollLeft = scrollH;
+  }
+}

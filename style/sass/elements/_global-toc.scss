@@ -1,7 +1,7 @@
 @import "../settings/colors";
 
 #toc.toc2 {
-    background: linear-gradient(90deg, rgba(0,40,70,1) 0%, rgba(41,131,251,1) 100%);
+    background: linear-gradient(90deg, $primary 0%, $sky 100%);
     > ul {
         // padding-top: 35px;
         // background-image: url(https://doc.wirecard.com/images/logo/wirecard_logo.png);
@@ -10,7 +10,7 @@
         background-position-x: right;
     }
     a {
-        color: #fff;
+        color: white;
     }
 
     /* overwrite asciidoctor default margins,paddings */
@@ -24,7 +24,7 @@
 
     /* indent manually to allow <a> width of 100% */
     li[data-level="1"] > input[type="checkbox"] + label > a {
-        background-color: rgba(2,2,2,0.2);
+        background-color: rgba(black, 0.2);
         padding-left: 1em;
         font-weight: bold;
     }
@@ -51,40 +51,40 @@
             font-size: 1.2em;
         }
         & > a:hover {
-            background-color: rgba(2,2,2,0.05);
-            color: #8EE6FF;;
+            background-color: rgba(black, 0.05);
+            color: $ice;
             transition: background-color 0.5s ease-out;
         }
     }
     input[type="checkbox"]:checked + label {
         & > a {
-            border-left: 0.1em solid #fff;
-            background-color: rgba(2,2,2,0.12);
+            border-left: 0.1em solid white;
+            background-color: rgba(black, 0.12);
             font-weight:bold;
         }
     }
     li[data-level="1"] > input[type="checkbox"]:checked + label {
         & > a {
-            border-left: 0.1em solid #FF7373;
-            background-color: rgba(255,255,255,0.08);
+            border-left: 0.1em solid $coral;
+            background-color: rgba(white, 0.08);
         }
     }
     li[data-level="2"] > input[type="checkbox"]:checked + label {
         & > a {
-            border-left: 0.1em solid #8EE6FF;
-            background-color: rgba(255,255,255,0.05);
+            border-left: 0.1em solid $ice;
+            background-color: rgba(white, 0.05);
         }
     }
     li[data-level="3"] > input[type="checkbox"]:checked + label {
         & > a {
-            border-left: 0.1em solid #000;
-            background-color: rgba(255,255,255,0.04);
+            border-left: 0.1em solid black;
+            background-color: rgba(white, 0.04);
         }
     }
     li[data-level="4"] > input[type="checkbox"]:checked + label {
         & > a {
-            border-left: 0.1em solid #000;
-            background-color: rgba(255,255,255,0.03);
+            border-left: 0.1em solid black;
+            background-color: rgba(white, 0.03);
         }
     }
     /* do not display anything below level 5 in main toc */
@@ -102,7 +102,7 @@
         max-height: 0;
         overflow: hidden;
     }
-    
+
     /* show children of checked toc items */
     input[type="checkbox"]:checked + label ~ ul {
         max-height: 500vh;
@@ -111,7 +111,7 @@
 
     input[type="checkbox"]:checked + label {
         & > a {
-            
+
         }
     }
 }
