@@ -5,6 +5,13 @@ div#header {
     display: none;
 }
 
+//DECORATE EXTERNAL LINKS
+#content {
+    > a[href^="http:"]::after, a[href^="https:"]::after {
+        content: " " url('../images/icons/external_link.svg');
+    }
+}
+
 // INPUT -> TEXT/SEARCH
 input[type="text"], input[type="search"] {
     display: block;

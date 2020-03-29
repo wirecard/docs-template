@@ -105,9 +105,12 @@ function initBoxes(anchorElement) {
  */
 function initPageLinks() {
   console.log('initPageLinks');
-  const pageID = window.location.pathname.slice(1, -5).replace(/.*\//,'');
+  const pageID = window.location.pathname.slice(1, -5).replace(/.*\//, '');
   const pageRootElementAnchor = document.querySelector('#toc_cb_' + pageID + ' + label > a');
   document.querySelectorAll('div#content a').forEach(a => {
+    if (a.href.startsWith('http')) {
+      a.setAttribute('target', '_blank');
+    }
     if (a.hasAttribute('class')) return;
     if (a.href.startsWith(window.location.origin) === false) return;
 
@@ -191,7 +194,7 @@ function handleScrollEvent() {
   if (document.scrollspy.disabled) {
     return true;
   }
-  if(window.scrollY === 0) {
+  if (window.scrollY === 0) {
     removeHash();
   }
   requestAnimationFrame(() => {
@@ -240,14 +243,14 @@ function getParents(element, filter = '*', stop = false) {
 function removeHash() {
   var scrollV, scrollH, loc = window.location;
   if ('pushState' in history)
-      history.pushState('', document.title, loc.pathname + loc.search);
+    history.pushState('', document.title, loc.pathname + loc.search);
   else {
-      // Prevent scrolling by storing the page's current scroll offset
-      scrollV = document.body.scrollTop;
-      scrollH = document.body.scrollLeft;
-      loc.hash = '';
-      // Restore the scroll offset, should be flicker free
-      document.body.scrollTop = scrollV;
-      document.body.scrollLeft = scrollH;
+    // Prevent scrolling by storing the page's current scroll offset
+    scrollV = document.body.scrollTop;
+    scrollH = document.body.scrollLeft;
+    loc.hash = '';
+    // Restore the scroll offset, should be flicker free
+    document.body.scrollTop = scrollV;
+    document.body.scrollLeft = scrollH;
   }
 }

@@ -1242,18 +1242,21 @@ td.tableblock div.content div.paragraph p { font-size: 1em !important; }
 /* line 4, ../../style/sass/elements/_default.scss */
 div#header { display: none; }
 
-/* line 9, ../../style/sass/elements/_default.scss */
-input[type="text"], input[type="search"] { display: block; border-radius: 5px; border: 1px solid #425563; padding: 5px; font-size: 1em; box-sizing: border-box; }
+/* line 10, ../../style/sass/elements/_default.scss */
+#content > a[href^="http:"]::after, #content a[href^="https:"]::after { content: " " url("../images/icons/external_link.svg"); }
+
 /* line 16, ../../style/sass/elements/_default.scss */
+input[type="text"], input[type="search"] { display: block; border-radius: 5px; border: 1px solid #425563; padding: 5px; font-size: 1em; box-sizing: border-box; }
+/* line 23, ../../style/sass/elements/_default.scss */
 input[type="text"]::placeholder, input[type="search"]::placeholder { color: #a2aaad; }
-/* line 19, ../../style/sass/elements/_default.scss */
+/* line 26, ../../style/sass/elements/_default.scss */
 input[type="text"]:focus, input[type="search"]:focus { outline: none; }
 
-/* line 25, ../../style/sass/elements/_default.scss */
+/* line 32, ../../style/sass/elements/_default.scss */
 button { border-radius: 5px; background-color: white; }
-/* line 29, ../../style/sass/elements/_default.scss */
+/* line 36, ../../style/sass/elements/_default.scss */
 button.primary { color: #2983fb; border: 1px solid #2983fb; }
-/* line 33, ../../style/sass/elements/_default.scss */
+/* line 40, ../../style/sass/elements/_default.scss */
 button.secondary, button.close { color: #ff7373; border: 1px solid #ff7373; }
 
 /* @media only screen and (min-width: 1620px) { body#Home > div#content { max-width: 100%; padding-left: 310px; }

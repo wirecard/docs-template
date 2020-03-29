@@ -129,9 +129,8 @@ td.tableblock div.content div.paragraph p {
 
 
 // FOOTER
-body#Home > #footer { display: block; }
 #footer {
-    display: none; /* hide by default, show only on home page */
+    display: none; /* hide by default */
     background-color: rgba(0,0,0,.05);
     #footer-text {
         color: $gray2;

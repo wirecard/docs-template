@@ -1,0 +1,19 @@
+// FOOTER for BUILDDATE
+div.builddate {
+  padding: 1.25em;
+  height: 4.25em;
+  position: absolute;
+  bottom: -3em;
+  right: 0;
+  color: rgba(0,0,0,0.25);
+  & > p {
+      padding: 0;
+      text-align: right;
+  }
+  & > .title {
+    font-size: 1.0625rem;
+    text-align: right;
+    color: rgba(0, 0, 0, 0.25);
+    font-style: unset;
+  }
+}
