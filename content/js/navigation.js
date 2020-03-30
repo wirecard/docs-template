@@ -46,19 +46,19 @@ function enableToc() {
  * @param {Element} anchorElement specifies which TOC anchor was clicked
  */
 function toggleBox(anchorElement) {
-  console.log('toggleBox')
-  console.log(anchorElement)
-  var parent = anchorElement.parentNode;
-  var checkbox = parent.previousElementSibling;
-  var setTo = !checkbox.checked;
-  /* uncheck same level end below checkboxes */
-  var sameLevelCheckboxes = parent.parentNode.parentNode.querySelectorAll(':scope > li input[type=checkbox]');
-  for (var cb of sameLevelCheckboxes.entries()) {
-    var other_cb = cb[1];
-    other_cb.checked = false;
-  }
-  checkbox.checked = setTo;
-  return true;
+  requestAnimationFrame(()=> {
+    console.log('toggleBox')
+    var parent = anchorElement.parentNode;
+    var checkbox = parent.previousElementSibling;
+    var setTo = !checkbox.checked;
+    /* uncheck same level end below checkboxes */
+    var sameLevelCheckboxes = parent.parentNode.parentNode.querySelectorAll(':scope > li input[type=checkbox]');
+    for (var cb of sameLevelCheckboxes.entries()) {
+      var other_cb = cb[1];
+      other_cb.checked = false;
+    }
+    checkbox.checked = setTo;
+  });
 }
 
 /**
@@ -68,32 +68,34 @@ function toggleBox(anchorElement) {
  * @param {Element} anchorElement specifies which TOC anchor is the base
  */
 function initBoxes(anchorElement) {
-  try {
-    var parent = anchorElement.parentNode;
-    var checkbox = parent.previousElementSibling;
-    /* TODO: debug why this can happen */
-    if (checkbox.matches('input[type=checkbox]') === false) {
-      return false;
+  requestAnimationFrame(()=> {
+    try {
+      var parent = anchorElement.parentNode;
+      var checkbox = parent.previousElementSibling;
+      /* TODO: debug why this can happen */
+      if (checkbox.matches('input[type=checkbox]') === false) {
+        return false;
+      }
+      var sameLevelCheckboxes = parent.parentNode.parentNode.querySelectorAll(':scope > li > input[type=checkbox]');
+      for (var cb of sameLevelCheckboxes.entries()) {
+        var other_cb = cb[1];
+        other_cb.checked = false;
+      }
+      checkbox.checked = true;
     }
-    var sameLevelCheckboxes = parent.parentNode.parentNode.querySelectorAll(':scope > li > input[type=checkbox]');
-    for (var cb of sameLevelCheckboxes.entries()) {
-      var other_cb = cb[1];
-      other_cb.checked = false;
+    catch (e) {
+      console.log(e)
     }
-    checkbox.checked = true;
-  }
-  catch (e) {
-    console.log(e)
-  }
 
-  /* tick parent boxes */
-  try {
-    var ancestor_anchor = parent.parentNode.parentNode.previousElementSibling.firstChild;
-    initBoxes(ancestor_anchor);
-  }
-  catch (e) {
-    console.log('no more ancestor found');
-  }
+    /* tick parent boxes */
+    try {
+      var ancestor_anchor = parent.parentNode.parentNode.previousElementSibling.firstChild;
+      initBoxes(ancestor_anchor);
+    }
+    catch (e) {
+      console.log('no more ancestor found');
+    }
+  });
 }
 
 /**
