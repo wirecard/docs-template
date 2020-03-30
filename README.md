@@ -1,3 +1,6 @@
+![Build Template](https://github.com/wirecard/docs-template/workflows/Build%20Template/badge.svg)
+![Vale](https://github.com/wirecard/docs-template/workflows/Vale/badge.svg)
+
 # docs-template
 Template repository for Wirecard documentation platforms with [wirecard/docs-toolchain](https://github.com/wirecard/docs-toolchain).
 
