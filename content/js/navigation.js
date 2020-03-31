@@ -9,7 +9,22 @@
 document.addEventListener('DOMContentLoaded', () => {
   enableToc();
   initPageLinks();
+  trackVisit();
 });
+
+/**
+ * Wrapper for triggering your page tracking.
+ * @param  {...any} args any args your trackPageView function accepts
+ */
+function trackVisit(...args) {
+  console.log('trackVisit');
+  if (typeof trackPageView === 'function') {
+    setTimeout(trackPageView.bind(null, ...args), 250);
+  }
+  else {
+    console.log('tracking not available. possibly blocked by browser.')
+  }
+}
 
 /**
  * Is called on each page switch and also if page is opened by itself

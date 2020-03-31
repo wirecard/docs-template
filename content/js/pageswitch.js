@@ -46,7 +46,11 @@ swup.on('clickLink', function (e) {
       scrollToHash(id)
     }, 250);
   }
-  setTimeout(refreshTitle, 250);
+  setTimeout(() => {
+    console.log('clickling timeout')
+    refreshTitle();
+    trackVisit();
+  }, 350);  
 });
 
 swup.on('contentReplaced', () => {
