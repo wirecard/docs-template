@@ -1,2 +1,5 @@
+# This is a comment line.
+# Everything that is not between slashes is a comment.
+# The following are patterns that will be checked:
 /example pattern/
 /another pattern/

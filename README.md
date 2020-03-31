@@ -17,6 +17,16 @@ this will create a fork of this template which you can customize.
 ## Customize
 This template contains several built-in solutions, tests and styles which can be customized.
 
+### Config
+The main configuration file for the toolchain is placed in the content root and named `config.yaml`.
+This file allows to change all the variables that influence the creation of the documentation, such as
+multipage level, blacklist files, exclude lists for the search index, etc.
+
+#### Checkers
+##### Blacklist Pattern Checker
+The `PatternBlacklist` reads the blacklist file from the config (`checkers.pattern.blacklist`; default `blacklist.txt`)
+containing a list of words and patterns that are invalid (i.e. must not be used in the documentation).
+
 ### Logo
 In order to include a custom logo, simply replace the file `content/images/logo.png`.
 
