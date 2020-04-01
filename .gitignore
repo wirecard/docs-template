@@ -1,6 +1,8 @@
 vale/styles/
 tmp/
 
+coverage/
+
 blob_header.js
 blob_footer.js
 node_modules/
