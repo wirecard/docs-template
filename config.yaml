@@ -1,12 +1,33 @@
+# Asciidoctor settings
 asciidoc:
   index:
     file: index.adoc
   multipage_level: 2
 
+# Build directories
 build:
   dir: /tmp/build
   html:
     dir: /tmp/build/html
+
+# Enable extensions
+extensions:
+  enable:
+    - IfChecker
+    - IdChecker
+    - LinkChecker
+    - PatternBlacklist
+
+processes:
+  pre:
+    enable:
+      - CombineAndTranspileJS
+  post:
+    enable:
+      - CompileSearchIndex
+      - Rename
+      - HTMLTest
+      - CodeRayStyleCopy
 
 checkers:
   pattern:
