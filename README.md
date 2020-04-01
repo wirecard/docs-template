@@ -22,6 +22,33 @@ The main configuration file for the toolchain is placed in the content root and 
 This file allows to change all the variables that influence the creation of the documentation, such as
 multipage level, blacklist files, exclude lists for the search index, etc.
 
+#### Extensions
+The config allows to specify which extensions should be used or excluded.
+If you wish to use a certain extension, add it to the config under `extensions.enable** and use the class name of the extension.
+
+**Example**
+Include the extension named `Toolchain::TestExtension` in the config:
+```yaml
+extensions:
+  enable:
+    - TestExtension
+```
+
+#### Processes
+Including/excluding processes for the Pre or Post stage works the same as including/excluding extensions.
+
+**Example**
+Including the extensions named `Toolchain::Pre::PreProcessTest` and `Toolchain::Post::PostProcessTest` in the config:
+```yaml
+processes:
+  pre:
+    enable:
+      - PreProcessTest
+  post:
+    enable:
+      - PreProcessTest
+```
+
 #### Checkers
 ##### Blacklist Pattern Checker
 The `PatternBlacklist` reads the blacklist file from the config (`checkers.pattern.blacklist`; default `blacklist.txt`)
