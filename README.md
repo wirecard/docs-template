@@ -16,3 +16,11 @@ this will create a fork of this template which you can customize.
 ## Customize
 This template contains several built-in solutions, tests and styles which can be customized.
 Refer to the wiki to find out about the ways you can customize this template.
+
+## Vale
+This repository supports Vale to check the writing.
+To run Vale, do:
+```sh
+bash .scripts/get_vale_styles.sh # run ONCE
+vale content/
+```
