@@ -10,6 +10,11 @@ build:
   html:
     dir: /tmp/build/html
 
+# Custom directory for content defined
+# extensions and processes
+custom:
+  dir: custom
+
 # Enable extensions
 extensions:
   enable:
@@ -17,18 +22,21 @@ extensions:
     - IdChecker
     - LinkChecker
     - PatternBlacklist
+    - HelloWorld
 
 # Enable processes
 processes:
   pre:
     enable:
       - CombineAndTranspileJS
+      - HelloWorld
   post:
     enable:
       - CompileSearchIndex
       - Rename
       - HTMLTest
       - CodeRayStyleCopy
+      - HelloWorld
 
 # Settings for individual checkers/extensions
 checkers:
