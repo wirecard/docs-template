@@ -28,7 +28,8 @@ extensions:
 processes:
   pre:
     enable:
-      - CombineAndTranspileJS
+      - CombineJS
+      - TranspileJS
       - HelloWorld
   post:
     enable:
