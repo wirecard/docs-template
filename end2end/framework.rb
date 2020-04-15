@@ -12,11 +12,13 @@ class E2ETests
 
   # use thread pool to execute tests
   def run(browser_name)
+    result = nil
     (browser_name == :all ? @browsers : [browser_name]).each do |browser|
       driver = init_remote(browser)
-      yield driver
+      result = yield driver
       driver.quit
     end
+    return result
   end
 
   private
