@@ -78,3 +78,53 @@ jobs:
         SRC_DIR: public/
         DST_DIR: docs-template/
 
+  frontend:
+    runs-on: ubuntu-latest
+    needs: build
+    services:
+      nginx:
+        image: nginx
+        ports:
+          - 8888:80
+        volumes:
+          - ${{ github.workspace }}/public:/usr/share/nginx/html:ro
+      hub:
+        image: selenium/hub:3.14.0-gallium
+        ports:
+          - "4444:4444"
+      firefox:
+        image: selenium/node-firefox:3.14.0-gallium
+        volumes:
+          - /dev/shm:/dev/shm
+        env:
+          HUB_HOST: hub
+      chrome:
+        image: selenium/node-chrome:3.14.0-gallium
+        volumes:
+          - /dev/shm:/dev/shm
+        env:
+          HUB_HOST: hub
+
+    steps:
+    - name: Extract branch name
+      shell: bash
+      run: |
+        echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        echo "##[set-output name=pr;]pr$(echo ${GITHUB_REF} | cut -d'/' -f3)"
+      id: extract_branch
+
+    - name: Checkout
+      uses: actions/checkout@v1
+      with:
+        submodules: true
+
+    - uses: actions/download-artifact@v1
+      with:
+        name: built-webpage-${{steps.extract_branch.outputs.branch}}
+        path: public
+
+    - name: Run e2e tests
+      run: |
+        cd end2end
+        rake selenium:test
+
