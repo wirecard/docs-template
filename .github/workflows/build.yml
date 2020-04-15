@@ -48,6 +48,12 @@ jobs:
         rake docs:post
         cp -r /tmp/build/html public/
 
+    - name: Upload as Artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: built-webpage-${{steps.extract_branch.outputs.branch}}
+        path: public/
+
     - name: Prepend branch name
       if: github.event_name == 'push' && steps.extract_branch.outputs.branch != 'master'
       run: |

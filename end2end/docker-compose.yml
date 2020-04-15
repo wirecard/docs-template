@@ -22,3 +22,10 @@ services:
     image: selenium/hub:3.14.0-gallium
     ports:
       - "4444:4444"
+
+  nginx:
+    image: nginx:stable
+    ports:
+      - "8888:80"
+    volumes:
+      - /tmp/build/html:/use/share/nginx/html:ro
