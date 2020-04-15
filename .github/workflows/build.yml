@@ -133,6 +133,11 @@ jobs:
         name: built-webpage-${{steps.extract_branch.outputs.branch}}
         path: public
 
+    - name: Debug output
+      run: |
+        ls
+        ls public
+
     - name: Run e2e tests
       run: |
         cd end2end
