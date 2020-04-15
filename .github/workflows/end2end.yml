@@ -5,6 +5,7 @@ on: [push, pull_request]
 jobs:
   frontend:
     runs-on: ubuntu-latest
+    needs: build
     services:
       nginx:
         image: nginx
@@ -12,26 +13,22 @@ jobs:
           - 8888:80
         volumes:
           - ${{ github.workspace }}/public:/usr/share/nginx/html:ro
+      hub:
+        image: selenium/hub:3.14.0-gallium
+        ports:
+          - "4444:4444"
       firefox:
         image: selenium/node-firefox:3.14.0-gallium
         volumes:
           - /dev/shm:/dev/shm
-        depends_on:
-          - hub
-        environment:
+        env:
           HUB_HOST: hub
       chrome:
         image: selenium/node-chrome:3.14.0-gallium
         volumes:
           - /dev/shm:/dev/shm
-        depends_on:
-          - hub
-        environment:
+        env:
           HUB_HOST: hub
-      hub:
-        image: selenium/hub:3.14.0-gallium
-        ports:
-          - "4444:4444"
 
     steps:
     - name: Extract branch name
