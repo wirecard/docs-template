@@ -81,6 +81,8 @@ jobs:
   frontend:
     runs-on: ubuntu-latest
     needs: build
+    env:
+      TOOLCHAIN_PATH: 'toolchain'
     services:
       nginx:
         image: nginx
