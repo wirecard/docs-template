@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "Deploy"
+aws s3 sync "public/" "s3://${AWS_S3_BUCKET}/docs-template"
