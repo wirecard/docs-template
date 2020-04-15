@@ -113,6 +113,11 @@ jobs:
         echo "##[set-output name=pr;]pr$(echo ${GITHUB_REF} | cut -d'/' -f3)"
       id: extract_branch
 
+    - name: Checkout
+      uses: actions/checkout@v1
+      with:
+        submodules: true
+
     - name: Setup Ruby 2.6
       uses: actions/setup-ruby@v1
       with:
@@ -120,11 +125,6 @@ jobs:
 
     - name: Setup
       run: bash toolchain/setup/setup.sh
-
-    - name: Checkout
-      uses: actions/checkout@v1
-      with:
-        submodules: true
 
     - uses: actions/download-artifact@v1
       with:
