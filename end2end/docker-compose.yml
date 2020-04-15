@@ -28,4 +28,4 @@ services:
     ports:
       - "8888:80"
     volumes:
-      - /tmp/build/html:/use/share/nginx/html:ro
+      - /tmp/build/html:/usr/share/nginx/html:ro
