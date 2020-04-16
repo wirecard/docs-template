@@ -11,12 +11,7 @@ jobs:
     steps:
     - name: Extract build name
       shell: bash
-      run: |
-        if [[ "${{ github.event_name }}" == "push" ]]; then
-          echo "::set-output name=build-name::$(echo ${GITHUB_REF#refs/heads/})"
-        else
-          echo "::set-output name=build-name::pr$(echo ${GITHUB_REF} | cut -d'/' -f3)"
-        fi
+      run: echo "::set-output name=build_name::$(bash .scripts/extract_build_name.sh)"
       id: extract
 
     - name: Checkout
@@ -94,6 +89,11 @@ jobs:
           HUB_HOST: hub
 
     steps:
+    - name: Extract build name
+      shell: bash
+      run: echo "::set-output name=build_name::$(bash .scripts/extract_build_name.sh)"
+      id: extract
+
     - name: Checkout
       uses: actions/checkout@v1
       with:
@@ -109,7 +109,7 @@ jobs:
 
     - uses: actions/download-artifact@v1
       with:
-        name: built-webpage-${{ jobs.build.steps.extract.outputs.build_name }}
+        name: built-webpage-${{ steps.extract.outputs.build_name }}
         path: public
 
     - name: Run e2e tests
