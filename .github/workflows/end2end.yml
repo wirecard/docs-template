@@ -8,6 +8,30 @@ jobs:
     env:
       TOOLCHAIN_PATH: 'toolchain'
 
+    services:
+      nginx:
+        image: nginx
+        ports:
+          - 8888:80
+        volumes:
+          - ${{ github.workspace }}/public:/usr/share/nginx/html:ro
+      hub:
+        image: selenium/hub:3.14.0-gallium
+        ports:
+          - "4444:4444"
+      firefox:
+        image: selenium/node-firefox:3.14.0-gallium
+        volumes:
+          - /dev/shm:/dev/shm
+        env:
+          HUB_HOST: hub
+      chrome:
+        image: selenium/node-chrome:3.14.0-gallium
+        volumes:
+          - /dev/shm:/dev/shm
+        env:
+          HUB_HOST: hub
+
     steps:
     - name: Checkout
       uses: actions/checkout@v1
@@ -30,11 +54,5 @@ jobs:
     - name: Build docs
       run: rake docs:all
 
-    - name: Start Selenium Hub
-      run: rake selenium:up
-
     - name: Run end2end tests
       run: rake selenium:test
-
-    - name: Destroy Selenium Hub
-      run: rake selenium:down
