@@ -27,17 +27,17 @@ jobs:
     - name: Setup
       run: bash toolchain/setup/setup.sh
 
-    - name: Build
-      run: |
-        rake docs:all
+    - name: Build docs
+      run: rake docs:all
+
+    - name: cd end2end
+      run: cd end2end
 
     - name: Start Selenium Hub
       run: rake selenium:up
 
     - name: Run end2end tests
-      run: |
-        cd end2end
-        rake selenium:test
+      run: rake selenium:test
 
     - name: Destroy Selenium Hub
       run: rake selenium:down

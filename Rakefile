@@ -1,4 +1,4 @@
-import 'toolchain/Rakefile'
+load 'toolchain/Rakefile'
 
 task :environment do
   ENV['CONTENT_PATH'] = File.dirname(__FILE__)
