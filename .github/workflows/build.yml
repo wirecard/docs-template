@@ -46,5 +46,32 @@ jobs:
         rake docs:post
         cp -r /tmp/build/html public/
 
+    - name: Prepend branch name
+      if: github.event_name == 'push' && steps.extract_branch.outputs.branch != 'master'
+      run: |
+        mkdir -p branches/${{ steps.extract_branch.outputs.branch }}
+        mv public/* branches/${{ steps.extract_branch.outputs.branch }}
+        mv branches/${{ steps.extract_branch.outputs.branch }} public/
+
+    - name: Prepend pull request number
+      if: github.event_name == 'pull_request'
+      run: |
+        mkdir -p branches/${{ steps.extract_branch.outputs.pr }}
+        mv public/* branches/${{ steps.extract_branch.outputs.pr }}
+        mv branches/${{ steps.extract_branch.outputs.pr }} public/
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+        role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+        role-session-name: GithubActions
+        role-duration-seconds: 1200
+
     - name: Deploy
-      run: echo "Deploy me :)"
+      run: bash .scripts/deploy.sh
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+
