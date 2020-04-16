@@ -1,7 +1,14 @@
-version: '2'
+version: '3'
 services:
+  hub:
+    image: selenium/hub:3.14.0-gallium
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+
   firefox:
     image: selenium/node-firefox:3.14.0-gallium
+    container_name: firefox
     volumes:
       - /dev/shm:/dev/shm
     depends_on:
@@ -11,6 +18,7 @@ services:
 
   chrome:
     image: selenium/node-chrome:3.14.0-gallium
+    container_name: chrome
     volumes:
       - /dev/shm:/dev/shm
     depends_on:
@@ -18,13 +26,9 @@ services:
     environment:
       HUB_HOST: hub
 
-  hub:
-    image: selenium/hub:3.14.0-gallium
-    ports:
-      - "4444:4444"
-
   nginx:
     image: nginx:stable
+    container_name: nginx-docs
     ports:
       - "8888:80"
     volumes:
