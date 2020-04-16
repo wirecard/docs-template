@@ -7,6 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TOOLCHAIN_PATH: 'toolchain'
+    services:
+      nginx:
+        image: nginx
+        ports:
+          - 8888:80
+        volumes:
+          - ${{ github.workspace }}/public:/usr/share/nginx/html:ro
 
     steps:
     - name: Extract build name
