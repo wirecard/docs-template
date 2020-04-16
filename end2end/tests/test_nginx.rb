@@ -7,6 +7,6 @@ class TestNginx < Minitest::Test
       browser.navigate.to 'http://nginx/'
       browser.title
     end
-    assert_equal('Welcome to nginx!', title)
+    assert_equal('Hello, AsciiDoc!', title)
   end
 end
