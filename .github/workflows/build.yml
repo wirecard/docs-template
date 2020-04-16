@@ -9,15 +9,15 @@ jobs:
       TOOLCHAIN_PATH: 'toolchain'
 
     steps:
-    - name: Extract build name
-      shell: bash
-      run: echo "::set-output name=build_name::$(bash .scripts/extract_build_name.sh)"
-      id: extract
-
     - name: Checkout
       uses: actions/checkout@v1
       with:
         submodules: true
+
+    - name: Extract build name
+      shell: bash
+      run: echo "::set-output name=build_name::$(bash .scripts/extract_build_name.sh)"
+      id: extract
 
     - name: Setup Ruby 2.6
       uses: actions/setup-ruby@v1
@@ -52,13 +52,6 @@ jobs:
         name: built-webpage-${{ steps.extract.outputs.build_name }}
         path: public/
 
-    - name: Prepend build name
-      if: steps.init.outputs.branch != 'master'
-      run: |
-        mkdir -p branches/${{ steps.extract.outputs.build_name }}
-        mv public/* branches/${{ steps.extract.outputs.build_name }}
-        mv branches/${{ steps.extract.outputs.build_name }} public/
-
   frontend:
     runs-on: ubuntu-latest
     needs: build
@@ -89,15 +82,15 @@ jobs:
           HUB_HOST: hub
 
     steps:
-    - name: Extract build name
-      shell: bash
-      run: echo "::set-output name=build_name::$(bash .scripts/extract_build_name.sh)"
-      id: extract
-
     - name: Checkout
       uses: actions/checkout@v1
       with:
         submodules: true
+
+    - name: Extract build name
+      shell: bash
+      run: echo "::set-output name=build_name::$(bash .scripts/extract_build_name.sh)"
+      id: extract
 
     - name: Setup Ruby 2.6
       uses: actions/setup-ruby@v1
@@ -116,4 +109,3 @@ jobs:
       run: |
         cd end2end
         rake selenium:test
-
