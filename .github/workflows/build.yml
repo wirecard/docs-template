@@ -70,6 +70,7 @@ jobs:
         aws-region: ${{ secrets.AWS_REGION }}
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
         role-session-name: GithubActions
+        role-duration-seconds: 600
 
     - name: Deploy
       run: bash .scripts/deploy.sh
