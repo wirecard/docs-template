@@ -9,12 +9,15 @@ jobs:
       TOOLCHAIN_PATH: 'toolchain'
 
     steps:
-    - name: Extract branch name
+    - name: Extract build name
       shell: bash
       run: |
-        echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        echo "##[set-output name=pr;]pr$(echo ${GITHUB_REF} | cut -d'/' -f3)"
-      id: extract_branch
+        if [[ "${{ github.event_name }}" == "push" ]]; then
+          echo "::set-output name=build-name::$(echo ${GITHUB_REF#refs/heads/})"
+        else
+          echo "::set-output name=build-name::pr$(echo ${GITHUB_REF} | cut -d'/' -f3)"
+        fi
+      id: extract
 
     - name: Checkout
       uses: actions/checkout@v1
@@ -51,22 +54,15 @@ jobs:
     - name: Upload as Artifact
       uses: actions/upload-artifact@master
       with:
-        name: built-webpage-${{steps.extract_branch.outputs.branch}}
+        name: built-webpage-${{ steps.extract.outputs.build_name }}
         path: public/
 
-    - name: Prepend branch name
-      if: github.event_name == 'push' && steps.extract_branch.outputs.branch != 'master'
+    - name: Prepend build name
+      if: steps.init.outputs.branch != 'master'
       run: |
-        mkdir -p branches/${{ steps.extract_branch.outputs.branch }}
-        mv public/* branches/${{ steps.extract_branch.outputs.branch }}
-        mv branches/${{ steps.extract_branch.outputs.branch }} public/
-
-    - name: Prepend pull request number
-      if: github.event_name == 'pull_request'
-      run: |
-        mkdir -p branches/${{ steps.extract_branch.outputs.pr }}
-        mv public/* branches/${{ steps.extract_branch.outputs.pr }}
-        mv branches/${{ steps.extract_branch.outputs.pr }} public/
+        mkdir -p branches/${{ steps.extract.outputs.build_name }}
+        mv public/* branches/${{ steps.extract.outputs.build_name }}
+        mv branches/${{ steps.extract.outputs.build_name }} public/
 
   frontend:
     runs-on: ubuntu-latest
@@ -98,13 +94,6 @@ jobs:
           HUB_HOST: hub
 
     steps:
-    - name: Extract branch name
-      shell: bash
-      run: |
-        echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        echo "##[set-output name=pr;]pr$(echo ${GITHUB_REF} | cut -d'/' -f3)"
-      id: extract_branch
-
     - name: Checkout
       uses: actions/checkout@v1
       with:
@@ -120,13 +109,8 @@ jobs:
 
     - uses: actions/download-artifact@v1
       with:
-        name: built-webpage-${{steps.extract_branch.outputs.branch}}
+        name: built-webpage-${{ jobs.build.steps.extract.outputs.build_name }}
         path: public
-
-    - name: Debug output
-      run: |
-        ls
-        ls public
 
     - name: Run e2e tests
       run: |
