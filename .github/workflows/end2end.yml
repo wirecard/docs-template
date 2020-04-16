@@ -30,9 +30,6 @@ jobs:
     - name: Build docs
       run: rake docs:all
 
-    - name: cd end2end
-      run: cd end2end
-
     - name: Start Selenium Hub
       run: rake selenium:up
 
