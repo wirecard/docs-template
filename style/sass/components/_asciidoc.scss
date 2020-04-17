@@ -522,7 +522,7 @@ b.button:after {
 }
 
 // QUESTION why #content here?
-#content #{headers()} {
+#content #{headers()}, #content h7 {
   > a.anchor {
     position: absolute;
     z-index: 1001;
