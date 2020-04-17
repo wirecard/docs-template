@@ -61,3 +61,7 @@ jobs:
 
     - name: Run end2end tests
       run: rake selenium:test
+
+    - name: Dump Docker logs
+      if: always()
+      run: docker logs nginx
