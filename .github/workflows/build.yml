@@ -50,8 +50,8 @@ jobs:
       if: steps.extract.outputs.build_name != 'master'
       run: |
         mkdir -p branches/${{ steps.extract.outputs.build_name }}
-        mv public/* branches/${{ steps.extract.outputs.build_name }}
-        mv branches/${{ steps.extract.outputs.build_name }} public/
+        mv public/* branches/${{ steps.extract.outputs.build_name }}/
+        mv branches public/
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
