@@ -55,6 +55,7 @@ jobs:
       run: |
         rake docs:all
         mv /tmp/build/html public/
+        ls -al public/
       env:
         SKIP_RAKE_TEST: 'true'
 
