@@ -10,3 +10,56 @@
 
 puts "Hello, World!"
 ----
+
+[#text_example]
+== Charset test
+
+ßsome utfä char€ 😉
+
+[#menu_test]
+=== Menu Test
+
+Some text
+
+[#menu_subs]
+==== Subsection
+
+More text
+
+More text
+
+More text
+
+More text
+
+More text
+
+More text
+
+[#menu_subss1]
+===== Sub Sub Section 1
+
+XXXXXX
+
+- XXXXXX
+
+- XXXXXX
+
+- XXXXXX
+
+- XXXXXX
+
+//-
+XXXXXX
+
+[#menu_subss2]
+===== Sub Sub Section 2
+
+XXXXXX
+
+SDGSGF
+
+[#menu_subss3]
+===== Sub Sub Section 3
+
+XXXXXX
