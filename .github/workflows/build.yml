@@ -46,19 +46,12 @@ jobs:
         rake docs:post
         cp -r /tmp/build/html public/
 
-    - name: Prepend branch name
-      if: github.event_name == 'push' && steps.extract_branch.outputs.branch != 'master'
+    - name: Prepend Build Name
+      if: steps.extract.outputs.build_name != 'master'
       run: |
-        mkdir -p branches/${{ steps.extract_branch.outputs.branch }}
-        mv public/* branches/${{ steps.extract_branch.outputs.branch }}
-        mv branches/${{ steps.extract_branch.outputs.branch }} public/
-
-    - name: Prepend pull request number
-      if: github.event_name == 'pull_request'
-      run: |
-        mkdir -p branches/${{ steps.extract_branch.outputs.pr }}
-        mv public/* branches/${{ steps.extract_branch.outputs.pr }}
-        mv branches/${{ steps.extract_branch.outputs.pr }} public/
+        mkdir -p branches/${{ steps.extract.outputs.build_name }}
+        mv public/* branches/${{ steps.extract.outputs.build_name }}
+        mv branches/${{ steps.extract.outputs.build_name }} public/
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
