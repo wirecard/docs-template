@@ -15,6 +15,7 @@ jobs:
           - 8888:80
         volumes:
           - ${{ github.workspace }}/public:/usr/share/nginx/html:ro
+        options: --name nginx
       hub:
         image: selenium/hub:3.14.0-gallium
         ports:
@@ -63,7 +64,7 @@ jobs:
     - name: Restart nginx
       uses: docker://docker
       with:
-        args: docker restart $(docker ps --quiet --filter "name=nginx")
+        args: docker restart nginx
 
     - name: Run end2end tests
       run: rake selenium:test
