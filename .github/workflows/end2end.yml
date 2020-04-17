@@ -59,6 +59,12 @@ jobs:
       env:
         SKIP_RAKE_TEST: 'true'
 
+    # Restart because mounted folder only exists NOW
+    - name: Restart nginx
+      uses: docker://docker
+      with:
+        args: docker restart $(docker ps --quiet --filter "name=nginx")
+
     - name: Run end2end tests
       run: rake selenium:test
 
