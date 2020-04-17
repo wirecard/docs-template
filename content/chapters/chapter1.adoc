@@ -12,54 +12,190 @@ puts "Hello, World!"
 ----
 
 [#text_example]
-== Charset test
+== Charset Test
 
-ßsome utfä char€ 😉
+בְּרֵאשִׁית
+א  בְּרֵאשִׁית, בָּרָא אֱלֹהִים, אֵת הַשָּׁמַיִם, וְאֵת הָאָרֶץ. 	1 In the beginning God created the heaven and the earth.
+
+ב  וְהָאָרֶץ, הָיְתָה תֹהוּ וָבֹהוּ, וְחֹשֶׁךְ, עַל-פְּנֵי תְהוֹם; וְרוּחַ אֱלֹהִים, מְרַחֶפֶת עַל-פְּנֵי הַמָּיִם. 	2 Now the earth was unformed and void, and darkness was upon the face of the deep; and the spirit of God hovered over the face of the waters.
+
+ג  וַיֹּאמֶר אֱלֹהִים, יְהִי אוֹר; וַיְהִי-אוֹר. 	3 And God said: 'Let there be light.' And there was light.
+
+ד  וַיַּרְא אֱלֹהִים אֶת-הָאוֹר, כִּי-טוֹב; וַיַּבְדֵּל אֱלֹהִים, בֵּין הָאוֹר וּבֵין הַחֹשֶׁךְ. 	4 And God saw the light, that it was good; and God divided the light from the darkness.  😉
 
 [#menu_test]
 === Menu Test
 
-Some text
+Ratschluß der Götter, daß Odysseus, welchen Poseidon verfolgt, von Kalypsos Insel Ogygia heimkehre. Athene, in Mentes' Gestalt, den Telemachos besuchend, rät ihm, in Pylos und Sparta nach dem Vater sich zu erkundigen und die schwelgenden Freier aus dem Hause zu schaffen. Er redet das erstemal mit Entschlossenheit zur Mutter und zu den Freiern. Nacht.
 
 [#menu_subs]
 ==== Subsection
 
-More text
+Sage mir, Muse, die Taten des vielgewanderten Mannes,
 
-More text
+Welcher so weit geirrt nach der heiligen Troja Zerstörung,
 
-More text
+Vieler Menschen Städte gesehn und Sitte gelernt hat
 
-More text
+Und auf dem Meere so viel unnennbare Leiden erduldet,
 
-More text
+Seine Seele zu retten und seiner Freunde Zurückkunft.
 
-More text
+Aber die Freunde rettet' er nicht, wie eifrig er strebte;
+
+Denn sie bereiteten selbst durch Missetat ihr Verderben:
+
+Toren! welche die Rinder des hohen Sonnenbeherrschers
+
+Schlachteten; siehe, der Gott nahm ihnen den Tag der Zurückkunft.
+
+Sage hievon auch uns ein weniges, Tochter Kronions.
+
+Alle die andern, soviel dem verderbenden Schicksal entflohen,
+
+Waren jetzo daheim, dem Krieg entflohn und dem Meere:
+
+Ihn allein, der so herzlich zur Heimat und Gattin sich sehnte,
+
+Hielt die unsterbliche Nymphe, die hehre Göttin Kalypso,
+
+In der gewölbeten Grotte und wünschte sich ihn zum Gemahle.
+
+Selbst da das Jahr nun kam im kreisenden Laufe der Zeiten,
+
+Da ihm die Götter bestimmt, gen Ithaka wiederzukehren,
+
+Hatte der Held noch nicht vollendet die müdende Laufbahn,
+
+Auch bei den Seinigen nicht. Es jammerte seiner die Götter;
+
+Nur Poseidon zürnte dem göttergleichen Odysseus
+
+Unablässig, bevor er sein Vaterland wieder erreichte.
+
+Dieser war jetzo fern zu den Aithiopen gegangen:
+
+Aithiopen, die zwiefach geteilt sind, die äußersten Menschen,
+
+Gegen den Untergang der Sonnen und gegen den Aufgang:
+
+Welche die Hekatombe der Stier' und Widder ihm brachten.
+
+Allda saß er, des Mahls sich freuend. Die übrigen Götter
+
+Waren alle in Zeus' des Olympiers Hause versammelt.
+
+Unter ihnen begann der Vater der Menschen und Götter;
+
+Denn er gedachte bei sich des tadellosen Aigisthos,
+
+Den Agamemnons Sohn, der berühmte Orestes, getötet;
+
+Dessen gedacht er jetzo und sprach zu der Götter Versammlung
 
 [#menu_subss1]
 ===== Sub Sub Section 1
 
-XXXXXX
+ἄνδρα μοι ἔννεπε, μοῦσα, πολύτροπον, ὃς μάλα πολλὰ
+πλάγχθη, ἐπεὶ Τροίης ἱερὸν πτολίεθρον ἔπερσεν:
+πολλῶν δ᾽ ἀνθρώπων ἴδεν ἄστεα καὶ νόον ἔγνω,
+πολλὰ δ᾽ ὅ γ᾽ ἐν πόντῳ πάθεν ἄλγεα ὃν κατὰ θυμόν,
 
-- XXXXXX
+ἀρνύμενος ἥν τε ψυχὴν καὶ νόστον ἑταίρων.
+ἀλλ᾽ οὐδ᾽ ὣς ἑτάρους ἐρρύσατο, ἱέμενός περ:
+αὐτῶν γὰρ σφετέρῃσιν ἀτασθαλίῃσιν ὄλοντο,
+νήπιοι, οἳ κατὰ βοῦς Ὑπερίονος Ἠελίοιο
+ἤσθιον: αὐτὰρ ὁ τοῖσιν ἀφείλετο νόστιμον ἦμαρ.
 
-- XXXXXX
+τῶν ἁμόθεν γε, θεά, θύγατερ Διός, εἰπὲ καὶ ἡμῖν.
 
-- XXXXXX
+οἴκοι ἔσαν, πόλεμόν τε πεφευγότες ἠδὲ θάλασσαν:
+τὸν δ᾽ οἶον νόστου κεχρημένον ἠδὲ γυναικὸς
+νύμφη πότνι᾽ ἔρυκε Καλυψὼ δῖα θεάων
 
-- XXXXXX
+ἐν σπέσσι γλαφυροῖσι, λιλαιομένη πόσιν εἶναι.
+ἀλλ᾽ ὅτε δὴ ἔτος ἦλθε περιπλομένων ἐνιαυτῶν,
+τῷ οἱ ἐπεκλώσαντο θεοὶ οἶκόνδε νέεσθαι
+εἰς Ἰθάκην, οὐδ᾽ ἔνθα πεφυγμένος ἦεν ἀέθλων
+καὶ μετὰ οἷσι φίλοισι. θεοὶ δ᾽ ἐλέαιρον ἅπαντες
 
-//-
-XXXXXX
+νόσφι Ποσειδάωνος: ὁ δ᾽ ἀσπερχὲς μενέαινεν
+ἀντιθέῳ Ὀδυσῆι πάρος ἣν γαῖαν ἱκέσθαι.
+
 
 [#menu_subss2]
 ===== Sub Sub Section 2
 
-XXXXXX
+ἔνθ᾽ ἄλλοι μὲν πάντες, ὅσοι φύγον αἰπὺν ὄλεθρον,
 
-SDGSGF
+ἀλλ᾽ ὁ μὲν Αἰθίοπας μετεκίαθε τηλόθ᾽ ἐόντας,
+Αἰθίοπας τοὶ διχθὰ δεδαίαται, ἔσχατοι ἀνδρῶν,
+οἱ μὲν δυσομένου Ὑπερίονος οἱ δ᾽ ἀνιόντος,
+
+ἀντιόων ταύρων τε καὶ ἀρνειῶν ἑκατόμβης.
+ἔνθ᾽ ὅ γ᾽ ἐτέρπετο δαιτὶ παρήμενος: οἱ δὲ δὴ ἄλλοι
+Ζηνὸς ἐνὶ μεγάροισιν Ὀλυμπίου ἁθρόοι ἦσαν.
+τοῖσι δὲ μύθων ἦρχε πατὴρ ἀνδρῶν τε θεῶν τε:
+μνήσατο γὰρ κατὰ θυμὸν ἀμύμονος Αἰγίσθοιο,
+
+τόν ῥ᾽ Ἀγαμεμνονίδης τηλεκλυτὸς ἔκταν᾽ Ὀρέστης:
+τοῦ ὅ γ᾽ ἐπιμνησθεὶς ἔπε᾽ ἀθανάτοισι μετηύδα:
+
+‘ὢ πόποι, οἷον δή νυ θεοὺς βροτοὶ αἰτιόωνται:
+ἐξ ἡμέων γάρ φασι κάκ᾽ ἔμμεναι, οἱ δὲ καὶ αὐτοὶ
+σφῇσιν ἀτασθαλίῃσιν ὑπὲρ μόρον ἄλγε᾽ ἔχουσιν,
+ὡς καὶ νῦν Αἴγισθος ὑπὲρ μόρον Ἀτρεΐδαο
+γῆμ᾽ ἄλοχον μνηστήν, τὸν δ᾽ ἔκτανε νοστήσαντα,
+εἰδὼς αἰπὺν ὄλεθρον, ἐπεὶ πρό οἱ εἴπομεν ἡμεῖς,
+Ἑρμείαν πέμψαντες, ἐύσκοπον ἀργεϊφόντην,
+μήτ᾽ αὐτὸν κτείνειν μήτε μνάασθαι ἄκοιτιν:
 
 [#menu_subss3]
 ===== Sub Sub Section 3
 
-XXXXXX
+ἐκ γὰρ Ὀρέσταο τίσις ἔσσεται Ἀτρεΐδαο,
+ὁππότ᾽ ἂν ἡβήσῃ τε καὶ ἧς ἱμείρεται αἴης.
+ὣς ἔφαθ᾽ Ἑρμείας, ἀλλ᾽ οὐ φρένας Αἰγίσθοιο
+πεῖθ᾽ ἀγαθὰ φρονέων: νῦν δ᾽ ἁθρόα πάντ᾽ ἀπέτισεν.
+
+τὸν δ᾽ ἠμείβετ᾽ ἔπειτα θεά, γλαυκῶπις Ἀθήνη:
+‘ὦ πάτερ ἡμέτερε Κρονίδη, ὕπατε κρειόντων,
+καὶ λίην κεῖνός γε ἐοικότι κεῖται ὀλέθρῳ:
+ὡς ἀπόλοιτο καὶ ἄλλος, ὅτις τοιαῦτά γε ῥέζοι:
+ἀλλά μοι ἀμφ᾽ Ὀδυσῆι δαΐφρονι δαίεται ἦτορ,
+δυσμόρῳ, ὃς δὴ δηθὰ φίλων ἄπο πήματα πάσχει
+
+νήσῳ ἐν ἀμφιρύτῃ, ὅθι τ᾽ ὀμφαλός ἐστι θαλάσσης.
+νῆσος δενδρήεσσα, θεὰ δ᾽ ἐν δώματα ναίει,
+Ἄτλαντος θυγάτηρ ὀλοόφρονος, ὅς τε θαλάσσης
+πάσης βένθεα οἶδεν, ἔχει δέ τε κίονας αὐτὸς
+μακράς, αἳ γαῖάν τε καὶ οὐρανὸν ἀμφὶς ἔχουσιν.
+
+τοῦ θυγάτηρ δύστηνον ὀδυρόμενον κατερύκει,
+αἰεὶ δὲ μαλακοῖσι καὶ αἱμυλίοισι λόγοισιν
+θέλγει, ὅπως Ἰθάκης ἐπιλήσεται: αὐτὰρ Ὀδυσσεύς,
+ἱέμενος καὶ καπνὸν ἀποθρῴσκοντα νοῆσαι
+ἧς γαίης, θανέειν ἱμείρεται. οὐδέ νυ σοί περ
+60ἐντρέπεται φίλον ἦτορ, Ὀλύμπιε. οὔ νύ τ᾽ Ὀδυσσεὺς
+Ἀργείων παρὰ νηυσὶ χαρίζετο ἱερὰ ῥέζων
+Τροίῃ ἐν εὐρείῃ; τί νύ οἱ τόσον ὠδύσαο, Ζεῦ;
+’
+
+τὴν δ᾽ ἀπαμειβόμενος προσέφη νεφεληγερέτα Ζεύς:
+‘τέκνον ἐμόν, ποῖόν σε ἔπος φύγεν ἕρκος ὀδόντων.
+
+πῶς ἂν ἔπειτ᾽ Ὀδυσῆος ἐγὼ θείοιο λαθοίμην,
+ὃς περὶ μὲν νόον ἐστὶ βροτῶν, περὶ δ᾽ ἱρὰ θεοῖσιν
+ἀθανάτοισιν ἔδωκε, τοὶ οὐρανὸν εὐρὺν ἔχουσιν;
+ἀλλὰ Ποσειδάων γαιήοχος ἀσκελὲς αἰεὶ
+Κύκλωπος κεχόλωται, ὃν ὀφθαλμοῦ ἀλάωσεν,
+70ἀντίθεον Πολύφημον, ὅου κράτος ἐστὶ μέγιστον
+πᾶσιν Κυκλώπεσσι: Θόωσα δέ μιν τέκε νύμφη,
+Φόρκυνος θυγάτηρ ἁλὸς ἀτρυγέτοιο μέδοντος,
+ἐν σπέσσι γλαφυροῖσι Ποσειδάωνι μιγεῖσα.
+ἐκ τοῦ δὴ Ὀδυσῆα Ποσειδάων ἐνοσίχθων
+75οὔ τι κατακτείνει, πλάζει δ᾽ ἀπὸ πατρίδος αἴης.
+ἀλλ᾽ ἄγεθ᾽, ἡμεῖς οἵδε περιφραζώμεθα πάντες
+νόστον, ὅπως ἔλθῃσι: Ποσειδάων δὲ μεθήσει
+ὃν χόλον: οὐ μὲν γὰρ τι δυνήσεται ἀντία πάντων
+ἀθανάτων ἀέκητι θεῶν ἐριδαινέμεν οἶος.
