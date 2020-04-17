@@ -14,7 +14,7 @@ jobs:
         ports:
           - 8888:80
         volumes:
-          - /tmp/build/html:/usr/share/nginx/html:ro
+          - ${{ github.workspace }}/public:/usr/share/nginx/html:ro
       hub:
         image: selenium/hub:3.14.0-gallium
         ports:
@@ -52,7 +52,16 @@ jobs:
       run: bash toolchain/setup/setup.sh
 
     - name: Build docs
-      run: rake docs:all
+      run: |
+        rake docs:all
+        mv /tmp/build/html public/
+        ls -al public/
+      env:
+        SKIP_RAKE_TEST: 'true'
 
     - name: Run end2end tests
       run: rake selenium:test
+
+    - name: Dump Docker logs
+      if: always()
+      run: docker logs nginx
