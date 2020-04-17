@@ -64,4 +64,4 @@ jobs:
 
     - name: Dump Docker logs
       if: always()
-      run: docker logs nginx
+      run: docker logs $(docker ps --quiet --filter "name=nginx")
