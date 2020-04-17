@@ -24,3 +24,6 @@ To run Vale, do:
 bash .scripts/get_vale_styles.sh # run ONCE
 vale content/
 ```
+
+## End2End Tests
+For frontend testing using Selenium, see [end2end/README.md](end2end/README.md).

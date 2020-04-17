@@ -1,0 +1,74 @@
+name: End 2 End Testing
+
+on: [push, pull_request]
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    env:
+      TOOLCHAIN_PATH: 'toolchain'
+
+    services:
+      nginx:
+        image: nginx
+        ports:
+          - 8888:80
+        volumes:
+          - ${{ github.workspace }}/public:/usr/share/nginx/html:ro
+        options: --name nginx
+      hub:
+        image: selenium/hub:3.14.0-gallium
+        ports:
+          - "4444:4444"
+      firefox:
+        image: selenium/node-firefox:3.14.0-gallium
+        volumes:
+          - /dev/shm:/dev/shm
+        env:
+          HUB_HOST: hub
+      chrome:
+        image: selenium/node-chrome:3.14.0-gallium
+        volumes:
+          - /dev/shm:/dev/shm
+        env:
+          HUB_HOST: hub
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+      with:
+        submodules: true
+
+    - name: Extract build name
+      shell: bash
+      run: echo "::set-output name=build_name::$(bash .scripts/extract_build_name.sh)"
+      id: extract
+
+    - name: Setup Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.6.x'
+
+    - name: Setup
+      run: bash toolchain/setup/setup.sh
+
+    - name: Build docs
+      run: |
+        rake docs:all
+        mv /tmp/build/html public/
+        ls -al public/
+      env:
+        SKIP_RAKE_TEST: 'true'
+
+    # Restart because mounted folder only exists NOW
+    - name: Restart nginx
+      uses: docker://docker
+      with:
+        args: docker restart nginx
+
+    - name: Run end2end tests
+      run: rake selenium:test
+
+    - name: Dump Docker logs
+      if: always()
+      run: docker logs $(docker ps --quiet --filter "name=nginx")

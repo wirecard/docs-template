@@ -9,17 +9,15 @@ jobs:
       TOOLCHAIN_PATH: 'toolchain'
 
     steps:
-    - name: Extract branch name
-      shell: bash
-      run: |
-        echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        echo "##[set-output name=pr;]pr$(echo ${GITHUB_REF} | cut -d'/' -f3)"
-      id: extract_branch
-
     - name: Checkout
       uses: actions/checkout@v1
       with:
         submodules: true
+
+    - name: Extract build name
+      shell: bash
+      run: echo "::set-output name=build_name::$(bash .scripts/extract_build_name.sh)"
+      id: extract
 
     - name: Setup Ruby 2.6
       uses: actions/setup-ruby@v1
