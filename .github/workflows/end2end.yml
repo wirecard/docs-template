@@ -54,7 +54,7 @@ jobs:
     - name: Build docs
       run: rake docs:all
       env:
-        - SKIP_RAKE_TEST: 'true'
+        SKIP_RAKE_TEST: 'true'
 
     - name: Run end2end tests
       run: rake selenium:test
