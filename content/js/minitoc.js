@@ -30,13 +30,10 @@ function refreshMiniToc(element) {
   console.log('refreshMiniToc');
   if (!miniTocEnabled) return;
 
-  if (element.nodeName.toLowerCase() == 'h5' && element.classList.contains('discrete') === false) {
-    console.log('scroll inside h5: ' + element.id)
-    // avoid costly recreation if scroll within same section
-    if (element != lastMiniTocElement) {
-      buildMiniTocForSection(element);
-      lastMiniTocElement = element; // cache to not rebuild if minitoc for this section already exists
-    }
+  // avoid costly recreation if scroll within same section
+  if (element != lastMiniTocElement) {
+    buildMiniTocForSection(element);
+    lastMiniTocElement = element; // cache to not rebuild if minitoc for this section already exists
   }
   if (element.nodeName.toLowerCase() == 'h6') {
     console.log('scroll inside h6: ' + element.id)
@@ -74,6 +71,9 @@ function destroyMiniToc() {
 
 function buildMiniTocForSection(head) {
   console.log('buildMiniTocForSection for id: ' + head.id)
+  if (head.classList.contains('discrete')) {
+    return false;
+  }
   document.oldMiniToc = document.getElementById('minitoc'); // store here to replace later
   var miniToc = document.createElement('ul')
   miniToc.setAttribute('id', 'minitoc');
@@ -96,7 +96,7 @@ function buildMiniTocForSection(head) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.intersectionRatio > 0) { // head element in viewpoert
-        highlightMiniTocElementByID('none'); // remove highlighting from subsections in minitoc
+        //highlightMiniTocElementByID('none'); // remove highlighting from subsections in minitoc
       }
     });
   }, intersectionObserverOptions);
