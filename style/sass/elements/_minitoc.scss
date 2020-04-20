@@ -1,0 +1,46 @@
+#minitoc {
+  background-color: transparent;
+  position: fixed;
+  right: -4em;
+  transition: height 500ms ease-in-out;
+  overflow: hidden;
+  font-size: 0.9em;
+  width: 15em;
+  margin-right: 5vw;
+  z-index: 1;
+
+  & li {
+    border-left: 1px solid $gray1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 20px;
+    list-style: none;
+
+    & a {
+      height: 100%;
+      display: inline-block;
+      width: 100%;
+      text-decoration: none;
+      color: $primary;
+    }
+  }
+
+  & li:hover > a {
+    color: $coral;
+  }
+
+  & li#minitoc-header {
+    font-size: 1.2em;
+    font-weight: bold;
+    border-left: none;
+  }
+
+  & li.active {
+    border-left: 3px solid $night;
+    padding-left: 18px;
+
+    & a {
+      font-weight: bold;
+    }
+  }
+}
