@@ -1,4 +1,5 @@
 ![Build Template](https://github.com/wirecard/docs-template/workflows/Build%20Template/badge.svg)
+![End 2 End Testing](https://github.com/wirecard/docs-template/workflows/End%202%20End%20Testing/badge.svg)
 ![Vale](https://github.com/wirecard/docs-template/workflows/Vale/badge.svg)
 
 # docs-template
