@@ -4,6 +4,13 @@
 # docs-template
 Template repository for Wirecard documentation platforms with [wirecard/docs-toolchain](https://github.com/wirecard/docs-toolchain).
 
+## Setup
+```sh
+bundle config --local path vendor/bundle
+bundle install --jobs 4 --retry 3
+bundle exec rake -T                      # see available rake tasks
+```
+
 ## How to use
 The `content/` directory contains all the asciidoctor files and an `index.adoc` file,
 which is the central file. All other files will be included in this `index.adoc`.

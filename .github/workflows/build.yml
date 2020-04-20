@@ -14,6 +14,13 @@ jobs:
       with:
         submodules: true
 
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+
     - name: Extract build name
       shell: bash
       run: echo "::set-output name=build_name::$(bash .scripts/extract_build_name.sh)"
@@ -24,26 +31,28 @@ jobs:
       with:
         ruby-version: '2.6.x'
 
-    - name: Setup
-      run: bash toolchain/setup/setup.sh
+    - name: Bundle install
+      run: |
+        bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3
 
     - name: Test
       run: |
-        rake docs:test
+        bundle exec rake docs:test
 
     - name: Pre-processing
       if: always()
       run: |
-        rake docs:pre
+        bundle exec rake docs:pre
 
     - name: Build
       run: |
-        rake docs:build
+        bundle exec rake docs:build
 
     - name: Post-processing
       if: always()
       run: |
-        rake docs:post
+        bundle exec rake docs:post
         cp -r /tmp/build/html public/
 
     - name: Prepend Build Name

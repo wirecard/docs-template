@@ -7,6 +7,10 @@ blob_header.js
 blob_footer.js
 node_modules/
 
+# Bundler
+.bundle/
+vendor/
+
 ### Sass ###
 ie.css
 print.css

@@ -39,6 +39,13 @@ jobs:
       with:
         submodules: true
 
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+
     - name: Extract build name
       shell: bash
       run: echo "::set-output name=build_name::$(bash .scripts/extract_build_name.sh)"
@@ -49,12 +56,14 @@ jobs:
       with:
         ruby-version: '2.6.x'
 
-    - name: Setup
-      run: bash toolchain/setup/setup.sh
+    - name: Bundle install
+      run: |
+        bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3
 
     - name: Build docs
       run: |
-        rake docs:all
+        bundle exec rake docs:all
         mv /tmp/build/html public/
         ls -al public/
       env:
@@ -67,7 +76,7 @@ jobs:
         args: docker restart nginx
 
     - name: Run end2end tests
-      run: rake selenium:test
+      run: bundle exec rake selenium:test
 
     - name: Dump Docker logs
       if: always()
