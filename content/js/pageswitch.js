@@ -4,6 +4,7 @@ document.pageswitch = {
   preload: true
 }
 
+
 /**
  * swup defaults except for linkSelector and containers
  */
@@ -22,48 +23,40 @@ if (document.pageswitch.disabled === false) {
   };
 
   if (document.pageswitch.preload === true) {
-    options.plugins = [new SwupPreloadPlugin()]
+    options.plugins = [new SwupPreloadPlugin()];
   }
 
   const swup = new Swup(options);
 
   if (document.pageswitch.preload === true) {
-    var uniquePages = [];
-    var preloadAnchors = [];
+    document.pageswitch.pages = [];
     document.querySelectorAll('#toc a').forEach((anchor) => {
       if (anchor.href && anchor.href.startsWith(window.location.origin)) {
-        if (uniquePages.includes(anchor.pathname) === false) {
-          uniquePages.push(anchor.pathname)
-          preloadAnchors.push(anchor);
+        if (document.pageswitch.pages.includes(anchor.pathname) === false) {
+          document.pageswitch.pages.push(anchor.pathname);
         }
       }
     });
-
-    // values for slow loading in background. meanwhile onHover loading is also active
-    var preloadTimer = 1000;
-    const preloadInterval = 4000;
-
-    document.addEventListener('readystatechange', () => {
-      preloadAnchors.forEach((anchor) => {
-        //preloadTimer += preloadInterval * (preloadInterval / (preloadTimer * 0.5));
-        preloadTimer += preloadInterval;
-        //preloadTimer += preloadInterval * (1 + preloadTimer / preloadInterval / preloadTimer);
-        // use timer for attr, preload, remove, else preload fills up 4G browser pipeline
-        setTimeout(() => {
-          requestIdleCallback(() => {
-            anchor.setAttribute('data-swup-preload', '');
-            swup.preloadPages();
-            anchor.removeAttribute('data-swup-preload');
-          });
-        }, preloadTimer);
-      });
-
-      if (document.readyState === 'complete') {
-        setTimeout(swup.preloadPages, 1000);
-      }
-    });
+    runPreloader();
   }
 
+  /**
+   * Takes stack of unique pages +document.pageswitch.pages+
+   * preloads the page, waits for finish and calls itself again as callback
+   * until all pages are loaded
+   * Optional +timeout+ in milliseconds specifies how long to wait before preloading
+   * the next page.
+   */
+  function runPreloader(timeout = 1000) {
+    if (document.pageswitch.pages.length) {
+      var pagePath = document.pageswitch.pages.shift();
+      swup.preloadPage(pagePath).then(() => {
+        setTimeout(() => {
+          runPreloader(timeout);
+        }, timeout);
+      });
+    }
+  }
 
   /**
    * Remove Hash if we "page switch" to the same page but have no hash
