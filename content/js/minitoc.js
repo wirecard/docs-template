@@ -1,11 +1,33 @@
+
+
 const miniTocEnabled = true;
 
+/**
+ * Store timers and elements
+ */
 var miniTocTimer;
+var lastMiniTocElement;
 
-//$('<nav id="minitoc-container"><ul id="minitoc"></ul></nav>').insertAfter('header');
-
+/**
+ * Initialize MiniToc by creating the Elements and triggering a initial Scroll Event
+ */
 function initializeMiniToc() {
-  console.log('initializeMiniToc')
+  document.scrollspy.disabled = true;
+  console.log('on first page load createMiniTocStructure');
+  createMiniTocStructure();
+
+  console.log('on first page load handleScrollEvent');
+  handleScrollEvent();
+  document.scrollspy.disabled = false;
+}
+initializeMiniToc();
+
+/**
+ * Creates the Mini TOC Container and a <ul> with id 'minitoc' inside it
+ * Returns reference to Mini TOC Element
+ */
+function createMiniTocStructure() {
+  console.log('createMiniTocStructure')
   var miniTocContainer = document.createElement('nav');
   miniTocContainer.setAttribute('id', 'minitoc-container');
   var miniTocList = document.createElement('ul');
@@ -16,16 +38,12 @@ function initializeMiniToc() {
   return document.getElementById('minitoc');
 }
 
-document.scrollspy.disabled = true;
-console.log('on first page load initializeMiniToc');
-initializeMiniToc();
-
-console.log('on first page load handleScrollEvent');
-handleScrollEvent();
-document.scrollspy.disabled = false;
-
-var lastMiniTocElement;
-// element is from document.headingsElementsArray
+/**
+ * Decides whether to build MiniToc for a new section
+ * If +element+ has changed (scrolling occured) since last refreshMiniToc
+ * Or to just highlight a particular subsection +element+ in the MiniToc
+ * @param {Element} element from document.headingsElementsArray
+ */
 function refreshMiniToc(element) {
   console.log('refreshMiniToc');
   if (!miniTocEnabled) return;
@@ -41,6 +59,11 @@ function refreshMiniToc(element) {
   }
 }
 
+/**
+ * Waits for animationFrame then highlights menu item for a particular h6 id
+ * H6 id and MiniToc menu item id are linked through 'data-content-id' attribute of MiniToc list items
+ * @param {String} id id of h6 element to highlight or 'none' to clear all highlight menu items
+ */
 function highlightMiniTocElementByID(id) {
   console.log('highlight h6: ' + id);
 
@@ -64,11 +87,18 @@ function highlightMiniTocElementByID(id) {
   });
 }
 
+/**
+ * Empty out the MiniToc element
+ */
 function destroyMiniToc() {
   var miniTocElement = document.getElementById('minitoc')
   if (miniTocElement) miniTocElement.innerHTML = '';
 }
 
+/**
+ * Creates the list items, links and adds anchor event listener +handleMiniTocClick+ for a section
+ * @param {Element} head h5 that presides over section for which to build a MiniToc
+ */
 function buildMiniTocForSection(head) {
   console.log('buildMiniTocForSection for id: ' + head.id)
   if (head.classList.contains('discrete')) {
@@ -108,7 +138,7 @@ function buildMiniTocForSection(head) {
   headElement.append(headAnchor);
   miniToc.append(headElement);
 
-  // nex elements are descendants of nephews
+  // next elements are descendants of nephews
   var subsectionElements = [];
   elementNextAll(head).forEach((e) => {
     if (e.matches('div.sect5')) {
@@ -141,20 +171,21 @@ function buildMiniTocForSection(head) {
   }
 }
 
+/**
+ * Smooth scrolls to target of MiniToc link
+ * @param {String} id of H5, H6 Element to scroll to when menu item is clicked
+ */
 function handleMiniTocClick(id) {
   event.stopPropagation();
   event.preventDefault();
-  //history.pushState(null, null, '#' + event.delegateTarget.hash);
-  //const target = event.delegateTarget;
   console.log('minitoc click, target: ' + id);
-  //highlightMiniTocElementByID(id);
   document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-  /*
-  event.preventDefault();
-   history.pushState(null, null, '#' + sectionID);
-   */
 }
 
+/**
+ * Helper function to get all siblings after +element+
+ * @param {Element} element 
+ */
 function elementNextAll(element) {
   var siblings = [];
   while (element.nextElementSibling) {
