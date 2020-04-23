@@ -75,27 +75,26 @@ div#header > h1 {
     display: none;
 }
 /* increase size of h2, h3, h4, h5, relative to now missing h1 */
-@media only screen and (min-width: 768px) {
-    h2 { font-size: 2.75em; 
+h2#Home { display: none; }
+h2 { font-size: 2.75em; 
+    font-weight: bold; }
+h3 { font-size: 2.6125em;
         font-weight: bold; }
-    h3 { font-size: 2.6125em;
-         font-weight: bold; }
-    h4 { font-size: 1.7875em;
-         font-weight: bold; }
-    h5 { font-size: 1.5375em;
-         font-weight: bold; }
-    h6 { font-size: 1.375em;
-         font-weight: bold; }
+h4 { font-size: 1.7875em;
+        font-weight: bold; }
+h5 { font-size: 1.5375em;
+        font-weight: bold; }
+h6 { font-size: 1.375em;
+        font-weight: bold; }
 
-    // add custom style for non-standard "h7" because it is being used in the document
-    h7 { font-size: 1.175em;
-         font-weight: bold; }
+// add custom style for non-standard "h7" because it is being used in the document
+h7 { font-size: 1.175em;
+        font-weight: bold; }
 
-    table.tableblock > .title, div.listingblock > .title { font-size: 1.15em; }
-    .imageblock > .title { font-size: 1.15em;
-                           text-align: right; }
-    #toctitle, .sidebarblock > .content > .title { font-size: 1.6875em; }
-}
+table.tableblock > .title, div.listingblock > .title { font-size: 1.15em; }
+.imageblock > .title { font-size: 1.15em;
+                        text-align: right; }
+#toctitle, .sidebarblock > .content > .title { font-size: 1.6875em; }
 
 h1, h2, h3, h4, h5, h6 {
     > a {

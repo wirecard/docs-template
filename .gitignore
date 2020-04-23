@@ -10,6 +10,7 @@ node_modules/
 # Bundler
 .bundle/
 vendor/
+!content/js/vendor/
 
 ### Sass ###
 ie.css

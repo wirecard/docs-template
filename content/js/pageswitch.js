@@ -1,64 +1,105 @@
+
+document.pageswitch = {
+  disabled: false,
+  preload: true
+}
+
+
 /**
  * swup defaults except for linkSelector and containers
  */
-const options = {
-  containers: ["#content"],
-  cache: true,
-  linkSelector:
-    'a:not([data-no-swup]):not([href^="tel:"]):not([href^="mailto:"]):not([href*="://"]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup])',
-  skipPopStateHandling: function (event) {
-    if (event.state && event.state.source == "swup") {
-      return false;
+if (document.pageswitch.disabled === false) {
+  var options = {
+    containers: ['#content'],
+    cache: true,
+    linkSelector:
+      'a:not([data-no-swup]):not([href^="tel:"]):not([href^="mailto:"]):not([href*="://"]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup])',
+    skipPopStateHandling: function (event) {
+      if (event.state && event.state.source == 'swup') {
+        return false;
+      }
+      return true;
     }
-    return true;
+  };
+
+  if (document.pageswitch.preload === true) {
+    options.plugins = [new SwupPreloadPlugin()];
   }
-};
-const swup = new Swup(options);
 
-/**
- * Remove Hash if we "page switch" to the same page but have no hash
- * Reset scroll position
- */
-swup.on('samePage', function (e) {
-  console.log('_SWUUP: samePage');
-  window.scrollTo(0, 0);
-  removeHash();
-});
+  const swup = new Swup(options);
 
-/**
- * Scroll to targeted anchor when staying on same page during page switch
- */
-swup.on('samePageWithHash', function (e) {
-   console.log('_SWUUP: samePageWithHash')
-   const id = e.delegateTarget.hash.substr(1);
-   scrollToHash(id);
-});
+  if (document.pageswitch.preload === true) {
+    document.pageswitch.pages = [];
+    document.querySelectorAll('#toc a').forEach((anchor) => {
+      if (anchor.href && anchor.href.startsWith(window.location.origin)) {
+        if (document.pageswitch.pages.includes(anchor.pathname) === false) {
+          document.pageswitch.pages.push(anchor.pathname);
+        }
+      }
+    });
+    runPreloader();
+  }
 
-/**
- * Scroll to target of link and change window title after page switches
- */
-swup.on('clickLink', function (e) {
-  console.log('_SWUUP: clickLink')
-  /* for deep links to anchors inside other pages */
-  setTimeout(() => {
-    console.log('clicklink timeout')
-    refreshTitle();
-    trackVisit();
-  }, 350);  
-});
+  /**
+   * Takes stack of unique pages +document.pageswitch.pages+
+   * preloads the page, waits for finish and calls itself again as callback
+   * until all pages are loaded
+   * Optional +timeout+ in milliseconds specifies how long to wait before preloading
+   * the next page.
+   */
+  function runPreloader(timeout = 1000) {
+    if (document.pageswitch.pages.length) {
+      var pagePath = document.pageswitch.pages.shift();
+      swup.preloadPage(pagePath).then(() => {
+        setTimeout(() => {
+          runPreloader(timeout);
+        }, timeout);
+      });
+    }
+  }
 
-swup.on('contentReplaced', () => {
-  console.log('_SWUUP: contentReplaced')
+  /**
+   * Remove Hash if we "page switch" to the same page but have no hash
+   * Reset scroll position
+   */
+  swup.on('samePage', function (e) {
+    console.log('_SWUUP: samePage');
+    window.scrollTo(0, 0);
+    removeHash();
+  });
 
-  reinitializeAfterPageSwitch();
-  if (window.location.hash) {
+  /**
+   * Scroll to targeted anchor when staying on same page during page switch
+   */
+  swup.on('samePageWithHash', function (e) {
+    console.log('_SWUUP: samePageWithHash')
+    const id = e.delegateTarget.hash.substr(1);
+    scrollToHash(id);
+  });
+
+  /**
+   * Scroll to target of link and change window title after page switches
+   */
+  swup.on('clickLink', function (e) {
+    console.log('_SWUUP: clickLink')
+    /* for deep links to anchors inside other pages */
+    setTimeout(() => {
+      console.log('clicklink timeout')
+      refreshTitle();
+      trackVisit();
+    }, 350);
+  });
+
+  swup.on('contentReplaced', () => {
+    console.log('_SWUUP: contentReplaced')
+
+    reinitializeAfterPageSwitch();
+    if (window.location.hash) {
       scrollToHash(window.location.hash.substring(1));
-  }
-});
+    }
+  });
 
-// swup.on('popState'), () => {
-//   console.log('popState triggered')
-// };
+}
 
 /**
  * Scrolls to hash==id of anchor without engaging scrollspy
