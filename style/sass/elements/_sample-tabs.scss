@@ -1,5 +1,5 @@
 // GENERAL
-$border: 1px solid $sky;
+$border: 1px solid $midnight-blue; // $sky
 $border-radius: 5px;
 
 // TABS
@@ -28,7 +28,7 @@ h7.tab-content {
     }
 }
 div.btn-samples-row {
-    color: $sky;
+    color: $midnight-blue; // $sky
     background-color: white;
     border: $border;
     border-radius: $border-radius;
@@ -41,7 +41,7 @@ div.btn-samples-row {
         border: none;
 
         &.active {
-            background-color: $sky;
+            background-color: $midnight-blue; // $sky
             color: white;
             font-weight: bold;
             transition: all 0.25s ease;
@@ -87,7 +87,7 @@ table.r-details {
             font-weight: bold;
             font-size: larger;
             color: white;
-            background-color: $sky;
+            background-color: $midnight-blue; // $sky
             border: 0;
             margin: 0;
             padding: .25em 0 .2em .5em;
