@@ -58,32 +58,32 @@
     }
     input[type="checkbox"]:checked + label {
         & > a {
-            border-left: 0.1em solid white;
+            // border-left: 0.1em solid white;
             background-color: rgba(black, 0.12);
             font-weight:bold;
         }
     }
     li[data-level="1"] > input[type="checkbox"]:checked + label {
         & > a {
-            border-left: 0.1em solid $coral;
+            // border-left: 0.1em solid $coral;
             background-color: rgba(white, 0.08);
         }
     }
     li[data-level="2"] > input[type="checkbox"]:checked + label {
         & > a {
-            border-left: 0.1em solid $ice;
+            // border-left: 0.1em solid $ice;
             background-color: rgba(white, 0.05);
         }
     }
     li[data-level="3"] > input[type="checkbox"]:checked + label {
         & > a {
-            border-left: 0.1em solid black;
+            // border-left: 0.1em solid black;
             background-color: rgba(white, 0.04);
         }
     }
     li[data-level="4"] > input[type="checkbox"]:checked + label {
         & > a {
-            border-left: 0.1em solid black;
+            // border-left: 0.1em solid black;
             background-color: rgba(white, 0.03);
         }
     }

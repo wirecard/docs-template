@@ -1414,15 +1414,15 @@ table.r-details > caption.title.hide-show-enabled { font-style: normal; font-wei
 /* line 53, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 input[type="checkbox"] + label > a:hover { background-color: rgba(0, 0, 0, 0.05); color: #8ee6ff; transition: background-color 0.5s ease-out; }
 /* line 60, ../../style/sass/elements/_global-toc.scss */
-#toc.toc2 input[type="checkbox"]:checked + label > a { border-left: 0.1em solid white; background-color: rgba(0, 0, 0, 0.12); font-weight: bold; }
+#toc.toc2 input[type="checkbox"]:checked + label > a { background-color: rgba(0, 0, 0, 0.12); font-weight: bold; }
 /* line 67, ../../style/sass/elements/_global-toc.scss */
-#toc.toc2 li[data-level="1"] > input[type="checkbox"]:checked + label > a { border-left: 0.1em solid #ff7373; background-color: rgba(255, 255, 255, 0.08); }
+#toc.toc2 li[data-level="1"] > input[type="checkbox"]:checked + label > a { background-color: rgba(255, 255, 255, 0.08); }
 /* line 73, ../../style/sass/elements/_global-toc.scss */
-#toc.toc2 li[data-level="2"] > input[type="checkbox"]:checked + label > a { border-left: 0.1em solid #8ee6ff; background-color: rgba(255, 255, 255, 0.05); }
+#toc.toc2 li[data-level="2"] > input[type="checkbox"]:checked + label > a { background-color: rgba(255, 255, 255, 0.05); }
 /* line 79, ../../style/sass/elements/_global-toc.scss */
-#toc.toc2 li[data-level="3"] > input[type="checkbox"]:checked + label > a { border-left: 0.1em solid black; background-color: rgba(255, 255, 255, 0.04); }
+#toc.toc2 li[data-level="3"] > input[type="checkbox"]:checked + label > a { background-color: rgba(255, 255, 255, 0.04); }
 /* line 85, ../../style/sass/elements/_global-toc.scss */
-#toc.toc2 li[data-level="4"] > input[type="checkbox"]:checked + label > a { border-left: 0.1em solid black; background-color: rgba(255, 255, 255, 0.03); }
+#toc.toc2 li[data-level="4"] > input[type="checkbox"]:checked + label > a { background-color: rgba(255, 255, 255, 0.03); }
 /* line 91, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 li[data-level="5"] { display: none; }
 /* line 96, ../../style/sass/elements/_global-toc.scss */
