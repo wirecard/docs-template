@@ -28,10 +28,10 @@ input#search {
 
 /* CLOSE BUTTON */
 #btn-search-close {
-    display: none;
-    position: fixed;
-    top: 1.5em;
-    right: 1.5em;
+    display: block;
+    position: absolute;
+    top: 3em;
+    right: 26em;
     color: white;
     font-size: 1.2em;
     background-color: $coral;
@@ -90,102 +90,78 @@ span.nav-text {
     line-height: 1.2rem;
 }
 
-/* OVERLAY */
-#search-overlay {
-    &.open {
-        /* CLOSE BUTTON */
-        #btn-search-close {
+#search-results-wrapper {
+    display: none;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    overflow: scroll;
+    height: 100vh;
+    width: 82.5em;
+    padding-left: 0.9375em;
+    padding-right: 16em;
+    margin-left: auto;
+    margin-right: auto;
+    /* SEARCH RESULTS */
+    ul#search-results {
+        // &::before {
+        //     content: 'Search Results';
+        //     font-size: 3em;
+        //     margin-bottom: 0.5em;
+        //     display: block;
+        //     border-bottom: 3px solid $primary;
+        // }
+        display: block;
+        list-style: none;
+        max-width: 62.5em;
+        width: 75%;
+        margin-bottom: 150px;
+        li {
             display: block;
-            z-index: 2;
+            margin-bottom: 10px;
+            > div {
+                width: inherit;
+                border-radius: 15px;
+                position: relative;
+                border: 1px solid $gray3;
+
+                * { // normalize elements under this div
+                    margin: 0px;
+                    text-decoration: none;
+                }
+                a {
+                    h4, p {
+                        margin-left: 40px;
+                        margin-right: 40px;
+                        margin-top: 10px;
+                        color: $primary !important;
+                    }
+                    span.label {
+                        position: absolute;
+                        top: -1px;
+                        right: -1px;
+                        border-top-right-radius: 15px;
+                        border-bottom-left-radius: 15px;
+                        color: white;
+                        background-color: $gray3;
+                        padding: 4px 10px;
+                        font-weight: bold;
+                    }
+                    &:hover {
+                        text-decoration: none;
+                        color: $primary;
+                    }
+                }
+            }
+
+            &.selected > div {
+                border: 1px solid $sky;
+                background-color: rgba($sky, 0.2);
+                a > span.label {
+                    background-color: $sky;
+                }
+            }
         }
-        /* SEARCH WRAPPER */
-        #search-wrapper {
-            /* SEARCH RESULTS WRAPPER */
-            #search-results-wrapper {
-                position: fixed;
-                top: 0;
-                padding-left: 10em;
-                padding-top: 1em;
-                @media #{$small} {
-                    left: 15em;
-                    width: calc(100% - 15em);
-                }
-                @media #{$medium} {
-                    left: 20em;
-                    width: calc(100% - 20em);
-                }
-
-                background-color: white;
-                overflow: scroll;
-                height: 100vh;
-                /* SEARCH RESULTS */
-                ul#search-results {
-                    &::before {
-                        content: 'Search Results';
-                        font-size: 3em;
-                        margin-bottom: 0.5em;
-                        display: block;
-                        border-bottom: 3px solid $primary;
-                    }
-                    display: block;
-                    list-style: none;
-                    max-width: 62.5em;
-                    width: 75%;
-                    margin-bottom: 150px;
-                    li {
-                        display: block;
-                        margin-bottom: 10px;
-                        > div {
-                            width: inherit;
-                            border-radius: 15px;
-                            position: relative;
-                            border: 1px solid $gray3;
-
-                            * { // normalize elements under this div
-                                margin: 0px;
-                                text-decoration: none;
-                            }
-                            a {
-                                h3, p {
-                                    margin-left: 40px;
-                                    margin-right: 40px;
-                                    margin-top: 10px;
-                                    color: $primary !important;
-                                }
-                                span.label {
-                                    position: absolute;
-                                    top: -1px;
-                                    right: -1px;
-                                    border-top-right-radius: 15px;
-                                    border-bottom-left-radius: 15px;
-                                    color: white;
-                                    background-color: $gray3;
-                                    padding: 4px 10px;
-                                    font-weight: bold;
-                                }
-                                &:hover {
-                                    text-decoration: none;
-                                    color: $primary;
-                                }
-                            }
-                        }
-
-                        &.selected > div {
-                            border: 1px solid $sky;
-                            background-color: rgba($sky, 0.2);
-                            a > span.label {
-                                background-color: $sky;
-                            }
-                        }
-                    }
-                } /* END SEARCH RESULTS */
-            } /* END SEARCH RESULTS WRAPPER */
-            /* FIXME does not look good, therefore disabled */
-            /* INSTRUCTIONS */
-            // #instructions {
-            //     display: block;
-            //     > div { display: inline-block; }
-            // } /* END INSTRUCTIONS */
-        } /* END SEARCH WRAPPER */
-    } /* END &.open */
-}
+    } /* END SEARCH RESULTS */
+} /* END SEARCH RESULTS WRAPPER */
