@@ -1,11 +1,12 @@
 /**
- * This is the palce to put all fixes required for wacky/outdated browsers
+ * This is the place to put all fixes required for wacky/outdated browsers
  * like Safari, IE
  * NOTE: This needs a JS transpiler to work in IE. Use e.g. Babel
  */
 
 var isIE = /MSIE|Trident|Edge\//.test(window.navigator.userAgent);
-var isSafariDesktop = (/Safari/i.test(uA) && /Apple Computer/.test(vendor))
+var isSafariDesktop = (/Safari/i.test(window.navigator.userAgent)
+    && /Apple Computer/.test(vendor))
 var isIOS = (/iPad|iPhone|iPod/.test(navigator.platform) ||
     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) &&
     !window.MSStream
