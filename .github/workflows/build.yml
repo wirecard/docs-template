@@ -45,10 +45,12 @@ jobs:
       if: always()
       run: |
         bundle exec rake docs:pre
+        cat /tmp/build/js/browser-fixes.js | grep forEach
 
     - name: Build
       run: |
         bundle exec rake docs:build
+        cat /tmp/build/html/js/browser-fixes.js | grep forEach
 
     - name: Post-processing
       if: always()
