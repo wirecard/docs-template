@@ -37,25 +37,9 @@ jobs:
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
 
-    - name: Test
-      run: |
-        bundle exec rake docs:test
-
-    - name: Pre-processing
-      if: always()
-      run: |
-        bundle exec rake docs:pre
-        cat /tmp/build/js/browser-fixes.js | grep forEach
-
     - name: Build
       run: |
-        bundle exec rake docs:build
-        cat /tmp/build/html/js/browser-fixes.js | grep forEach
-
-    - name: Post-processing
-      if: always()
-      run: |
-        bundle exec rake docs:post
+        bundle exec rake docs:all
         cp -r /tmp/build/html public/
 
     - name: Prepend Build Name
