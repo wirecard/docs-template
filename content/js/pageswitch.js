@@ -50,7 +50,7 @@ if (document.pageswitch.disabled === false) {
   function runPreloader(timeout = 1000) {
     if (document.pageswitch.pages.length) {
       var pagePath = document.pageswitch.pages.shift();
-      swup.preloadPage(pagePath).then(() => {
+      window.swup.preloadPage(pagePath).then(() => {
         setTimeout(() => {
           runPreloader(timeout);
         }, timeout);
