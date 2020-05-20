@@ -1,7 +1,7 @@
 
 document.pageswitch = {
   disabled: false,
-  preload: true
+  preload: !isIE  // disable preload in IE
 }
 
 
@@ -22,8 +22,7 @@ if (document.pageswitch.disabled === false) {
     }
   };
 
-  // disable preload in IE
-  if (document.pageswitch.preload === true && !isIE) {
+  if (document.pageswitch.preload === true) {
     options.plugins = [new SwupPreloadPlugin()];
   }
 
