@@ -22,7 +22,8 @@ if (document.pageswitch.disabled === false) {
     }
   };
 
-  if (document.pageswitch.preload === true) {
+  // disable preload in IE
+  if (document.pageswitch.preload === true && !isIE) {
     options.plugins = [new SwupPreloadPlugin()];
   }
 
