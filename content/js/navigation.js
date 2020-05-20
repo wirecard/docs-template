@@ -70,8 +70,7 @@ function toggleBox(anchorElement) {
     /* uncheck same level end below checkboxes */
     var sameLevelCheckboxes = parent.parentNode.parentNode.querySelectorAll(':scope > li input[type=checkbox]');
     Array.prototype.forEach.call(sameLevelCheckboxes, function (cb) {
-      var other_cb = cb[1];
-      other_cb.checked = false;
+      cb.checked = false;
     });
     checkbox.checked = setTo;
   });
