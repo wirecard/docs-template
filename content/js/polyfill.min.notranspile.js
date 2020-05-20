@@ -1,88 +1,2727 @@
-/* Disable minification (remove `.min` from URL path) for more info */
+/* Polyfill service v3.52.1
+ * For detailed credits and licence information see https://github.com/financial-times/polyfill-service.
+ * 
+ * Features requested: Array.from,Array.isArray,Array.of,Array.prototype.@@iterator,Array.prototype.copyWithin,Array.prototype.entries,Array.prototype.every,Array.prototype.fill,Array.prototype.filter,Array.prototype.find,Array.prototype.findIndex,Array.prototype.flat,Array.prototype.flatMap,Array.prototype.forEach,Array.prototype.includes,Array.prototype.indexOf,Array.prototype.keys,Array.prototype.lastIndexOf,Array.prototype.map,Array.prototype.reduce,Array.prototype.reduceRight,Array.prototype.some,Array.prototype.values,ArrayBuffer,Date.now,Date.prototype.toISOString,Element,Element.prototype.after,Element.prototype.append,Element.prototype.before,Element.prototype.classList,Element.prototype.cloneNode,Element.prototype.closest,Element.prototype.dataset,Element.prototype.inert,Element.prototype.matches,Element.prototype.nextElementSibling,Element.prototype.placeholder,Element.prototype.prepend,Element.prototype.previousElementSibling,Element.prototype.remove,Element.prototype.replaceWith,Element.prototype.scroll,Element.prototype.scrollBy,Element.prototype.scrollIntoView,Element.prototype.toggleAttribute,Function.prototype.bind,Function.prototype.name,JSON,Navigator.prototype.geolocation,Node.prototype.contains,NodeList.prototype.@@iterator,NodeList.prototype.forEach,Number.isFinite,Number.isInteger,Number.isNaN,Number.isSafeInteger,Number.parseFloat,Number.parseInt,Object.assign,Object.create,Object.defineProperties,Object.defineProperty,Object.entries,Object.freeze,Object.fromEntries,Object.getOwnPropertyDescriptor,Object.getOwnPropertyDescriptors,Object.getOwnPropertyNames,Object.getOwnPropertySymbols,Object.getPrototypeOf,Object.is,Object.isExtensible,Object.isFrozen,Object.isSealed,Object.keys,Object.preventExtensions,Object.seal,Object.setPrototypeOf,Object.values,Promise,Promise.prototype.finally,String.prototype.@@iterator,String.prototype.anchor,String.prototype.big,String.prototype.blink,String.prototype.bold,String.prototype.codePointAt,String.prototype.endsWith,String.prototype.fixed,String.prototype.fontcolor,String.prototype.fontsize,String.prototype.includes,String.prototype.italics,String.prototype.link,String.prototype.normalize,String.prototype.padEnd,String.prototype.padStart,String.prototype.repeat,String.prototype.small,String.prototype.startsWith,String.prototype.strike,String.prototype.sub,String.prototype.sup,String.prototype.trim,String.prototype.trimEnd,String.prototype.trimStart,String.raw,URL,URLSearchParams,document.querySelector,fetch,innerHeight,innerWidth,location.origin,pageXOffset,pageYOffset,requestAnimationFrame,requestIdleCallback,screen.orientation,scroll,scrollBy,scrollIntoView,scrollX,scrollY,smoothscroll,viewport,window.scroll,window.scrollBy
+ * 
+ * - _ESAbstract.ArrayCreate, License: CC0 (required by "_ESAbstract.ArraySpeciesCreate", "Array.prototype.filter", "Symbol", "Map", "Element.prototype.inert", "Set", "WeakMap", "Array.prototype.map")
+ * - _ESAbstract.Call, License: CC0 (required by "Array.prototype.forEach", "Element.prototype.inert", "WeakMap", "_ESAbstract.GetIterator", "Map", "Set", "_ESAbstract.IteratorClose", "_ESAbstract.IteratorNext", "_ESAbstract.ToPrimitive", "_ESAbstract.ToString", "Array.prototype.filter", "Symbol", "Array.prototype.map", "_ESAbstract.OrdinaryToPrimitive")
+ * - _ESAbstract.CreateDataProperty, License: CC0 (required by "_ESAbstract.CreateIterResultObject", "Map", "Element.prototype.inert", "Set", "_ESAbstract.CreateDataPropertyOrThrow", "Array.prototype.filter", "Symbol", "WeakMap", "Array.prototype.map")
+ * - _ESAbstract.CreateDataPropertyOrThrow, License: CC0 (required by "Array.prototype.filter", "Symbol", "Map", "Element.prototype.inert", "Set", "WeakMap", "Array.prototype.map")
+ * - _ESAbstract.CreateMethodProperty, License: CC0 (required by "Array.prototype.forEach", "Element.prototype.inert", "Function.prototype.bind", "Map", "Set", "WeakMap", "Array.isArray", "Object.create", "_ESAbstract.GetIterator", "_ESAbstract.OrdinaryCreateFromConstructor", "Symbol", "Object.isExtensible", "Object.getPrototypeOf", "Array.prototype.filter", "Array.prototype.map", "Object.getOwnPropertyNames", "Object.getOwnPropertyDescriptor", "Object.freeze", "Object.keys", "Object.defineProperties", "Array.prototype.includes", "Array.prototype.indexOf")
+ * - _ESAbstract.Get, License: CC0 (required by "Array.prototype.forEach", "Element.prototype.inert", "WeakMap", "_ESAbstract.IteratorComplete", "Map", "Set", "_ESAbstract.IteratorValue", "_ESAbstract.GetPrototypeFromConstructor", "_ESAbstract.OrdinaryCreateFromConstructor", "Array.prototype.filter", "Symbol", "Array.prototype.map", "Object.defineProperties", "Object.create", "_ESAbstract.GetIterator", "_ESAbstract.OrdinaryToPrimitive", "_ESAbstract.ToPrimitive", "_ESAbstract.ToString", "_ESAbstract.ArraySpeciesCreate", "Array.prototype.includes", "Object.getOwnPropertyNames", "Array.prototype.indexOf")
+ * - _ESAbstract.HasOwnProperty, License: CC0 (required by "Object.getOwnPropertyDescriptor", "Symbol", "Map", "Element.prototype.inert", "Set", "WeakMap")
+ * - _ESAbstract.HasProperty, License: CC0 (required by "Array.prototype.forEach", "Element.prototype.inert", "Array.prototype.filter", "Symbol", "Map", "Set", "WeakMap", "Array.prototype.map", "Array.prototype.indexOf", "Object.getOwnPropertyNames")
+ * - _ESAbstract.IsArray, License: CC0 (required by "WeakMap", "Element.prototype.inert", "Array.isArray", "Map", "Set", "_ESAbstract.ArraySpeciesCreate", "Array.prototype.filter", "Symbol", "Array.prototype.map")
+ * - _ESAbstract.IsCallable, License: CC0 (required by "Array.prototype.forEach", "Element.prototype.inert", "Function.prototype.bind", "Map", "Set", "WeakMap", "_ESAbstract.GetMethod", "Array.prototype.filter", "Symbol", "Array.prototype.map", "_ESAbstract.OrdinaryToPrimitive", "_ESAbstract.ToPrimitive", "_ESAbstract.ToString")
+ * - _ESAbstract.SameValueNonNumber, License: CC0 (required by "_ESAbstract.SameValueZero", "Map", "Element.prototype.inert", "Set", "_ESAbstract.SameValue", "WeakMap")
+ * - _ESAbstract.ToBoolean, License: CC0 (required by "_ESAbstract.IteratorComplete", "Map", "Element.prototype.inert", "Set", "Array.prototype.filter", "Symbol", "WeakMap")
+ * - _ESAbstract.ToInteger, License: CC0 (required by "_ESAbstract.ToLength", "Array.prototype.forEach", "Element.prototype.inert", "Array.prototype.includes", "Object.getOwnPropertyNames", "Symbol", "Map", "Set", "WeakMap", "Array.prototype.indexOf")
+ * - _ESAbstract.ToLength, License: CC0 (required by "Array.prototype.forEach", "Element.prototype.inert", "Array.prototype.filter", "Symbol", "Map", "Set", "WeakMap", "Array.prototype.map", "Array.prototype.includes", "Object.getOwnPropertyNames", "Array.prototype.indexOf")
+ * - _ESAbstract.ToObject, License: CC0 (required by "Array.prototype.forEach", "Element.prototype.inert", "_ESAbstract.GetV", "_ESAbstract.GetMethod", "Map", "Set", "_ESAbstract.GetIterator", "WeakMap", "Array.prototype.filter", "Symbol", "Array.prototype.map", "Object.getOwnPropertyNames", "Object.getOwnPropertyDescriptor", "Object.defineProperties", "Object.create", "_ESAbstract.OrdinaryCreateFromConstructor", "Array.prototype.includes", "Array.prototype.indexOf")
+ * - _ESAbstract.GetV, License: CC0 (required by "_ESAbstract.GetMethod", "Map", "Element.prototype.inert", "Set", "_ESAbstract.GetIterator", "WeakMap")
+ * - _ESAbstract.GetMethod, License: CC0 (required by "Map", "Element.prototype.inert", "Set", "_ESAbstract.GetIterator", "WeakMap", "_ESAbstract.IteratorClose", "_ESAbstract.ToPrimitive", "_ESAbstract.ToString", "Array.prototype.forEach", "_ESAbstract.IsConstructor", "_ESAbstract.ArraySpeciesCreate", "Array.prototype.filter", "Symbol", "Array.prototype.map")
+ * - _ESAbstract.Type, License: CC0 (required by "Map", "Element.prototype.inert", "WeakMap", "_ESAbstract.ToString", "Array.prototype.forEach", "_ESAbstract.CreateIterResultObject", "Set", "_ESAbstract.GetIterator", "_ESAbstract.IteratorClose", "_ESAbstract.IteratorComplete", "_ESAbstract.IteratorNext", "_ESAbstract.IteratorValue", "_ESAbstract.SameValueZero", "Object.create", "_ESAbstract.OrdinaryCreateFromConstructor", "Symbol", "Object.isExtensible", "_ESAbstract.SameValue", "_ESAbstract.ToPrimitive", "_ESAbstract.GetPrototypeFromConstructor", "Object.getOwnPropertyDescriptor", "Object.defineProperties", "_ESAbstract.OrdinaryToPrimitive", "_ESAbstract.ArraySpeciesCreate", "Array.prototype.filter", "Array.prototype.map", "_ESAbstract.ToPropertyKey", "_ESAbstract.IsConstructor")
+ * - _ESAbstract.CreateIterResultObject, License: CC0 (required by "Map", "Element.prototype.inert", "Set")
+ * - _ESAbstract.GetIterator, License: CC0 (required by "Map", "Element.prototype.inert", "Set", "WeakMap")
+ * - _ESAbstract.GetPrototypeFromConstructor, License: CC0 (required by "_ESAbstract.OrdinaryCreateFromConstructor", "Map", "Element.prototype.inert", "Set", "WeakMap")
+ * - _ESAbstract.OrdinaryCreateFromConstructor, License: CC0 (required by "Map", "Element.prototype.inert", "Set", "WeakMap", "_ESAbstract.Construct", "_ESAbstract.ArraySpeciesCreate", "Array.prototype.filter", "Symbol", "Array.prototype.map")
+ * - _ESAbstract.IsConstructor, License: CC0 (required by "_ESAbstract.ArraySpeciesCreate", "Array.prototype.filter", "Symbol", "Map", "Element.prototype.inert", "Set", "WeakMap", "Array.prototype.map", "_ESAbstract.Construct")
+ * - _ESAbstract.Construct, License: CC0 (required by "_ESAbstract.ArraySpeciesCreate", "Array.prototype.filter", "Symbol", "Map", "Element.prototype.inert", "Set", "WeakMap", "Array.prototype.map")
+ * - _ESAbstract.ArraySpeciesCreate, License: CC0 (required by "Array.prototype.filter", "Symbol", "Map", "Element.prototype.inert", "Set", "WeakMap", "Array.prototype.map")
+ * - _ESAbstract.IteratorClose, License: CC0 (required by "Map", "Element.prototype.inert", "Set", "WeakMap")
+ * - _ESAbstract.IteratorComplete, License: CC0 (required by "Map", "Element.prototype.inert", "Set", "_ESAbstract.IteratorStep", "WeakMap")
+ * - _ESAbstract.IteratorNext, License: CC0 (required by "Map", "Element.prototype.inert", "Set", "_ESAbstract.IteratorStep", "WeakMap")
+ * - _ESAbstract.IteratorStep, License: CC0 (required by "Map", "Element.prototype.inert", "Set", "WeakMap")
+ * - _ESAbstract.IteratorValue, License: CC0 (required by "Map", "Element.prototype.inert", "Set", "WeakMap")
+ * - _ESAbstract.OrdinaryToPrimitive, License: CC0 (required by "_ESAbstract.ToPrimitive", "_ESAbstract.ToString", "Array.prototype.forEach", "Element.prototype.inert")
+ * - _ESAbstract.SameValue, License: CC0 (required by "WeakMap", "Element.prototype.inert")
+ * - _ESAbstract.SameValueZero, License: CC0 (required by "Map", "Element.prototype.inert", "Set", "Array.prototype.includes", "Object.getOwnPropertyNames", "Symbol", "WeakMap")
+ * - _ESAbstract.ToPrimitive, License: CC0 (required by "_ESAbstract.ToString", "Array.prototype.forEach", "Element.prototype.inert", "_ESAbstract.ToPropertyKey", "Object.getOwnPropertyDescriptor", "Symbol", "Map", "Set", "WeakMap")
+ * - _ESAbstract.ToString, License: CC0 (required by "Array.prototype.forEach", "Element.prototype.inert", "Array.prototype.filter", "Symbol", "Map", "Set", "WeakMap", "Array.prototype.map", "Array.prototype.includes", "Object.getOwnPropertyNames", "Array.prototype.indexOf", "_ESAbstract.ToPropertyKey", "Object.getOwnPropertyDescriptor")
+ * - _ESAbstract.ToPropertyKey, License: CC0 (required by "Object.getOwnPropertyDescriptor", "Symbol", "Map", "Element.prototype.inert", "Set", "WeakMap")
+ * - _TypedArray, License: MIT (required by "ArrayBuffer")
+ * - Element.prototype.inert, License: W3C */
 
-(function(self, undefined) {function ArrayCreate(r){if(1/r==-Infinity&&(r=0),r>Math.pow(2,32)-1)throw new RangeError("Invalid array length");var n=[];return n.length=r,n}function Call(t,l){var n=arguments.length>2?arguments[2]:[];if(!1===IsCallable(t))throw new TypeError(Object.prototype.toString.call(t)+"is not a function.");return t.apply(l,n)}function Get(n,t){return n[t]}function HasOwnProperty(r,t){return Object.prototype.hasOwnProperty.call(r,t)}function HasProperty(n,r){return r in n}function IsArray(r){return"[object Array]"===Object.prototype.toString.call(r)}function IsCallable(n){return"function"==typeof n}function RequireObjectCoercible(e){if(null===e||e===undefined)throw TypeError(Object.prototype.toString.call(e)+" is not coercible to Object.");return e}function SameValueNonNumber(e,n){return e===n}function ToBoolean(o){return Boolean(o)}function ToInteger(n){var i=Number(n);return isNaN(i)?0:1/i===Infinity||1/i==-Infinity||i===Infinity||i===-Infinity?i:(i<0?-1:1)*Math.floor(Math.abs(i))}function ToLength(n){var t=ToInteger(n);return t<=0?0:Math.min(t,Math.pow(2,53)-1)}function ToObject(e){if(null===e||e===undefined)throw TypeError();return Object(e)}function GetV(t,e){return ToObject(t)[e]}function GetMethod(e,n){var r=GetV(e,n);if(null===r||r===undefined)return undefined;if(!1===IsCallable(r))throw new TypeError("Method not callable: "+n);return r}function Type(e){switch(typeof e){case"undefined":return"undefined";case"boolean":return"boolean";case"number":return"number";case"string":return"string";case"symbol":return"symbol";default:return null===e?"null":"Symbol"in self&&(e instanceof self.Symbol||e.constructor===self.Symbol)?"symbol":"object"}}function GetPrototypeFromConstructor(t,o){var r=Get(t,"prototype");return"object"!==Type(r)&&(r=o),r}function IsConstructor(t){return"object"===Type(t)&&("function"==typeof t&&!!t.prototype)}function IsRegExp(e){if("object"!==Type(e))return!1;var n="Symbol"in self&&"match"in self.Symbol?Get(e,self.Symbol.match):undefined;if(n!==undefined)return ToBoolean(n);try{var t=e.lastIndex;return e.lastIndex=0,RegExp.prototype.exec.call(e),!0}catch(l){}finally{e.lastIndex=t}return!1}function IteratorClose(r,t){if("object"!==Type(r["[[Iterator]]"]))throw new Error(Object.prototype.toString.call(r["[[Iterator]]"])+"is not an Object.");var e=r["[[Iterator]]"],o=GetMethod(e,"return");if(o===undefined)return t;try{var n=Call(o,e)}catch(c){var a=c}if(t)return t;if(a)throw a;if("object"!==Type(n))throw new TypeError("Iterator's return method returned a non-object.");return t}function IteratorComplete(t){if("object"!==Type(t))throw new Error(Object.prototype.toString.call(t)+"is not an Object.");return ToBoolean(Get(t,"done"))}function IteratorNext(t){if(arguments.length<2)var e=Call(t["[[NextMethod]]"],t["[[Iterator]]"]);else e=Call(t["[[NextMethod]]"],t["[[Iterator]]"],[arguments[1]]);if("object"!==Type(e))throw new TypeError("bad iterator");return e}function IteratorStep(t){var r=IteratorNext(t);return!0!==IteratorComplete(r)&&r}function IteratorValue(t){if("object"!==Type(t))throw new Error(Object.prototype.toString.call(t)+"is not an Object.");return Get(t,"value")}function OrdinaryToPrimitive(r,t){if("string"===t)var e=["toString","valueOf"];else e=["valueOf","toString"];for(var i=0;i<e.length;++i){var n=e[i],a=Get(r,n);if(IsCallable(a)){var o=Call(a,r);if("object"!==Type(o))return o}}throw new TypeError("Cannot convert to primitive.")}function SameValueZero(n,e){return Type(n)===Type(e)&&("number"===Type(n)?!(!isNaN(n)||!isNaN(e))||(1/n===Infinity&&1/e==-Infinity||(1/n==-Infinity&&1/e===Infinity||n===e)):SameValueNonNumber(n,e))}function ToPrimitive(e){var t=arguments.length>1?arguments[1]:undefined;if("object"===Type(e)){if(arguments.length<2)var i="default";else t===String?i="string":t===Number&&(i="number");var r="function"==typeof self.Symbol&&"symbol"==typeof self.Symbol.toPrimitive?GetMethod(e,self.Symbol.toPrimitive):undefined;if(r!==undefined){var n=Call(r,e,[i]);if("object"!==Type(n))return n;throw new TypeError("Cannot convert exotic object to primitive.")}return"default"===i&&(i="number"),OrdinaryToPrimitive(e,i)}return e}function ToString(t){switch(Type(t)){case"symbol":throw new TypeError("Cannot convert a Symbol value to a string");case"object":return ToString(ToPrimitive(t,String));default:return String(t)}}function ToPropertyKey(r){var i=ToPrimitive(r,String);return"symbol"===Type(i)?i:ToString(i)}function TrimString(e,u){var r=RequireObjectCoercible(e),t=ToString(r),n=/[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]+/.source;if("start"===u)var p=String.prototype.replace.call(t,new RegExp("^"+n,"g"),"");else p="end"===u?String.prototype.replace.call(t,new RegExp(n+"$","g"),""):String.prototype.replace.call(t,new RegExp("^"+n+"|"+n+"$","g"),"");return p}if (!("atob"in self
-)) {!function(e){"use strict";if("object"==typeof exports&&null!=exports&&"number"!=typeof exports.nodeType)module.exports=e();else if("function"==typeof define&&null!=define.amd)define([],e);else{var t=e(),o="undefined"!=typeof self?self:$.global;"function"!=typeof o.btoa&&(o.btoa=t.btoa),"function"!=typeof o.atob&&(o.atob=t.atob)}}(function(){"use strict";function e(e){this.message=e}function t(t){for(var o,n,a=String(t),i=0,f=r,c="";a.charAt(0|i)||(f="=",i%1);c+=f.charAt(63&o>>8-i%1*8)){if((n=a.charCodeAt(i+=.75))>255)throw new e("'btoa' failed: The string to be encoded contains characters outside of the Latin1 range.");o=o<<8|n}return c}function o(t){var o=String(t).replace(/[=]+$/,"");if(o.length%4==1)throw new e("'atob' failed: The string to be decoded is not correctly encoded.");for(var n,a,i=0,f=0,c="";a=o.charAt(f++);~a&&(n=i%4?64*n+a:a,i++%4)?c+=String.fromCharCode(255&n>>(-2*i&6)):0)a=r.indexOf(a);return c}var r="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";return e.prototype=new Error,e.prototype.name="InvalidCharacterError",{btoa:t,atob:o}});}if (!("Date"in self&&"now"in self.Date&&"getTime"in self.Date.prototype
-)) {Date.now=function e(){return(new Date).getTime()};}if (!("Date"in self&&"toISOString"in Date.prototype
-)) {Date.prototype.toISOString=function t(){function t(t,e){return t=""+t,"0000".substr(0,e-t.length)+t}var e=this;return e.getUTCFullYear()+"-"+t(e.getUTCMonth()+1,2)+"-"+t(e.getUTCDate(),2)+"T"+t(e.getUTCHours(),2)+":"+t(e.getUTCMinutes(),2)+":"+t(e.getUTCSeconds(),2)+"."+t(e.getUTCMilliseconds(),3)+"Z"};}if (!("document"in self
-)) {"undefined"==typeof WorkerGlobalScope&&"function"!=typeof importScripts&&(self.HTMLDocument?self.Document=self.HTMLDocument:(self.Document=self.HTMLDocument=document.constructor=new Function("return function Document() {}")(),self.Document.prototype=document));}if (!((function(){var e=document.createElement("p"),t=!1
-return e.innerHTML="<section></section>",document.documentElement.appendChild(e),e.firstChild&&("getComputedStyle"in window?t="block"===getComputedStyle(e.firstChild).display:e.firstChild.currentStyle&&(t="block"===e.firstChild.currentStyle.display)),document.documentElement.removeChild(e),t})()
-)) {!function(e,t){function n(e,t){var n=e.createElement("p"),r=e.getElementsByTagName("head")[0]||e.documentElement;return n.innerHTML="x<style>"+t+"</style>",r.insertBefore(n.lastChild,r.firstChild)}function r(){var e=y.elements;return"string"==typeof e?e.split(" "):e}function a(e,t){var n=y.elements;"string"!=typeof n&&(n=n.join(" ")),"string"!=typeof e&&(e=e.join(" ")),y.elements=n+" "+e,m(t)}function o(e){var t=v[e[p]];return t||(t={},g++,e[p]=g,v[g]=t),t}function c(e,n,r){if(n||(n=t),s)return n.createElement(e);r||(r=o(n));var a;return a=r.cache[e]?r.cache[e].cloneNode():h.test(e)?(r.cache[e]=r.createElem(e)).cloneNode():r.createElem(e),!a.canHaveChildren||f.test(e)||a.tagUrn?a:r.frag.appendChild(a)}function i(e,n){if(e||(e=t),s)return e.createDocumentFragment();n=n||o(e);for(var a=n.frag.cloneNode(),c=0,i=r(),l=i.length;l>c;c++)a.createElement(i[c]);return a}function l(e,t){t.cache||(t.cache={},t.createElem=e.createElement,t.createFrag=e.createDocumentFragment,t.frag=t.createFrag()),e.createElement=function(n){return y.shivMethods?c(n,e,t):t.createElem(n)},e.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+r().join().replace(/[\w\-:]+/g,function(e){return t.createElem(e),t.frag.createElement(e),'c("'+e+'")'})+");return n}")(y,t.frag)}function m(e){e||(e=t);var r=o(e);return!y.shivCSS||u||r.hasCSS||(r.hasCSS=!!n(e,"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}")),s||l(e,r),e}var u,s,d=e.html5||{},f=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,h=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,p="_html5shiv",g=0,v={};!function(){try{var e=t.createElement("a");e.innerHTML="<xyz></xyz>",u="hidden"in e,s=1==e.childNodes.length||function(){t.createElement("a");var e=t.createDocumentFragment();return"undefined"==typeof e.cloneNode||"undefined"==typeof e.createDocumentFragment||"undefined"==typeof e.createElement}()}catch(n){u=!0,s=!0}}();var y={elements:d.elements||"abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output picture progress section summary template time video",version:"3.7.3-pre",shivCSS:!1!==d.shivCSS,supportsUnknownElements:s,shivMethods:!1!==d.shivMethods,type:"default",shivDocument:m,createElement:c,createDocumentFragment:i,addElements:a};e.html5=y,m(t),"object"==typeof module&&module.exports&&(module.exports=y)}("undefined"!=typeof window?window:this,document);}if (!("DocumentFragment"in self&&self.DocumentFragment===document.createDocumentFragment().constructor
-)) {self.DocumentFragment=document.createDocumentFragment().constructor;}if (!("Element"in self&&"HTMLElement"in self
-)) {!function(){function e(){return l--||clearTimeout(t),!(!document.body||document.body.prototype||!/(complete|interactive)/.test(document.readyState))&&(m(document,!0),t&&document.body.prototype&&clearTimeout(t),!!document.body.prototype)}if(!("Element"in self&&"HTMLElement"in self)){if(window.Element&&!window.HTMLElement)return void(window.HTMLElement=window.Element);window.Element=window.HTMLElement=new Function("return function Element() {}")();var t,n=document.appendChild(document.createElement("body")),o=n.appendChild(document.createElement("iframe")),r=o.contentWindow.document,c=Element.prototype=r.appendChild(r.createElement("*")),d={},m=function(e,t){var n,o,r,c=e.childNodes||[],u=-1;if(1===e.nodeType&&e.constructor!==Element){e.constructor=Element;for(n in d)o=d[n],e[n]=o}for(;r=t&&c[++u];)m(r,t);return e},u=document.getElementsByTagName("*"),i=document.createElement,l=100;c.attachEvent("onpropertychange",function(e){for(var t,n=e.propertyName,o=!Object.prototype.hasOwnProperty.call(d,n),r=c[n],m=d[n],i=-1;t=u[++i];)1===t.nodeType&&(o||t[n]===m)&&(t[n]=r);d[n]=r}),c.constructor=Element,c.hasAttribute||(c.hasAttribute=function a(e){return null!==this.getAttribute(e)}),e()||(document.onreadystatechange=e,t=setInterval(e,25)),document.createElement=function p(e){var t=i(String(e).toLowerCase());return m(t)},document.removeChild(n)}}();}var _mutation=function(){function e(e){return"function"==typeof Node?e instanceof Node:e&&"object"==typeof e&&e.nodeName&&e.nodeType>=1&&e.nodeType<=12}return function n(t){if(1===t.length)return e(t[0])?t[0]:document.createTextNode(t[0]+"");for(var o=document.createDocumentFragment(),r=0;r<t.length;r++)o.appendChild(e(t[r])?t[r]:document.createTextNode(t[r]+""));return o}}();if (!("document"in self&&"querySelector"in self.document
-)) {!function(){function e(e,n,o){var l,u,c=document.createElement("div"),i="qsa"+String(Math.random()).slice(3);return c.innerHTML="x<style>"+n+"{qsa:"+i+";}",l=r.appendChild(c.lastChild),u=t(e,n,o,i),r.removeChild(l),o?u[0]:u}function t(e,r,n,o){var l,u=/1|9/.test(e.nodeType),c=e.childNodes,i=[],a=-1;if(u&&e.currentStyle&&e.currentStyle.qsa===o&&i.push(e)&&n)return i;for(;l=c[++a];)if(i=i.concat(t(l,r,n,o)),n&&i.length)return i;return i}var r=document.getElementsByTagName("head")[0];Document.prototype.querySelector=Element.prototype.querySelector=function n(t){return e(this,t,!0)},Document.prototype.querySelectorAll=Element.prototype.querySelectorAll=function o(t){return e(this,t,!1)}}();}if (!("DocumentFragment"in self&&"append"in DocumentFragment.prototype
-)) {DocumentFragment.prototype.append=function t(){this.appendChild(_mutation(arguments))};}if (!("DocumentFragment"in self&&"prepend"in DocumentFragment.prototype
-)) {DocumentFragment.prototype.prepend=function t(){this.insertBefore(_mutation(arguments),this.firstChild)};}if (!("Element"in self&&"append"in Element.prototype
-)) {Document.prototype.append=Element.prototype.append=function p(){this.appendChild(_mutation(arguments))};}if (!("document"in self&&"cloneNode"in document.documentElement&&function(){var e=document.createElement("div"),n=document.createElement("input")
-n.type="radio",n.checked=!0,e.appendChild(n)
-var c,t=n.cloneNode(!1)
-try{c=e.cloneNode()}catch(d){return!1}return t.checked&&void 0!==c&&0===c.childNodes.length}()
-)) {Element.prototype.cloneNode=function(e,t){return function(t){void 0===t&&(t=!1);var c=e.call(this,t);return"checked"in this&&(c.checked=this.checked),c}}(Element.prototype.cloneNode);}if (!("document"in self&&"matches"in document.documentElement
-)) {Element.prototype.matches=Element.prototype.webkitMatchesSelector||Element.prototype.oMatchesSelector||Element.prototype.msMatchesSelector||Element.prototype.mozMatchesSelector||function e(t){for(var o=this,r=(o.document||o.ownerDocument).querySelectorAll(t),c=0;r[c]&&r[c]!==o;)++c;return!!r[c]};}if (!("document"in self&&"closest"in document.documentElement
-)) {Element.prototype.closest=function e(n){for(var t=this;t;){if(t.matches(n))return t;t="SVGElement"in window&&t instanceof SVGElement?t.parentNode:t.parentElement}return null};}if (!("Element"in self&&"prepend"in Element.prototype
-)) {Document.prototype.prepend=Element.prototype.prepend=function t(){this.insertBefore(_mutation(arguments),this.firstChild)};}if (!("Element"in self&&"remove"in Element.prototype
-)) {Document.prototype.remove=Element.prototype.remove=function e(){this.parentNode&&this.parentNode.removeChild(this)},"Text"in self&&(Text.prototype.remove=Element.prototype.remove);}if (!("Element"in self&&"replaceWith"in Element.prototype
-)) {Document.prototype.replaceWith=Element.prototype.replaceWith=function e(){this.parentNode&&this.parentNode.replaceChild(_mutation(arguments),this)},"Text"in self&&(Text.prototype.replaceWith=Element.prototype.replaceWith);}if (!("JSON"in self
-)) {(function(){function e(t,r){function i(e,t){try{e()}catch(n){t&&t()}}function c(e){if(null!=c[e])return c[e];var t;if("bug-string-char-index"==e)t="a"!="a"[0];else if("json"==e)t=c("json-stringify")&&c("date-serialization")&&c("json-parse");else if("date-serialization"==e){if(t=c("json-stringify")&&v){var n=r.stringify;i(function(){t='"-271821-04-20T00:00:00.000Z"'==n(new s(-864e13))&&'"+275760-09-13T00:00:00.000Z"'==n(new s(864e13))&&'"-000001-01-01T00:00:00.000Z"'==n(new s(-621987552e5))&&'"1969-12-31T23:59:59.999Z"'==n(new s(-1))})}}else{var o,a='{"a":[1,true,false,null,"\\u0000\\b\\n\\f\\r\\t"]}';if("json-stringify"==e){var n=r.stringify,u="function"==typeof n;u&&((o=function(){return 1}).toJSON=o,i(function(){u="0"===n(0)&&"0"===n(new f)&&'""'==n(new l)&&n(j)===b&&n(b)===b&&n()===b&&"1"===n(o)&&"[1]"==n([o])&&"[null]"==n([b])&&"null"==n(null)&&"[null,null,null]"==n([b,j,null])&&n({a:[o,!0,!1,null,"\0\b\n\f\r\t"]})==a&&"1"===n(null,o)&&"[\n 1,\n 2\n]"==n([1,2],null,1)},function(){u=!1})),t=u}if("json-parse"==e){var p,g=r.parse;"function"==typeof g&&i(function(){0!==g("0")||g(!1)||(o=g(a),(p=5==o.a.length&&1===o.a[0])&&(i(function(){p=!g('"\t"')}),p&&i(function(){p=1!==g("01")}),p&&i(function(){p=1!==g("1.")})))},function(){p=!1}),t=p}}return c[e]=!!t}function a(e){return A(this)}t||(t=o.Object()),r||(r=o.Object());var f=t.Number||o.Number,l=t.String||o.String,u=t.Object||o.Object,s=t.Date||o.Date,p=t.SyntaxError||o.SyntaxError,g=t.TypeError||o.TypeError,h=t.Math||o.Math,y=t.JSON||o.JSON;"object"==typeof y&&y&&(r.stringify=y.stringify,r.parse=y.parse);var b,d=u.prototype,j=d.toString,C=d.hasOwnProperty,v=new s(-0xc782b5b800cec);if(i(function(){v=-109252==v.getUTCFullYear()&&0===v.getUTCMonth()&&1===v.getUTCDate()&&10==v.getUTCHours()&&37==v.getUTCMinutes()&&6==v.getUTCSeconds()&&708==v.getUTCMilliseconds()}),c["bug-string-char-index"]=c["date-serialization"]=c.json=c["json-stringify"]=c["json-parse"]=null,!c("json")){var S=c("bug-string-char-index"),O=function(e,t){var r,o,i,c=0;(r=function(){this.valueOf=0}).prototype.valueOf=0,o=new r;for(i in o)C.call(o,i)&&c++;return r=o=null,c?O=function(e,t){var n,r,o="[object Function]"==j.call(e);for(n in e)o&&"prototype"==n||!C.call(e,n)||(r="constructor"===n)||t(n);(r||C.call(e,n="constructor"))&&t(n)}:(o=["valueOf","toString","toLocaleString","propertyIsEnumerable","isPrototypeOf","hasOwnProperty","constructor"],O=function(e,t){var r,i,c="[object Function]"==j.call(e),a=!c&&"function"!=typeof e.constructor&&n[typeof e.hasOwnProperty]&&e.hasOwnProperty||C;for(r in e)c&&"prototype"==r||!a.call(e,r)||t(r);for(i=o.length;r=o[--i];)a.call(e,r)&&t(r)}),O(e,t)};if(!c("json-stringify")&&!c("date-serialization")){var T={92:"\\\\",34:'\\"',8:"\\b",12:"\\f",10:"\\n",13:"\\r",9:"\\t"},w=function(e,t){return("000000"+(t||0)).slice(-e)},A=function(e){var t,n,r,o,i,c,a,f,l;if(v)t=function(e){n=e.getUTCFullYear(),r=e.getUTCMonth(),o=e.getUTCDate(),c=e.getUTCHours(),a=e.getUTCMinutes(),f=e.getUTCSeconds(),l=e.getUTCMilliseconds()};else{var u=h.floor,s=[0,31,59,90,120,151,181,212,243,273,304,334],p=function(e,t){return s[t]+365*(e-1970)+u((e-1969+(t=+(t>1)))/4)-u((e-1901+t)/100)+u((e-1601+t)/400)};t=function(e){for(o=u(e/864e5),n=u(o/365.2425)+1970-1;p(n+1,0)<=o;n++);for(r=u((o-p(n,0))/30.42);p(n,r+1)<=o;r++);o=1+o-p(n,r),i=(e%864e5+864e5)%864e5,c=u(i/36e5)%24,a=u(i/6e4)%60,f=u(i/1e3)%60,l=i%1e3}}return(A=function(e){return e>-1/0&&e<1/0?(t(e),e=(n<=0||n>=1e4?(n<0?"-":"+")+w(6,n<0?-n:n):w(4,n))+"-"+w(2,r+1)+"-"+w(2,o)+"T"+w(2,c)+":"+w(2,a)+":"+w(2,f)+"."+w(3,l)+"Z",n=r=o=c=a=f=l=null):e=null,e})(e)};if(c("json-stringify")&&!c("date-serialization")){var N=r.stringify;r.stringify=function(e,t,n){var r=s.prototype.toJSON;s.prototype.toJSON=a;var o=N(e,t,n);return s.prototype.toJSON=r,o}}else{var x=function(e){var t=e.charCodeAt(0),n=T[t];return n||"\\u00"+w(2,t.toString(16))},J=/[\x00-\x1f\x22\x5c]/g,U=function(e){return J.lastIndex=0,'"'+(J.test(e)?e.replace(J,x):e)+'"'},m=function(e,t,n,r,o,c,a){var f,l,u,p,h,y,d,C,v;if(i(function(){f=t[e]}),"object"==typeof f&&f&&(f.getUTCFullYear&&"[object Date]"==j.call(f)&&f.toJSON===s.prototype.toJSON?f=A(f):"function"==typeof f.toJSON&&(f=f.toJSON(e))),n&&(f=n.call(t,e,f)),f==b)return f===b?f:"null";switch(l=typeof f,"object"==l&&(u=j.call(f)),u||l){case"boolean":case"[object Boolean]":return""+f;case"number":case"[object Number]":return f>-1/0&&f<1/0?""+f:"null";case"string":case"[object String]":return U(""+f)}if("object"==typeof f){for(d=a.length;d--;)if(a[d]===f)throw g();if(a.push(f),p=[],C=c,c+=o,"[object Array]"==u){for(y=0,d=f.length;y<d;y++)h=m(y,f,n,r,o,c,a),p.push(h===b?"null":h);v=p.length?o?"[\n"+c+p.join(",\n"+c)+"\n"+C+"]":"["+p.join(",")+"]":"[]"}else O(r||f,function(e){var t=m(e,f,n,r,o,c,a);t!==b&&p.push(U(e)+":"+(o?" ":"")+t)}),v=p.length?o?"{\n"+c+p.join(",\n"+c)+"\n"+C+"}":"{"+p.join(",")+"}":"{}";return a.pop(),v}};r.stringify=function(e,t,r){var o,i,c,a;if(n[typeof t]&&t)if("[object Function]"==(a=j.call(t)))i=t;else if("[object Array]"==a){c={};for(var f,l=0,u=t.length;l<u;)f=t[l++],"[object String]"!=(a=j.call(f))&&"[object Number]"!=a||(c[f]=1)}if(r)if("[object Number]"==(a=j.call(r))){if((r-=r%1)>0)for(r>10&&(r=10),o="";o.length<r;)o+=" "}else"[object String]"==a&&(o=r.length<=10?r:r.slice(0,10));return m("",(f={},f[""]=e,f),i,c,o,"",[])}}}if(!c("json-parse")){var M,F,z=l.fromCharCode,D={92:"\\",34:'"',47:"/",98:"\b",116:"\t",110:"\n",102:"\f",114:"\r"},E=function(){throw M=F=null,p()},P=function(){for(var e,t,n,r,o,i=F,c=i.length;M<c;)switch(o=i.charCodeAt(M)){case 9:case 10:case 13:case 32:M++;break;case 123:case 125:case 91:case 93:case 58:case 44:return e=S?i.charAt(M):i[M],M++,e;case 34:for(e="@",M++;M<c;)if((o=i.charCodeAt(M))<32)E();else if(92==o)switch(o=i.charCodeAt(++M)){case 92:case 34:case 47:case 98:case 116:case 110:case 102:case 114:e+=D[o],M++;break;case 117:for(t=++M,n=M+4;M<n;M++)(o=i.charCodeAt(M))>=48&&o<=57||o>=97&&o<=102||o>=65&&o<=70||E();e+=z("0x"+i.slice(t,M));break;default:E()}else{if(34==o)break;for(o=i.charCodeAt(M),t=M;o>=32&&92!=o&&34!=o;)o=i.charCodeAt(++M);e+=i.slice(t,M)}if(34==i.charCodeAt(M))return M++,e;E();default:if(t=M,45==o&&(r=!0,o=i.charCodeAt(++M)),o>=48&&o<=57){for(48==o&&(o=i.charCodeAt(M+1))>=48&&o<=57&&E(),r=!1;M<c&&(o=i.charCodeAt(M))>=48&&o<=57;M++);if(46==i.charCodeAt(M)){for(n=++M;n<c&&!((o=i.charCodeAt(n))<48||o>57);n++);n==M&&E(),M=n}if(101==(o=i.charCodeAt(M))||69==o){for(o=i.charCodeAt(++M),43!=o&&45!=o||M++,n=M;n<c&&!((o=i.charCodeAt(n))<48||o>57);n++);n==M&&E(),M=n}return+i.slice(t,M)}r&&E();var a=i.slice(M,M+4);if("true"==a)return M+=4,!0;if("fals"==a&&101==i.charCodeAt(M+4))return M+=5,!1;if("null"==a)return M+=4,null;E()}return"$"},Z=function(e){var t,n;if("$"==e&&E(),"string"==typeof e){if("@"==(S?e.charAt(0):e[0]))return e.slice(1);if("["==e){for(t=[];"]"!=(e=P());)n?","==e?"]"==(e=P())&&E():E():n=!0,","==e&&E(),t.push(Z(e));return t}if("{"==e){for(t={};"}"!=(e=P());)n?","==e?"}"==(e=P())&&E():E():n=!0,","!=e&&"string"==typeof e&&"@"==(S?e.charAt(0):e[0])&&":"==P()||E(),t[e.slice(1)]=Z(P());return t}E()}return e},k=function(e,t,n){var r=I(e,t,n);r===b?delete e[t]:e[t]=r},I=function(e,t,n){var r,o=e[t];if("object"==typeof o&&o)if("[object Array]"==j.call(o))for(r=o.length;r--;)k(j,O,o);else O(o,function(e){k(o,e,n)});return n.call(e,t,o)};r.parse=function(e,t){var n,r;return M=0,F=""+e,n=Z(P()),"$"!=P()&&E(),M=F=null,t&&"[object Function]"==j.call(t)?I((r={},r[""]=n,r),"",t):n}}}return r.runInContext=e,r}var t="function"==typeof define&&define.amd,n={"function":!0,object:!0},r=n[typeof exports]&&exports&&!exports.nodeType&&exports,o=n[typeof window]&&window||this,i=r&&n[typeof module]&&module&&!module.nodeType&&"object"==typeof global&&global;if(!i||i.global!==i&&i.window!==i&&i.self!==i||(o=i),r&&!t)e(o,r);else{var c=o.JSON,a=o.JSON3,f=!1,l=e(o,o.JSON3={noConflict:function(){return f||(f=!0,o.JSON=c,o.JSON3=a,c=a=null),l}});o.JSON={parse:l.parse,stringify:l.stringify}}t&&define(function(){return l})}).call(this);}if (!(document.contains
-)) {!function(){function e(e){if(!(0 in arguments))throw new TypeError("1 argument is required");do{if(this===e)return!0}while(e=e&&e.parentNode);return!1}if("HTMLElement"in self&&"contains"in HTMLElement.prototype)try{delete HTMLElement.prototype.contains}catch(t){}"Node"in self?Node.prototype.contains=e:document.contains=Element.prototype.contains=e}();}if (!("defineProperty"in Object&&function(){try{var e={}
-return Object.defineProperty(e,"test",{value:42}),!0}catch(t){return!1}}()
-)) {!function(e){var t=Object.prototype.hasOwnProperty.call(Object.prototype,"__defineGetter__"),r="A property cannot both have accessors and be writable or have a value";Object.defineProperty=function n(o,i,c){if(e&&(o===window||o===document||o===Element.prototype||o instanceof Element))return e(o,i,c);if(null===o||!(o instanceof Object||"object"==typeof o))throw new TypeError("Object.defineProperty called on non-object");if(!(c instanceof Object))throw new TypeError("Property description must be an object");var a=String(i),f="value"in c||"writable"in c,p="get"in c&&typeof c.get,s="set"in c&&typeof c.set;if(p){if("function"!==p)throw new TypeError("Getter must be a function");if(!t)throw new TypeError("Getters & setters cannot be defined on this javascript engine");if(f)throw new TypeError(r);Object.__defineGetter__.call(o,a,c.get)}else o[a]=c.value;if(s){if("function"!==s)throw new TypeError("Setter must be a function");if(!t)throw new TypeError("Getters & setters cannot be defined on this javascript engine");if(f)throw new TypeError(r);Object.__defineSetter__.call(o,a,c.set)}return"value"in c&&(o[a]=c.value),o}}(Object.defineProperty);}var _DOMTokenList=function(){var n=!0,t=function(t,e,r,o){Object.defineProperty?Object.defineProperty(t,e,{configurable:!1===n||!!o,get:r}):t.__defineGetter__(e,r)};try{t({},"support")}catch(e){n=!1}return function(n,e){var r=this,o=[],i={},a=0,c=0,f=function(n){t(r,n,function(){return u(),o[n]},!1)},l=function(){if(a>=c)for(;c<a;++c)f(c)},u=function(){var t,r,c=arguments,f=/\s+/;if(c.length)for(r=0;r<c.length;++r)if(f.test(c[r]))throw t=new SyntaxError('String "'+c[r]+'" contains an invalid character'),t.code=5,t.name="InvalidCharacterError",t;for(o="object"==typeof n[e]?(""+n[e].baseVal).replace(/^\s+|\s+$/g,"").split(f):(""+n[e]).replace(/^\s+|\s+$/g,"").split(f),""===o[0]&&(o=[]),i={},r=0;r<o.length;++r)i[o[r]]=!0;a=o.length,l()};return u(),t(r,"length",function(){return u(),a}),r.toLocaleString=r.toString=function(){return u(),o.join(" ")},r.item=function(n){return u(),o[n]},r.contains=function(n){return u(),!!i[n]},r.add=function(){u.apply(r,t=arguments);for(var t,c,f=0,g=t.length;f<g;++f)c=t[f],i[c]||(o.push(c),i[c]=!0);a!==o.length&&(a=o.length>>>0,"object"==typeof n[e]?n[e].baseVal=o.join(" "):n[e]=o.join(" "),l())},r.remove=function(){u.apply(r,t=arguments);for(var t,c={},f=0,g=[];f<t.length;++f)c[t[f]]=!0,delete i[t[f]];for(f=0;f<o.length;++f)c[o[f]]||g.push(o[f]);o=g,a=g.length>>>0,"object"==typeof n[e]?n[e].baseVal=o.join(" "):n[e]=o.join(" "),l()},r.toggle=function(n,t){return u.apply(r,[n]),undefined!==t?t?(r.add(n),!0):(r.remove(n),!1):i[n]?(r.remove(n),!1):(r.add(n),!0)},r}}();if (!("DOMTokenList"in self&&function(e){return!("classList"in e)||!e.classList.toggle("x",!1)&&!e.className}(document.createElement("x"))
-)) {!function(t){"DOMTokenList"in t&&t.DOMTokenList&&(!document.createElementNS||!document.createElementNS("http://www.w3.org/2000/svg","svg")||document.createElementNS("http://www.w3.org/2000/svg","svg").classList instanceof DOMTokenList)||(t.DOMTokenList=_DOMTokenList),function(){var t=document.createElement("span");"classList"in t&&(t.classList.toggle("x",!1),t.classList.contains("x")&&(t.classList.constructor.prototype.toggle=function s(t){var s=arguments[1];if(s===undefined){var e=!this.contains(t);return this[e?"add":"remove"](t),e}return s=!!s,this[s?"add":"remove"](t),s}))}(),function(){var t=document.createElement("span");if("classList"in t&&(t.classList.add("a","b"),!t.classList.contains("b"))){var s=t.classList.constructor.prototype.add;t.classList.constructor.prototype.add=function(){for(var t=arguments,e=arguments.length,n=0;n<e;n++)s.call(this,t[n])}}}(),function(){var t=document.createElement("span");if("classList"in t&&(t.classList.add("a"),t.classList.add("b"),t.classList.remove("a","b"),t.classList.contains("b"))){var s=t.classList.constructor.prototype.remove;t.classList.constructor.prototype.remove=function(){for(var t=arguments,e=arguments.length,n=0;n<e;n++)s.call(this,t[n])}}}()}(self);}function CreateDataProperty(e,r,t){var a={value:t,writable:!0,enumerable:!0,configurable:!0};try{return Object.defineProperty(e,r,a),!0}catch(n){return!1}}function CreateDataPropertyOrThrow(t,r,o){var e=CreateDataProperty(t,r,o);if(!e)throw new TypeError("Cannot assign value `"+Object.prototype.toString.call(o)+"` to property `"+Object.prototype.toString.call(r)+"` on object `"+Object.prototype.toString.call(t)+"`");return e}function CreateIterResultObject(e,r){if("boolean"!==Type(r))throw new Error;var t={};return CreateDataProperty(t,"value",e),CreateDataProperty(t,"done",r),t}function CreateMethodProperty(e,r,t){var a={value:t,writable:!0,enumerable:!1,configurable:!0};Object.defineProperty(e,r,a)}if (!("isArray"in Array
-)) {CreateMethodProperty(Array,"isArray",function r(e){return IsArray(e)});}if (!("every"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"every",function r(e){var t=ToObject(this),o=ToLength(Get(t,"length"));if(!1===IsCallable(e))throw new TypeError(e+" is not a function");for(var n=arguments.length>1?arguments[1]:undefined,a=0;a<o;){var i=ToString(a);if(HasProperty(t,i)){var l=Get(t,i);if(!1===ToBoolean(Call(e,n,[l,a,t])))return!1}a+=1}return!0});}if (!("fill"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"fill",function t(e){for(var r=arguments[1],n=arguments[2],o=ToObject(this),a=ToLength(Get(o,"length")),h=ToInteger(r),i=h<0?Math.max(a+h,0):Math.min(h,a),g=n===undefined?a:ToInteger(n),M=g<0?Math.max(a+g,0):Math.min(g,a);i<M;){o[ToString(i)]=e,i+=1}return o});}if (!("forEach"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"forEach",function r(t){var e=ToObject(this),n=e instanceof String?e.split(""):e,o=ToLength(Get(e,"length"));if(!1===IsCallable(t))throw new TypeError(t+" is not a function");for(var a=arguments.length>1?arguments[1]:undefined,i=0;i<o;){var f=ToString(i);if(HasProperty(n,f)){var l=Get(n,f);Call(t,a,[l,i,e])}i+=1}return undefined});}if (!("includes"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"includes",function e(r){"use strict";var t=ToObject(this),o=ToLength(Get(t,"length"));if(0===o)return!1;var n=ToInteger(arguments[1]);if(n>=0)var a=n;else(a=o+n)<0&&(a=0);for(;a<o;){var i=Get(t,ToString(a));if(SameValueZero(r,i))return!0;a+=1}return!1});}if (!("indexOf"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"indexOf",function r(t){var e=ToObject(this),n=ToLength(Get(e,"length"));if(0===n)return-1;var i=ToInteger(arguments[1]);if(i>=n)return-1;if(i>=0)var o=1/i==-Infinity?0:i;else(o=n+i)<0&&(o=0);for(;o<n;){if(HasProperty(e,ToString(o))){if(t===Get(e,ToString(o)))return o}o+=1}return-1});}if (!("Element"in self&&"after"in Element.prototype
-)) {Document.prototype.after=Element.prototype.after=function t(){if(this.parentNode){for(var t=Array.prototype.slice.call(arguments),e=this.nextSibling,o=e?t.indexOf(e):-1;-1!==o&&(e=e.nextSibling);)o=t.indexOf(e);this.parentNode.insertBefore(_mutation(arguments),e)}},"Text"in self&&(Text.prototype.after=Element.prototype.after);}if (!("Element"in self&&"before"in Element.prototype
-)) {Document.prototype.before=Element.prototype.before=function e(){if(this.parentNode){for(var e=Array.prototype.slice.call(arguments),t=this.previousSibling,o=t?e.indexOf(t):-1;-1!==o&&(t=t.previousSibling);)o=e.indexOf(t);this.parentNode.insertBefore(_mutation(arguments),t?t.nextSibling:this.parentNode.firstChild)}},"Text"in self&&(Text.prototype.before=Element.prototype.before);}if (!("lastIndexOf"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"lastIndexOf",function t(r){var e=ToObject(this),n=ToLength(Get(e,"length"));if(0===n)return-1;var o=arguments.length>1?ToInteger(arguments[1]):n-1;if(o>=0)var i=1/o==-Infinity?0:Math.min(o,n-1);else i=n+o;for(;i>=0;){if(HasProperty(e,ToString(i))){if(r===Get(e,ToString(i)))return i}i-=1}return-1});}if (!("reduce"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"reduce",function e(r){var t=ToObject(this),n=t instanceof String?t.split(""):t,o=ToLength(Get(n,"length"));if(!1===IsCallable(r))throw new TypeError(r+" is not a function");var i=arguments.length>1?arguments[1]:undefined;if(0===o&&arguments.length<2)throw new TypeError("Reduce of empty array with no initial value");var a=0,f=undefined;if(arguments.length>1)f=i;else{for(var l=!1;!1===l&&a<o;){var h=ToString(a);l=HasProperty(n,h),l&&(f=Get(n,h)),a+=1}if(!1===l)throw new TypeError("Reduce of empty array with no initial value")}for(;a<o;){if(h=ToString(a),l=HasProperty(n,h)){var y=Get(n,h);f=Call(r,undefined,[f,y,a,t])}a+=1}return f});}if (!("reduceRight"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"reduceRight",function e(r){var t=ToObject(this),n=t instanceof String?t.split(""):t,i=ToLength(Get(n,"length"));if(!1===IsCallable(r))throw new TypeError(r+" is not a function");var o=arguments.length>1?arguments[1]:undefined;if(0===i&&arguments.length<2)throw new TypeError("Reduce of empty array with no initial value");var a=i-1,f=undefined;if(arguments.length>1)f=o;else{for(var l=!1;!1===l&&a>=0;){var h=ToString(a);l=HasProperty(n,h),l&&(f=Get(n,h)),a-=1}if(!1===l)throw new TypeError("Reduce of empty array with no initial value")}for(;a>=0;){if(h=ToString(a),l=HasProperty(n,h)){var y=Get(n,h);f=Call(r,undefined,[f,y,a,t])}a-=1}return f});}if (!("some"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"some",function r(e){var t=ToObject(this),o=ToLength(Get(t,"length"));if(!1===IsCallable(e))throw new TypeError(e+" is not a function");for(var n=arguments.length>1?arguments[1]:undefined,a=0;a<o;){var i=ToString(a);if(HasProperty(t,i)){var l=Get(t,i);if(ToBoolean(Call(e,n,[l,a,t])))return!0}a+=1}return!1});}if (!("bind"in Function.prototype
-)) {CreateMethodProperty(Function.prototype,"bind",function t(n){var r=Array,o=Object,e=r.prototype,l=function g(){},p=e.slice,a=e.concat,i=e.push,c=Math.max,u=this;if(!IsCallable(u))throw new TypeError("Function.prototype.bind called on incompatible "+u);for(var y,h=p.call(arguments,1),s=function(){if(this instanceof y){var t=u.apply(this,a.call(h,p.call(arguments)));return o(t)===t?t:this}return u.apply(n,a.call(h,p.call(arguments)))},f=c(0,u.length-h.length),b=[],d=0;d<f;d++)i.call(b,"$"+d);return y=Function("binder","return function ("+b.join(",")+"){ return binder.apply(this, arguments); }")(s),u.prototype&&(l.prototype=u.prototype,y.prototype=new l,l.prototype=null),y});}if (!("isNaN"in Number
-)) {!function(){var e=self;CreateMethodProperty(Number,"isNaN",function r(n){return"number"===Type(n)&&!!e.isNaN(n)})}();}if (!("document"in self&&"classList"in document.documentElement&&"Element"in self&&"classList"in Element.prototype&&function(){var e=document.createElement("span")
-return e.classList.add("a","b"),e.classList.contains("b")}()
-)) {!function(e){var t=!0,r=function(e,r,n,i){Object.defineProperty?Object.defineProperty(e,r,{configurable:!1===t||!!i,get:n}):e.__defineGetter__(r,n)};try{r({},"support")}catch(i){t=!1}var n=function(e,i,l){r(e.prototype,i,function(){var e,c=this,s="__defineGetter__DEFINE_PROPERTY"+i;if(c[s])return e;if(c[s]=!0,!1===t){for(var o,a=n.mirror||document.createElement("div"),f=a.childNodes,d=f.length,m=0;m<d;++m)if(f[m]._R===c){o=f[m];break}o||(o=a.appendChild(document.createElement("div"))),e=DOMTokenList.call(o,c,l)}else e=new _DOMTokenList(c,l);return r(c,i,function(){return e}),delete c[s],e},!0)};n(e.Element,"classList","className"),n(e.HTMLElement,"classList","className"),n(e.HTMLLinkElement,"relList","rel"),n(e.HTMLAnchorElement,"relList","rel"),n(e.HTMLAreaElement,"relList","rel")}(self);}if (!("freeze"in Object
-)) {CreateMethodProperty(Object,"freeze",function e(r){return r});}if (!("getOwnPropertyDescriptor"in Object&&"function"==typeof Object.getOwnPropertyDescriptor&&function(){try{return"3"===Object.getOwnPropertyDescriptor("13.7",1).value}catch(t){return!1}}()
-)) {!function(){var e=Object.getOwnPropertyDescriptor,t=function(){try{return 1===Object.defineProperty(document.createElement("div"),"one",{get:function(){return 1}}).one}catch(e){return!1}},r={}.toString,n="".split;CreateMethodProperty(Object,"getOwnPropertyDescriptor",function c(o,i){var a=ToObject(o);a=("string"===Type(a)||a instanceof String)&&"[object String]"==r.call(o)?n.call(o,""):Object(o);var u=ToPropertyKey(i);if(t)try{return e(a,u)}catch(l){}if(HasOwnProperty(a,u))return{enumerable:!0,configurable:!0,writable:!0,value:a[u]}})}();}if (!("getPrototypeOf"in Object
-)) {CreateMethodProperty(Object,"getPrototypeOf",function t(o){if(o!==Object(o))throw new TypeError("Object.getPrototypeOf called on non-object");var e=o.__proto__;return e||null===e?e:"function"==typeof o.constructor&&o instanceof o.constructor?o.constructor.prototype:o instanceof Object?Object.prototype:null});}if (!("isExtensible"in Object
-)) {!function(e){CreateMethodProperty(Object,"isExtensible",function t(n){return"object"===Type(n)&&(!e||e(n))})}(Object.isExtensible);}if (!("keys"in Object&&function(){return 2===Object.keys(arguments).length}(1,2)&&function(){try{return Object.keys(""),!0}catch(t){return!1}}()
-)) {CreateMethodProperty(Object,"keys",function(){"use strict";function t(t){var e=r.call(t),n="[object Arguments]"===e;return n||(n="[object Array]"!==e&&null!==t&&"object"==typeof t&&"number"==typeof t.length&&t.length>=0&&"[object Function]"===r.call(t.callee)),n}var e=Object.prototype.hasOwnProperty,r=Object.prototype.toString,n=Object.prototype.propertyIsEnumerable,o=!n.call({toString:null},"toString"),l=n.call(function(){},"prototype"),c=["toString","toLocaleString","valueOf","hasOwnProperty","isPrototypeOf","propertyIsEnumerable","constructor"],i=function(t){var e=t.constructor;return e&&e.prototype===t},u={$console:!0,$external:!0,$frame:!0,$frameElement:!0,$frames:!0,$innerHeight:!0,$innerWidth:!0,$outerHeight:!0,$outerWidth:!0,$pageXOffset:!0,$pageYOffset:!0,$parent:!0,$scrollLeft:!0,$scrollTop:!0,$scrollX:!0,$scrollY:!0,$self:!0,$webkitIndexedDB:!0,$webkitStorageInfo:!0,$window:!0},a=function(){if("undefined"==typeof window)return!1;for(var t in window)try{if(!u["$"+t]&&e.call(window,t)&&null!==window[t]&&"object"==typeof window[t])try{i(window[t])}catch(r){return!0}}catch(r){return!0}return!1}(),f=function(t){if("undefined"==typeof window||!a)return i(t);try{return i(t)}catch(e){return!1}};return function p(n){var i="[object Function]"===r.call(n),u=t(n),a="[object String]"===r.call(n),p=[];if(n===undefined||null===n)throw new TypeError("Cannot convert undefined or null to object");var s=l&&i;if(a&&n.length>0&&!e.call(n,0))for(var y=0;y<n.length;++y)p.push(String(y));if(u&&n.length>0)for(var g=0;g<n.length;++g)p.push(String(g));else for(var h in n)s&&"prototype"===h||!e.call(n,h)||p.push(String(h));if(o)for(var w=f(n),d=0;d<c.length;++d)w&&"constructor"===c[d]||!e.call(n,c[d])||p.push(c[d]);return p}}());}if (!("assign"in Object
-)) {CreateMethodProperty(Object,"assign",function e(t,r){var n=ToObject(t);if(1===arguments.length)return n;var o,c,a,l,i=Array.prototype.slice.call(arguments,1);for(o=0;o<i.length;o++){var p=i[o];for(p===undefined||null===p?a=[]:(l="[object String]"===Object.prototype.toString.call(p)?String(p).split(""):ToObject(p),a=Object.keys(l)),c=0;c<a.length;c++){var b,y=a[c];try{var g=Object.getOwnPropertyDescriptor(l,y);b=g!==undefined&&!0===g.enumerable}catch(u){b=Object.prototype.propertyIsEnumerable.call(l,y)}if(b){var j=Get(l,y);n[y]=j}}}return n});}if (!("defineProperties"in Object
-)) {CreateMethodProperty(Object,"defineProperties",function e(r,t){if("object"!==Type(r))throw new TypeError("Object.defineProperties called on non-object");for(var o=ToObject(t),n=Object.keys(o),c=[],i=0;i<n.length;i++){var b=n[i],f=Object.getOwnPropertyDescriptor(o,b);if(f!==undefined&&f.enumerable){var p=Get(o,b),a=p;c.push([b,a])}}for(var j=0;j<c.length;j++){var d=c[j][0];a=c[j][1],Object.defineProperty(r,d,a)}return r});}if (!("location"in self&&"origin"in self.location
-)) {try{Object.defineProperty(window.location,"origin",{enumerable:!0,writable:!1,value:window.location.protocol+"//"+window.location.hostname+(window.location.port?":"+window.location.port:""),configurable:!1})}catch(e){window.location.origin=window.location.protocol+"//"+window.location.hostname+(window.location.port?":"+window.location.port:"")}}if (!("create"in Object
-)) {!function(){function e(){}if({__proto__:null}instanceof Object)t=function(){var e=document.createElement("iframe");e.style.display="none";var o=document.body||document.documentElement;o.appendChild(e),e.src="javascript:";var n=e.contentWindow.Object.prototype;o.removeChild(e),e=null,delete n.constructor,delete n.hasOwnProperty,delete n.propertyIsEnumerable,delete n.isPrototypeOf,delete n.toLocaleString,delete n.toString,delete n.valueOf;var r=function l(){};return r.prototype=n,t=function(){return new r},new r};else var t=function(){return{__proto__:null}};CreateMethodProperty(Object,"create",function o(n,r){if("object"!==Type(n)&&"null"!==Type(n))throw new TypeError("Object prototype may only be an Object or null");if("null"===Type(n))var l=t();else e.prototype=n,l=new e,l.__proto__=n,l.constructor.prototype=n,l.__proto__=n;return 1 in arguments?Object.defineProperties(l,r):l})}();}function OrdinaryCreateFromConstructor(r,e){var t=arguments[2]||{},o=GetPrototypeFromConstructor(r,e),a=Object.create(o);for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&Object.defineProperty(a,n,{configurable:!0,enumerable:!1,writable:!0,value:t[n]});return a}function Construct(r){var t=arguments.length>2?arguments[2]:r,o=arguments.length>1?arguments[1]:[];if(!IsConstructor(r))throw new TypeError("F must be a constructor.");if(!IsConstructor(t))throw new TypeError("newTarget must be a constructor.");if(t===r)return new(Function.prototype.bind.apply(r,[null].concat(o)));var n=OrdinaryCreateFromConstructor(t,Object.prototype);return Call(r,n,o)}function ArraySpeciesCreate(e,r){if(0===r&&1/r==-Infinity&&(r=0),!1===IsArray(e))return ArrayCreate(r);var n=Get(e,"constructor");if("object"===Type(n)&&null===(n="Symbol"in self&&"species"in self.Symbol?Get(n,self.Symbol.species):undefined)&&(n=undefined),n===undefined)return ArrayCreate(r);if(!IsConstructor(n))throw new TypeError("C must be a constructor");return Construct(n,[r])}if (!("filter"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"filter",function r(e){var t=ToObject(this),o=ToLength(Get(t,"length"));if(!1===IsCallable(e))throw new TypeError(e+" is not a function");for(var a=arguments.length>1?arguments[1]:undefined,n=ArraySpeciesCreate(t,0),i=0,l=0;i<o;){var f=ToString(i);if(HasProperty(t,f)){var h=Get(t,f);ToBoolean(Call(e,a,[h,i,t]))&&(CreateDataPropertyOrThrow(n,ToString(l),h),l+=1)}i+=1}return n});}if (!("map"in Array.prototype
-)) {CreateMethodProperty(Array.prototype,"map",function r(e){var t=ToObject(this),a=ToLength(Get(t,"length"));if(!1===IsCallable(e))throw new TypeError(e+" is not a function");for(var o=arguments.length>1?arguments[1]:undefined,n=ArraySpeciesCreate(t,a),i=0;i<a;){var p=ToString(i);if(HasProperty(t,p)){var h=Get(t,p),l=Call(e,o,[h,i,t]);CreateDataPropertyOrThrow(n,p,l)}i+=1}return n});}if (!("of"in Array
-)) {CreateMethodProperty(Array,"of",function r(){var r=arguments.length,t=arguments,e=this;if(IsConstructor(e))var a=Construct(e,[r]);else a=ArrayCreate(r);for(var o=0;o<r;){var n=t[o],h=ToString(o);CreateDataPropertyOrThrow(a,h,n),o+=1}return a.length=r,a});}if (!("getOwnPropertyNames"in Object&&function(){try{return Object.getOwnPropertyNames(1),!0}catch(t){return!1}}()
-)) {!function(){var t={}.toString,e="".split,r=[].concat,o=Object.prototype.hasOwnProperty,c=Object.getOwnPropertyNames||Object.keys,n="object"==typeof self?c(self):[];CreateMethodProperty(Object,"getOwnPropertyNames",function l(a){var p=ToObject(a);if("[object Window]"===t.call(p))try{return c(p)}catch(j){return r.call([],n)}p="[object String]"==t.call(p)?e.call(p,""):Object(p);for(var i=c(p),s=["length","prototype"],O=0;O<s.length;O++){var b=s[O];o.call(p,b)&&!i.includes(b)&&i.push(b)}if(i.includes("__proto__")){var f=i.indexOf("__proto__");i.splice(f,1)}return i})}();}if (!("requestAnimationFrame"in self
-)) {!function(n){var e,t=Date.now(),o=function(){return n.performance&&"function"==typeof n.performance.now?n.performance.now():Date.now()-t};if("mozRequestAnimationFrame"in n?e="moz":"webkitRequestAnimationFrame"in n&&(e="webkit"),e)n.requestAnimationFrame=function(t){return n[e+"RequestAnimationFrame"](function(){t(o())})},n.cancelAnimationFrame=n[e+"CancelAnimationFrame"];else{var i=Date.now();n.requestAnimationFrame=function(n){if("function"!=typeof n)throw new TypeError(n+" is not a function");var e=Date.now(),t=16+i-e;return t<0&&(t=0),i=e,setTimeout(function(){i=Date.now(),n(o())},t)},n.cancelAnimationFrame=function(n){clearTimeout(n)}}}(self);}if (!("endsWith"in String.prototype
-)) {CreateMethodProperty(String.prototype,"endsWith",function e(t){"use strict";var r=arguments.length>1?arguments[1]:undefined,n=RequireObjectCoercible(this),i=ToString(n);if(IsRegExp(t))throw new TypeError("First argument to String.prototype.endsWith must not be a regular expression");var o=ToString(t),s=i.length,g=r===undefined?s:ToInteger(r),h=Math.min(Math.max(g,0),s),u=o.length,a=h-u;return!(a<0)&&i.substr(a,u)===o});}if (!("includes"in String.prototype
-)) {CreateMethodProperty(String.prototype,"includes",function e(t){"use strict";var r=arguments.length>1?arguments[1]:undefined,n=RequireObjectCoercible(this),i=ToString(n);if(IsRegExp(t))throw new TypeError("First argument to String.prototype.includes must not be a regular expression");var o=ToString(t),g=ToInteger(r),a=i.length,p=Math.min(Math.max(g,0),a);return-1!==String.prototype.indexOf.call(i,o,p)});}if (!("startsWith"in String.prototype
-)) {CreateMethodProperty(String.prototype,"startsWith",function t(e){"use strict";var r=arguments.length>1?arguments[1]:undefined,n=RequireObjectCoercible(this),i=ToString(n);if(IsRegExp(e))throw new TypeError("First argument to String.prototype.startsWith must not be a regular expression");var o=ToString(e),s=ToInteger(r),a=i.length,g=Math.min(Math.max(s,0),a);return!(o.length+g>a)&&0===i.substr(g).indexOf(e)});}if (!("trim"in String.prototype&&function(){var r="​᠎"
-return!"\t\n\x0B\f\r                　\u2028\u2029\ufeff".trim()&&r.trim()===r}()
-)) {CreateMethodProperty(String.prototype,"trim",function t(){"use strict";var t=this;return TrimString(t,"start+end")});}if (!("Symbol"in self&&0===self.Symbol.length
-)) {!function(t,r,n){"use strict";var e,u=0,o=""+Math.random(),l="__symbol:",c=l.length,a="__symbol@@"+o,i="defineProperty",f="defineProperties",s="getOwnPropertyNames",v="getOwnPropertyDescriptor",b="propertyIsEnumerable",h=t.prototype,y=h.hasOwnProperty,m=h[b],p=h.toString,g=Array.prototype.concat,w=t.getOwnPropertyNames?t.getOwnPropertyNames(self):[],S=t[s],d=function L(t){if("[object Window]"===p.call(t))try{return S(t)}catch(r){return g.call([],w)}return S(t)},P=t[v],j=t.create,O=t.keys,E=t.freeze||t,N=t[i],_=t[f],k=P(t,s),T=function(t,r,n){if(!y.call(t,a))try{N(t,a,{enumerable:!1,configurable:!1,writable:!1,value:{}})}catch(e){t[a]={}}t[a]["@@"+r]=n},z=function(t,r){var n=j(t);return d(r).forEach(function(t){M.call(r,t)&&G(n,t,r[t])}),n},A=function(t){var r=j(t);return r.enumerable=!1,r},D=function Q(){},F=function(t){return t!=a&&!y.call(x,t)},I=function(t){return t!=a&&y.call(x,t)},M=function R(t){var r=""+t;return I(r)?y.call(this,r)&&this[a]["@@"+r]:m.call(this,t)},W=function(r){var n={enumerable:!1,configurable:!0,get:D,set:function(t){e(this,r,{enumerable:!1,configurable:!0,writable:!0,value:t}),T(this,r,!0)}};try{N(h,r,n)}catch(u){h[r]=n.value}return E(x[r]=N(t(r),"constructor",B))},q=function U(){var t=arguments[0];if(this instanceof U)throw new TypeError("Symbol is not a constructor");return W(l.concat(t||"",o,++u))},x=j(null),B={value:q},C=function(t){return x[t]},G=function V(t,r,n){var u=""+r;return I(u)?(e(t,u,n.enumerable?A(n):n),T(t,u,!!n.enumerable)):N(t,r,n),t},H=function(t){return function(r){return y.call(t,a)&&y.call(t[a],"@@"+r)}},J=function X(t){return d(t).filter(t===h?H(t):I).map(C)};k.value=G,N(t,i,k),k.value=J,N(t,"getOwnPropertySymbols",k),k.value=function Y(t){return d(t).filter(F)},N(t,s,k),k.value=function Z(t,r){var n=J(r);return n.length?O(r).concat(n).forEach(function(n){M.call(r,n)&&G(t,n,r[n])}):_(t,r),t},N(t,f,k),k.value=M,N(h,b,k),k.value=q,N(n,"Symbol",k),k.value=function(t){var r=l.concat(l,t,o);return r in h?x[r]:W(r)},N(q,"for",k),k.value=function(t){if(F(t))throw new TypeError(t+" is not a symbol");return y.call(x,t)?t.slice(2*c,-o.length):void 0},N(q,"keyFor",k),k.value=function $(t,r){var n=P(t,r);return n&&I(r)&&(n.enumerable=M.call(t,r)),n},N(t,v,k),k.value=function(t,r){return 1===arguments.length||void 0===r?j(t):z(t,r)},N(t,"create",k);var K=null===function(){return this}.call(null);k.value=K?function(){var t=p.call(this);return"[object String]"===t&&I(this)?"[object Symbol]":t}:function(){if(this===window)return"[object Null]";var t=p.call(this);return"[object String]"===t&&I(this)?"[object Symbol]":t},N(h,"toString",k),e=function(t,r,n){var e=P(h,r);delete h[r],N(t,r,n),t!==h&&N(h,r,e)}}(Object,0,this);}if (!("Symbol"in self&&"iterator"in self.Symbol
-)) {Object.defineProperty(self.Symbol,"iterator",{value:self.Symbol("iterator")});}function GetIterator(t){var e=arguments.length>1?arguments[1]:GetMethod(t,Symbol.iterator),r=Call(e,t);if("object"!==Type(r))throw new TypeError("bad iterator");var o=GetV(r,"next"),a=Object.create(null);return a["[[Iterator]]"]=r,a["[[NextMethod]]"]=o,a["[[Done]]"]=!1,a}if (!("Symbol"in self&&"species"in self.Symbol
-)) {Object.defineProperty(Symbol,"species",{value:Symbol("species")});}if (!("Map"in self&&function(t){try{var n=new t.Map([[1,1],[2,2]])
-return 0===t.Map.length&&2===n.size&&"Symbol"in t&&"iterator"in t.Symbol&&"function"==typeof n[t.Symbol.iterator]}catch(e){return!1}}(self)
-)) {!function(e){function t(e,t){if("object"!==Type(e))throw new TypeError("createMapIterator called on incompatible receiver "+Object.prototype.toString.call(e));if(!0!==e._es6Map)throw new TypeError("createMapIterator called on incompatible receiver "+Object.prototype.toString.call(e));var r=Object.create(u);return Object.defineProperty(r,"[[Map]]",{configurable:!0,enumerable:!1,writable:!0,value:e}),Object.defineProperty(r,"[[MapNextIndex]]",{configurable:!0,enumerable:!1,writable:!0,value:0}),Object.defineProperty(r,"[[MapIterationKind]]",{configurable:!0,enumerable:!1,writable:!0,value:t}),r}var r=function(){try{var e={};return Object.defineProperty(e,"t",{configurable:!0,enumerable:!1,get:function(){return!0},set:undefined}),!!e.t}catch(t){return!1}}(),o=0,a=Symbol("meta_"+(1e8*Math.random()+"").replace(".","")),n=function(e){if("object"==typeof e?null!==e:"function"==typeof e){if(!Object.isExtensible(e))return!1;if(!e[a]){var t=typeof e+"-"+ ++o;Object.defineProperty(e,a,{configurable:!1,enumerable:!1,writable:!1,value:t})}return e[a]}return""+e},i=function(e,t){var r=n(t);if(!1===r)return p(e,t);var o=e._table[r];return o!==undefined&&o},p=function(e,t){for(var r=0;r<e._keys.length;r++){var o=e._keys[r];if(o!==c&&SameValueZero(o,t))return r}return!1},l=function(e,t,r){var o=n(t);return!1!==o&&(!1===r?delete e._table[o]:e._table[o]=r,!0)},c=Symbol("undef"),y=function f(){if(!(this instanceof f))throw new TypeError('Constructor Map requires "new"');var e=OrdinaryCreateFromConstructor(this,f.prototype,{_table:{},_keys:[],_values:[],_size:0,_es6Map:!0});r||Object.defineProperty(e,"size",{configurable:!0,enumerable:!1,writable:!0,value:0});var t=arguments.length>0?arguments[0]:undefined;if(null===t||t===undefined)return e;var o=e.set;if(!IsCallable(o))throw new TypeError("Map.prototype.set is not a function");try{for(var a=GetIterator(t);;){var n=IteratorStep(a);if(!1===n)return e;var i=IteratorValue(n);if("object"!==Type(i))try{throw new TypeError("Iterator value "+i+" is not an entry object")}catch(u){return IteratorClose(a,u)}try{var p=i[0],l=i[1];o.call(e,p,l)}catch(s){return IteratorClose(a,s)}}}catch(s){if(Array.isArray(t)||"[object Arguments]"===Object.prototype.toString.call(t)||t.callee){var c,y=t.length;for(c=0;c<y;c++)o.call(e,t[c][0],t[c][1])}}return e};Object.defineProperty(y,"prototype",{configurable:!1,enumerable:!1,writable:!1,value:{}}),r?Object.defineProperty(y,Symbol.species,{configurable:!0,enumerable:!1,get:function(){return this},set:undefined}):CreateMethodProperty(y,Symbol.species,y),CreateMethodProperty(y.prototype,"clear",function b(){var e=this;if("object"!==Type(e))throw new TypeError("Method Map.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(e));if(!0!==e._es6Map)throw new TypeError("Method Map.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(e));for(var t=e._keys,o=0;o<t.length;o++)e._keys[o]=c,e._values[o]=c;return this._size=0,r||(this.size=this._size),this._table={},undefined}),CreateMethodProperty(y.prototype,"constructor",y),CreateMethodProperty(y.prototype,"delete",function(e){var t=this;if("object"!==Type(t))throw new TypeError("Method Map.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Map)throw new TypeError("Method Map.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(t));var o=i(t,e);if(!1!==o){var a=t._keys[o];if(a!==c&&SameValueZero(a,e))return this._keys[o]=c,this._values[o]=c,this._size=--this._size,r||(this.size=this._size),l(this,e,!1),!0}return!1}),CreateMethodProperty(y.prototype,"entries",function h(){return t(this,"key+value")}),CreateMethodProperty(y.prototype,"forEach",function(e){var t=this;if("object"!==Type(t))throw new TypeError("Method Map.prototype.forEach called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Map)throw new TypeError("Method Map.prototype.forEach called on incompatible receiver "+Object.prototype.toString.call(t));if(!IsCallable(e))throw new TypeError(Object.prototype.toString.call(e)+" is not a function.");if(arguments[1])var r=arguments[1];for(var o=t._keys,a=0;a<o.length;a++)t._keys[a]!==c&&t._values[a]!==c&&e.call(r,t._values[a],t._keys[a],t);return undefined}),CreateMethodProperty(y.prototype,"get",function d(e){var t=this;if("object"!==Type(t))throw new TypeError("Method Map.prototype.get called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Map)throw new TypeError("Method Map.prototype.get called on incompatible receiver "+Object.prototype.toString.call(t));var r=i(t,e);if(!1!==r){var o=t._keys[r];if(o!==c&&SameValueZero(o,e))return t._values[r]}return undefined}),CreateMethodProperty(y.prototype,"has",function v(e){var t=this;if("object"!=typeof t)throw new TypeError("Method Map.prototype.has called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Map)throw new TypeError("Method Map.prototype.has called on incompatible receiver "+Object.prototype.toString.call(t));var r=i(t,e);if(!1!==r){var o=t._keys[r];if(o!==c&&SameValueZero(o,e))return!0}return!1}),CreateMethodProperty(y.prototype,"keys",function M(){return t(this,"key")}),CreateMethodProperty(y.prototype,"set",function w(e,t){var o=this;if("object"!==Type(o))throw new TypeError("Method Map.prototype.set called on incompatible receiver "+Object.prototype.toString.call(o));if(!0!==o._es6Map)throw new TypeError("Method Map.prototype.set called on incompatible receiver "+Object.prototype.toString.call(o));var a=i(o,e);if(!1!==a)o._values[a]=t;else{-0===e&&(e=0);var n={"[[Key]]":e,"[[Value]]":t};o._keys.push(n["[[Key]]"]),o._values.push(n["[[Value]]"]),l(o,e,o._keys.length-1),++o._size,r||(o.size=o._size)}return o}),r&&Object.defineProperty(y.prototype,"size",{configurable:!0,enumerable:!1,get:function(){var e=this;if("object"!==Type(e))throw new TypeError("Method Map.prototype.size called on incompatible receiver "+Object.prototype.toString.call(e));if(!0!==e._es6Map)throw new TypeError("Method Map.prototype.size called on incompatible receiver "+Object.prototype.toString.call(e));return this._size},set:undefined}),CreateMethodProperty(y.prototype,"values",function j(){return t(this,"value")}),CreateMethodProperty(y.prototype,Symbol.iterator,y.prototype.entries),"name"in y||Object.defineProperty(y,"name",{configurable:!0,enumerable:!1,writable:!1,value:"Map"});var u={};Object.defineProperty(u,"isMapIterator",{configurable:!1,enumerable:!1,writable:!1,value:!0}),CreateMethodProperty(u,"next",function _(){var e=this;if("object"!==Type(e))throw new TypeError("Method %MapIteratorPrototype%.next called on incompatible receiver "+Object.prototype.toString.call(e));if(!e.isMapIterator)throw new TypeError("Method %MapIteratorPrototype%.next called on incompatible receiver "+Object.prototype.toString.call(e));var t=e["[[Map]]"],r=e["[[MapNextIndex]]"],o=e["[[MapIterationKind]]"];if(t===undefined)return CreateIterResultObject(undefined,!0);if(!t._es6Map)throw new Error(Object.prototype.toString.call(t)+" has a [[MapData]] internal slot.");for(var a=t._keys,n=a.length;r<n;){var i=Object.create(null);if(i["[[Key]]"]=t._keys[r],i["[[Value]]"]=t._values[r],r+=1,e["[[MapNextIndex]]"]=r,i["[[Key]]"]!==c){if("key"===o)var p=i["[[Key]]"];else if("value"===o)p=i["[[Value]]"];else{if("key+value"!==o)throw new Error;p=[i["[[Key]]"],i["[[Value]]"]]}return CreateIterResultObject(p,!1)}}return e["[[Map]]"]=undefined,CreateIterResultObject(undefined,!0)}),CreateMethodProperty(u,Symbol.iterator,function g(){return this});try{CreateMethodProperty(e,"Map",y)}catch(s){e.Map=y}}(self);}if (!("Set"in self&&function(){try{var e=new self.Set([1,2])
-return 0===self.Set.length&&2===e.size&&"Symbol"in self&&"iterator"in self.Symbol&&"function"==typeof e[self.Symbol.iterator]}catch(t){return!1}}()
-)) {!function(e){function t(e,t){if("object"!=typeof e)throw new TypeError("createSetIterator called on incompatible receiver "+Object.prototype.toString.call(e));if(!0!==e._es6Set)throw new TypeError("createSetIterator called on incompatible receiver "+Object.prototype.toString.call(e));var r=Object.create(i);return Object.defineProperty(r,"[[IteratedSet]]",{configurable:!0,enumerable:!1,writable:!0,value:e}),Object.defineProperty(r,"[[SetNextIndex]]",{configurable:!0,enumerable:!1,writable:!0,value:0}),Object.defineProperty(r,"[[SetIterationKind]]",{configurable:!0,enumerable:!1,writable:!0,value:t}),r}var r=function(){try{var e={};return Object.defineProperty(e,"t",{configurable:!0,enumerable:!1,get:function(){return!0},set:undefined}),!!e.t}catch(t){return!1}}(),o=Symbol("undef"),n=function c(){if(!(this instanceof c))throw new TypeError('Constructor Set requires "new"');var e=OrdinaryCreateFromConstructor(this,c.prototype,{_values:[],_size:0,_es6Set:!0});r||Object.defineProperty(e,"size",{configurable:!0,enumerable:!1,writable:!0,value:0});var t=arguments.length>0?arguments[0]:undefined;if(null===t||t===undefined)return e;var o=e.add;if(!IsCallable(o))throw new TypeError("Set.prototype.add is not a function");try{for(var n=GetIterator(t);;){var a=IteratorStep(n);if(!1===a)return e;var i=IteratorValue(a);try{o.call(e,i)}catch(y){return IteratorClose(n,y)}}}catch(y){if(!Array.isArray(t)&&"[object Arguments]"!==Object.prototype.toString.call(t)&&!t.callee)throw y;var l,p=t.length;for(l=0;l<p;l++)o.call(e,t[l])}return e};Object.defineProperty(n,"prototype",{configurable:!1,enumerable:!1,writable:!1,value:{}}),r?Object.defineProperty(n,Symbol.species,{configurable:!0,enumerable:!1,get:function(){return this},set:undefined}):CreateMethodProperty(n,Symbol.species,n),CreateMethodProperty(n.prototype,"add",function p(e){var t=this;if("object"!=typeof t)throw new TypeError("Method Set.prototype.add called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Set)throw new TypeError("Method Set.prototype.add called on incompatible receiver "+Object.prototype.toString.call(t));for(var n=t._values,a=0;a<n.length;a++){var i=n[a];if(i!==o&&SameValueZero(i,e))return t}return 0===e&&1/e==-Infinity&&(e=0),t._values.push(e),this._size=++this._size,r||(this.size=this._size),t}),CreateMethodProperty(n.prototype,"clear",function y(){var e=this;if("object"!=typeof e)throw new TypeError("Method Set.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(e));if(!0!==e._es6Set)throw new TypeError("Method Set.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(e));for(var t=e._values,n=0;n<t.length;n++)t[n]=o;return this._size=0,r||(this.size=this._size),undefined}),CreateMethodProperty(n.prototype,"constructor",n),CreateMethodProperty(n.prototype,"delete",function(e){var t=this;if("object"!=typeof t)throw new TypeError("Method Set.prototype.delete called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Set)throw new TypeError("Method Set.prototype.delete called on incompatible receiver "+Object.prototype.toString.call(t));for(var n=t._values,a=0;a<n.length;a++){var i=n[a];if(i!==o&&SameValueZero(i,e))return n[a]=o,this._size=--this._size,r||(this.size=this._size),!0}return!1}),CreateMethodProperty(n.prototype,"entries",function u(){return t(this,"key+value")}),CreateMethodProperty(n.prototype,"forEach",function f(e){var t=this;if("object"!=typeof t)throw new TypeError("Method Set.prototype.forEach called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Set)throw new TypeError("Method Set.prototype.forEach called on incompatible receiver "+Object.prototype.toString.call(t));if(!IsCallable(e))throw new TypeError(Object.prototype.toString.call(e)+" is not a function.");if(arguments[1])var r=arguments[1];for(var n=t._values,a=0;a<n.length;a++){var i=n[a];i!==o&&e.call(r,i,i,t)}return undefined}),CreateMethodProperty(n.prototype,"has",function d(e){var t=this;if("object"!=typeof t)throw new TypeError("Method Set.prototype.forEach called on incompatible receiver "+Object.prototype.toString.call(t));if(!0!==t._es6Set)throw new TypeError("Method Set.prototype.forEach called on incompatible receiver "+Object.prototype.toString.call(t));for(var r=t._values,n=0;n<r.length;n++){var a=r[n];if(a!==o&&SameValueZero(a,e))return!0}return!1});var a=function h(){return t(this,"value")};CreateMethodProperty(n.prototype,"values",a),CreateMethodProperty(n.prototype,"keys",a),r&&Object.defineProperty(n.prototype,"size",{configurable:!0,enumerable:!1,get:function(){var e=this;if("object"!=typeof e)throw new TypeError("Method Set.prototype.size called on incompatible receiver "+Object.prototype.toString.call(e));if(!0!==e._es6Set)throw new TypeError("Method Set.prototype.size called on incompatible receiver "+Object.prototype.toString.call(e));for(var t=e._values,r=0,n=0;n<t.length;n++){t[n]!==o&&(r+=1)}return r},set:undefined}),CreateMethodProperty(n.prototype,Symbol.iterator,a),"name"in n||Object.defineProperty(n,"name",{configurable:!0,enumerable:!1,writable:!1,value:"Set"});var i={};Object.defineProperty(i,"isSetIterator",{configurable:!1,enumerable:!1,writable:!1,value:!0}),CreateMethodProperty(i,"next",function b(){var e=this;if("object"!=typeof e)throw new TypeError("Method %SetIteratorPrototype%.next called on incompatible receiver "+Object.prototype.toString.call(e));if(!e.isSetIterator)throw new TypeError("Method %SetIteratorPrototype%.next called on incompatible receiver "+Object.prototype.toString.call(e));var t=e["[[IteratedSet]]"],r=e["[[SetNextIndex]]"],n=e["[[SetIterationKind]]"];if(t===undefined)return CreateIterResultObject(undefined,!0);if(!t._es6Set)throw new Error(Object.prototype.toString.call(t)+" does not have [[SetData]] internal slot.");for(var a=t._values,i=a.length;r<i;){var l=a[r];if(r+=1,e["[[SetNextIndex]]"]=r,l!==o)return"key+value"===n?CreateIterResultObject([l,l],!1):CreateIterResultObject(l,!1)}return e["[[IteratedSet]]"]=undefined,CreateIterResultObject(undefined,!0)}),CreateMethodProperty(i,Symbol.iterator,function s(){return this});try{CreateMethodProperty(e,"Set",n)}catch(l){e.Set=n}}(self);}if (!("from"in Array&&function(){try{return Array.from({length:-Infinity}),!0}catch(r){return!1}}()
-)) {!function(){function r(r){return"string"==typeof r||"object"==typeof r&&"[object String]"===t.call(r)}var t=Object.prototype.toString,e=String.prototype.match;CreateMethodProperty(Array,"from",function o(t){var o=this,a=arguments.length>1?arguments[1]:undefined;if(a===undefined)var n=!1;else{if(!1===IsCallable(a))throw new TypeError(Object.prototype.toString.call(a)+" is not a function.");var i=arguments.length>2?arguments[2]:undefined;if(i!==undefined)var l=i;else l=undefined;n=!0}var u=GetMethod(t,Symbol.iterator);if(u!==undefined){if(IsConstructor(o))var f=Construct(o);else f=ArrayCreate(0);for(var c=GetIterator(t,u),s=0;;){if(s>=Math.pow(2,53)-1){var h=new TypeError("Iteration count can not be greater than or equal 9007199254740991.");return IteratorClose(c,h)}var y=ToString(s),C=IteratorStep(c);if(!1===C)return f.length=s,f;var g=IteratorValue(C);if(n)try{var p=Call(a,l,[g,s])}catch(b){return IteratorClose(c,b)}else p=g;try{CreateDataPropertyOrThrow(f,y,p)}catch(b){return IteratorClose(c,b)}s+=1}}if(r(t))var v=e.call(t,/[\uD800-\uDBFF][\uDC00-\uDFFF]?|[^\uD800-\uDFFF]|./g)||[];else v=ToObject(t);var d=ToLength(Get(v,"length"));for(f=IsConstructor(o)?Construct(o,[d]):ArrayCreate(d),s=0;s<d;){y=ToString(s);var I=Get(v,y);p=!0===n?Call(a,l,[I,s]):I,CreateDataPropertyOrThrow(f,y,p),s+=1}return f.length=d,f})}();}if (!("Symbol"in self&&"toStringTag"in self.Symbol
-)) {Object.defineProperty(Symbol,"toStringTag",{value:Symbol("toStringTag")});}if (!("Promise"in self
-)) {!function(){"use strict";function n(){return tn[q][B]||D}function t(n){return n&&"object"==typeof n}function e(n){return"function"==typeof n}function r(n,t){return n instanceof t}function o(n){return r(n,A)}function i(n,t,e){if(!t(n))throw a(e)}function u(){try{return b.apply(R,arguments)}catch(n){return Y.e=n,Y}}function c(n,t){return b=n,R=t,u}function f(n,t){function e(){for(var e=0;e<o;)t(r[e],r[e+1]),r[e++]=T,r[e++]=T;o=0,r.length>n&&(r.length=n)}var r=L(n),o=0;return function(n,t){r[o++]=n,r[o++]=t,2===o&&tn.nextTick(e)}}function s(n,t){var o,i,u,f,s=0;if(!n)throw a(N);var l=n[tn[q][z]];if(e(l))i=l.call(n);else{if(!e(n.next)){if(r(n,L)){for(o=n.length;s<o;)t(n[s],s++);return s}throw a(N)}i=n}for(;!(u=i.next()).done;)if((f=c(t)(u.value,s++))===Y)throw e(i[G])&&i[G](),f.e;return s}function a(n){return new TypeError(n)}function l(n){return(n?"":Q)+(new A).stack}function h(n,t){var e="on"+n.toLowerCase(),r=F[e];E&&E.listeners(n).length?n===X?E.emit(n,t._v,t):E.emit(n,t):r?r({reason:t._v,promise:t}):tn[n](t._v,t)}function v(n){return n&&n._s}function _(n){if(v(n))return new n(Z);var t,r,o;return t=new n(function(n,e){if(t)throw a();r=n,o=e}),i(r,e),i(o,e),t}function d(n,t){var e=!1;return function(r){e||(e=!0,I&&(n[M]=l(!0)),t===U?g(n,r):y(n,t,r))}}function p(n,t,r,o){return e(r)&&(t._onFulfilled=r),e(o)&&(n[J]&&h(W,n),t._onRejected=o),I&&(t._p=n),n[n._c++]=t,n._s!==$&&rn(n,t),t}function m(n){if(n._umark)return!0;n._umark=!0;for(var t,e=0,r=n._c;e<r;)if(t=n[e++],t._onRejected||m(t))return!0}function w(n,t){function e(n){return r.push(n.replace(/^\s+|\s+$/g,""))}var r=[];return I&&(t[M]&&e(t[M]),function o(n){n&&K in n&&(o(n._next),e(n[K]+""),o(n._p))}(t)),(n&&n.stack?n.stack:n)+("\n"+r.join("\n")).replace(nn,"")}function j(n,t){return n(t)}function y(n,t,e){var r=0,i=n._c;if(n._s===$)for(n._s=t,n._v=e,t===O&&(I&&o(e)&&(e.longStack=w(e,n)),on(n));r<i;)rn(n,n[r++]);return n}function g(n,r){if(r===n&&r)return y(n,O,a(V)),n;if(r!==S&&(e(r)||t(r))){var o=c(k)(r);if(o===Y)return y(n,O,o.e),n;e(o)?(I&&v(r)&&(n._next=r),v(r)?x(n,r,o):tn.nextTick(function(){x(n,r,o)})):y(n,U,r)}else y(n,U,r);return n}function k(n){return n.then}function x(n,t,e){var r=c(e,t)(function(e){t&&(t=S,g(n,e))},function(e){t&&(t=S,y(n,O,e))});r===Y&&t&&(y(n,O,r.e),t=S)}var T,b,R,S=null,C="object"==typeof self,F=self,P=F.Promise,E=F.process,H=F.console,I=!0,L=Array,A=Error,O=1,U=2,$=3,q="Symbol",z="iterator",B="species",D=q+"("+B+")",G="return",J="_uh",K="_pt",M="_st",N="Invalid argument",Q="\nFrom previous ",V="Chaining cycle detected for promise",W="rejectionHandled",X="unhandledRejection",Y={e:S},Z=function(){},nn=/^.+\/node_modules\/yaku\/.+\n?/gm,tn=function(n){var r,o=this;if(!t(o)||o._s!==T)throw a("Invalid this");if(o._s=$,I&&(o[K]=l()),n!==Z){if(!e(n))throw a(N);r=c(n)(d(o,U),d(o,O)),r===Y&&y(o,O,r.e)}};tn["default"]=tn,function en(n,t){for(var e in t)n[e]=t[e]}(tn.prototype,{then:function(n,t){if(this._s===undefined)throw a();return p(this,_(tn.speciesConstructor(this,tn)),n,t)},"catch":function(n){return this.then(T,n)},"finally":function(n){return this.then(function(t){return tn.resolve(n()).then(function(){return t})},function(t){return tn.resolve(n()).then(function(){throw t})})},_c:0,_p:S}),tn.resolve=function(n){return v(n)?n:g(_(this),n)},tn.reject=function(n){return y(_(this),O,n)},tn.race=function(n){var t=this,e=_(t),r=function(n){y(e,U,n)},o=function(n){y(e,O,n)},i=c(s)(n,function(n){t.resolve(n).then(r,o)});return i===Y?t.reject(i.e):e},tn.all=function(n){function t(n){y(o,O,n)}var e,r=this,o=_(r),i=[];return(e=c(s)(n,function(n,u){r.resolve(n).then(function(n){i[u]=n,--e||y(o,U,i)},t)}))===Y?r.reject(e.e):(e||y(o,U,[]),o)},tn.Symbol=F[q]||{},c(function(){Object.defineProperty(tn,n(),{get:function(){return this}})})(),tn.speciesConstructor=function(t,e){var r=t.constructor;return r?r[n()]||e:e},tn.unhandledRejection=function(n,t){H&&H.error("Uncaught (in promise)",I?t.longStack:w(n,t))},tn.rejectionHandled=Z,tn.enableLongStackTrace=function(){I=!0},tn.nextTick=C?function(n){P?new P(function(n){n()}).then(n):setTimeout(n)}:E.nextTick,tn._s=1;var rn=f(999,function(n,t){var e,r;return(r=n._s!==O?t._onFulfilled:t._onRejected)===T?void y(t,n._s,n._v):(e=c(j)(r,n._v))===Y?void y(t,O,e.e):void g(t,e)}),on=f(9,function(n){m(n)||(n[J]=1,h(X,n))});F.Promise=tn}();}if (!((function(e){"use strict"
-try{var a=new e.URL("http://example.com")
-if("href"in a&&"searchParams"in a){var r=new URL("http://example.com")
-if(r.search="a=1&b=2","http://example.com/?a=1&b=2"===r.href&&(r.search="","http://example.com/"===r.href)){var t=new e.URLSearchParams("a=1"),c=new e.URLSearchParams(t)
-if("a=1"===String(c))return!0}}return!1}catch(h){return!1}})(self)
-)) {!function(e){"use strict";function t(t){return!!t&&("Symbol"in e&&"iterator"in e.Symbol&&"function"==typeof t[Symbol.iterator]||!!Array.isArray(t))}function n(e){return"from"in Array?Array.from(e):Array.prototype.slice.call(e)}!function(){function r(e){var t="",n=!0;return e.forEach(function(e){var r=encodeURIComponent(e.name),a=encodeURIComponent(e.value);n||(t+="&"),t+=r+"="+a,n=!1}),t.replace(/%20/g,"+")}function a(e,t){var n=e.split("&");t&&-1===n[0].indexOf("=")&&(n[0]="="+n[0]);var r=[];n.forEach(function(e){if(0!==e.length){var t=e.indexOf("=");if(-1!==t)var n=e.substring(0,t),a=e.substring(t+1);else n=e,a="";n=n.replace(/\+/g," "),a=a.replace(/\+/g," "),r.push({name:n,value:a})}});var a=[];return r.forEach(function(e){a.push({name:decodeURIComponent(e.name),value:decodeURIComponent(e.value)})}),a}function i(e){if(c)return new s(e);var t=document.createElement("a");return t.href=e,t}function o(e){var i=this;this._list=[],e===undefined||null===e||(e instanceof o?this._list=a(String(e)):"object"==typeof e&&t(e)?n(e).forEach(function(e){if(!t(e))throw TypeError();var r=n(e);if(2!==r.length)throw TypeError();i._list.push({name:String(r[0]),value:String(r[1])})}):"object"==typeof e&&e?Object.keys(e).forEach(function(t){i._list.push({name:String(t),value:String(e[t])})}):(e=String(e),"?"===e.substring(0,1)&&(e=e.substring(1)),this._list=a(e))),this._url_object=null,this._setList=function(e){u||(i._list=e)};var u=!1;this._update_steps=function(){u||(u=!0,i._url_object&&("about:"===i._url_object.protocol&&-1!==i._url_object.pathname.indexOf("?")&&(i._url_object.pathname=i._url_object.pathname.split("?")[0]),i._url_object.search=r(i._list),u=!1))}}function u(e,t){var n=0;this.next=function(){if(n>=e.length)return{done:!0,value:undefined};var r=e[n++];return{done:!1,value:"key"===t?r.name:"value"===t?r.value:[r.name,r.value]}}}function l(t,n){function r(){var e=l.href.replace(/#$|\?$|\?(?=#)/g,"");l.href!==e&&(l.href=e)}function u(){m._setList(l.search?a(l.search.substring(1)):[]),m._update_steps()}if(!(this instanceof e.URL))throw new TypeError("Failed to construct 'URL': Please use the 'new' operator.");n&&(t=function(){if(c)return new s(t,n).href;var e;try{var r;if("[object OperaMini]"===Object.prototype.toString.call(window.operamini)?(e=document.createElement("iframe"),e.style.display="none",document.documentElement.appendChild(e),r=e.contentWindow.document):document.implementation&&document.implementation.createHTMLDocument?r=document.implementation.createHTMLDocument(""):document.implementation&&document.implementation.createDocument?(r=document.implementation.createDocument("http://www.w3.org/1999/xhtml","html",null),r.documentElement.appendChild(r.createElement("head")),r.documentElement.appendChild(r.createElement("body"))):window.ActiveXObject&&(r=new window.ActiveXObject("htmlfile"),r.write("<head></head><body></body>"),r.close()),!r)throw Error("base not supported");var a=r.createElement("base");a.href=n,r.getElementsByTagName("head")[0].appendChild(a);var i=r.createElement("a");return i.href=t,i.href}finally{e&&e.parentNode.removeChild(e)}}());var l=i(t||""),f=function(){if(!("defineProperties"in Object))return!1;try{var e={};return Object.defineProperties(e,{prop:{get:function(){return!0}}}),e.prop}catch(t){return!1}}(),h=f?this:document.createElement("a"),m=new o(l.search?l.search.substring(1):null);return m._url_object=h,Object.defineProperties(h,{href:{get:function(){return l.href},set:function(e){l.href=e,r(),u()},enumerable:!0,configurable:!0},origin:{get:function(){return"origin"in l?l.origin:this.protocol+"//"+this.host},enumerable:!0,configurable:!0},protocol:{get:function(){return l.protocol},set:function(e){l.protocol=e},enumerable:!0,configurable:!0},username:{get:function(){return l.username},set:function(e){l.username=e},enumerable:!0,configurable:!0},password:{get:function(){return l.password},set:function(e){l.password=e},enumerable:!0,configurable:!0},host:{get:function(){var e={"http:":/:80$/,"https:":/:443$/,"ftp:":/:21$/}[l.protocol];return e?l.host.replace(e,""):l.host},set:function(e){l.host=e},enumerable:!0,configurable:!0},hostname:{get:function(){return l.hostname},set:function(e){l.hostname=e},enumerable:!0,configurable:!0},port:{get:function(){return l.port},set:function(e){l.port=e},enumerable:!0,configurable:!0},pathname:{get:function(){return"/"!==l.pathname.charAt(0)?"/"+l.pathname:l.pathname},set:function(e){l.pathname=e},enumerable:!0,configurable:!0},search:{get:function(){return l.search},set:function(e){l.search!==e&&(l.search=e,r(),u())},enumerable:!0,configurable:!0},searchParams:{get:function(){return m},enumerable:!0,configurable:!0},hash:{get:function(){return l.hash},set:function(e){l.hash=e,r()},enumerable:!0,configurable:!0},toString:{value:function(){return l.toString()},enumerable:!1,configurable:!0},valueOf:{value:function(){return l.valueOf()},enumerable:!1,configurable:!0}}),h}var c,s=e.URL;try{if(s){if("searchParams"in(c=new e.URL("http://example.com"))){var f=new l("http://example.com");if(f.search="a=1&b=2","http://example.com/?a=1&b=2"===f.href&&(f.search="","http://example.com/"===f.href))return}"href"in c||(c=undefined),c=undefined}}catch(m){}if(Object.defineProperties(o.prototype,{append:{value:function(e,t){this._list.push({name:e,value:t}),this._update_steps()},writable:!0,enumerable:!0,configurable:!0},"delete":{value:function(e){for(var t=0;t<this._list.length;)this._list[t].name===e?this._list.splice(t,1):++t;this._update_steps()},writable:!0,enumerable:!0,configurable:!0},get:{value:function(e){for(var t=0;t<this._list.length;++t)if(this._list[t].name===e)return this._list[t].value;return null},writable:!0,enumerable:!0,configurable:!0},getAll:{value:function(e){for(var t=[],n=0;n<this._list.length;++n)this._list[n].name===e&&t.push(this._list[n].value);return t},writable:!0,enumerable:!0,configurable:!0},has:{value:function(e){for(var t=0;t<this._list.length;++t)if(this._list[t].name===e)return!0;return!1},writable:!0,enumerable:!0,configurable:!0},set:{value:function(e,t){for(var n=!1,r=0;r<this._list.length;)this._list[r].name===e?n?this._list.splice(r,1):(this._list[r].value=t,n=!0,++r):++r;n||this._list.push({name:e,value:t}),this._update_steps()},writable:!0,enumerable:!0,configurable:!0},entries:{value:function(){return new u(this._list,"key+value")},writable:!0,enumerable:!0,configurable:!0},keys:{value:function(){return new u(this._list,"key")},writable:!0,enumerable:!0,configurable:!0},values:{value:function(){return new u(this._list,"value")},writable:!0,enumerable:!0,configurable:!0},forEach:{value:function(e){var t=arguments.length>1?arguments[1]:undefined;this._list.forEach(function(n){e.call(t,n.value,n.name)})},writable:!0,enumerable:!0,configurable:!0},toString:{value:function(){return r(this._list)},writable:!0,enumerable:!1,configurable:!0},sort:{value:function p(){for(var e=this.entries(),t=e.next(),n=[],r={};!t.done;){var a=t.value,i=a[0];n.push(i),Object.prototype.hasOwnProperty.call(r,i)||(r[i]=[]),r[i].push(a[1]),t=e.next()}n.sort();for(var o=0;o<n.length;o++)this["delete"](n[o]);for(var u=0;u<n.length;u++)i=n[u],this.append(i,r[i].shift())}}}),"Symbol"in e&&"iterator"in e.Symbol&&(Object.defineProperty(o.prototype,e.Symbol.iterator,{value:o.prototype.entries,writable:!0,enumerable:!0,configurable:!0}),Object.defineProperty(u.prototype,e.Symbol.iterator,{value:function(){return this},writable:!0,enumerable:!0,configurable:!0})),s)for(var h in s)Object.prototype.hasOwnProperty.call(s,h)&&"function"==typeof s[h]&&(l[h]=s[h]);e.URL=l,e.URLSearchParams=o}(),function(){if("1"!==new e.URLSearchParams([["a",1]]).get("a")||"1"!==new e.URLSearchParams({a:1}).get("a")){var r=e.URLSearchParams;e.URLSearchParams=function(e){if(e&&"object"==typeof e&&t(e)){var a=new r;return n(e).forEach(function(e){if(!t(e))throw TypeError();var r=n(e);if(2!==r.length)throw TypeError();a.append(r[0],r[1])}),a}return e&&"object"==typeof e?(a=new r,Object.keys(e).forEach(function(t){a.set(t,e[t])}),a):new r(e)}}}()}(self);}if (!("Window"in self
-)) {"undefined"==typeof WorkerGlobalScope&&"function"!=typeof importScripts&&function(o){o.constructor?o.Window=o.constructor:(o.Window=o.constructor=new Function("return function Window() {}")()).prototype=self}(self);}if (!((function(n){if(!("Event"in n))return!1
-try{return new Event("click"),!0}catch(t){return!1}})(self)
-)) {!function(){function e(e,t){if(!e)throw new Error("Not enough arguments");var n;if("createEvent"in document){n=document.createEvent("Event");var o=!(!t||t.bubbles===undefined)&&t.bubbles,i=!(!t||t.cancelable===undefined)&&t.cancelable;return n.initEvent(e,o,i),n}return n=document.createEventObject(),n.type=e,n.bubbles=!(!t||t.bubbles===undefined)&&t.bubbles,n.cancelable=!(!t||t.cancelable===undefined)&&t.cancelable,n}var t={click:1,dblclick:1,keyup:1,keypress:1,keydown:1,mousedown:1,mouseup:1,mousemove:1,mouseover:1,mouseenter:1,mouseleave:1,mouseout:1,storage:1,storagecommit:1,textinput:1};if("undefined"!=typeof document&&"undefined"!=typeof window){var n=window.Event&&window.Event.prototype||null;e.NONE=0,e.CAPTURING_PHASE=1,e.AT_TARGET=2,e.BUBBLING_PHASE=3,window.Event=Window.prototype.Event=e,n&&Object.defineProperty(window.Event,"prototype",{configurable:!1,enumerable:!1,writable:!0,value:n}),"createEvent"in document||(window.addEventListener=Window.prototype.addEventListener=Document.prototype.addEventListener=Element.prototype.addEventListener=function o(){var e=this,n=arguments[0],o=arguments[1];if(e===window&&n in t)throw new Error("In IE8 the event: "+n+" is not available on the window object. Please see https://github.com/Financial-Times/polyfill-service/issues/317 for more information.");e._events||(e._events={}),e._events[n]||(e._events[n]=function(t){var n,o=e._events[t.type].list,i=o.slice(),r=-1,c=i.length;for(t.preventDefault=function a(){!1!==t.cancelable&&(t.returnValue=!1)},t.stopPropagation=function l(){t.cancelBubble=!0},t.stopImmediatePropagation=function s(){t.cancelBubble=!0,t.cancelImmediate=!0},t.currentTarget=e,t.relatedTarget=t.fromElement||null,t.target=t.target||t.srcElement||e,t.timeStamp=(new Date).getTime(),t.clientX&&(t.pageX=t.clientX+document.documentElement.scrollLeft,t.pageY=t.clientY+document.documentElement.scrollTop);++r<c&&!t.cancelImmediate;)r in i&&(n=i[r],o.includes(n)&&"function"==typeof n&&n.call(e,t))},e._events[n].list=[],e.attachEvent&&e.attachEvent("on"+n,e._events[n])),e._events[n].list.push(o)},window.removeEventListener=Window.prototype.removeEventListener=Document.prototype.removeEventListener=Element.prototype.removeEventListener=function i(){var e,t=this,n=arguments[0],o=arguments[1];t._events&&t._events[n]&&t._events[n].list&&-1!==(e=t._events[n].list.indexOf(o))&&(t._events[n].list.splice(e,1),t._events[n].list.length||(t.detachEvent&&t.detachEvent("on"+n,t._events[n]),delete t._events[n]))},window.dispatchEvent=Window.prototype.dispatchEvent=Document.prototype.dispatchEvent=Element.prototype.dispatchEvent=function r(e){if(!arguments.length)throw new Error("Not enough arguments");if(!e||"string"!=typeof e.type)throw new Error("DOM Events Exception 0");var t=this,n=e.type;try{if(!e.bubbles){e.cancelBubble=!0;var o=function(e){e.cancelBubble=!0,(t||window).detachEvent("on"+n,o)};this.attachEvent("on"+n,o)}this.fireEvent("on"+n,e)}catch(i){e.target=t;do{e.currentTarget=t,"_events"in t&&"function"==typeof t._events[n]&&t._events[n].call(t,e),"function"==typeof t["on"+n]&&t["on"+n].call(t,e),t=9===t.nodeType?t.parentWindow:t.parentNode}while(t&&!e.cancelBubble)}return!0},document.attachEvent("onreadystatechange",function(){"complete"===document.readyState&&document.dispatchEvent(new e("DOMContentLoaded",{bubbles:!0}))}))}}();}if (!("CustomEvent"in self&&("function"==typeof self.CustomEvent||self.CustomEvent.toString().indexOf("CustomEventConstructor")>-1)
-)) {self.CustomEvent=function e(t,n){if(!t)throw Error('TypeError: Failed to construct "CustomEvent": An event name must be provided.');var l;if(n=n||{bubbles:!1,cancelable:!1,detail:null},"createEvent"in document)try{l=document.createEvent("CustomEvent"),l.initCustomEvent(t,n.bubbles,n.cancelable,n.detail)}catch(a){l=document.createEvent("Event"),l.initEvent(t,n.bubbles,n.cancelable),l.detail=n.detail}else l=new Event(t,n),l.detail=n&&n.detail||null;return l},CustomEvent.prototype=Event.prototype;}if (!("document"in self&&"hidden"in document&&"visibilityState"in document
-)) {!function(){function i(){document.hidden=document[t+"Hidden"],document.visibilityState=document[t+"VisibilityState"]}var t=document.webkitVisibilityState?"webkit":document.mozVisibilityState?"moz":null;t&&(i(),document.addEventListener(t+"visibilitychange",function(){i(),document.dispatchEvent(new CustomEvent("visibilitychange"))}))}();}if (!((function(){var n=!1
-return document.documentElement.addEventListener("focusin",function(){n=!0}),document.documentElement.dispatchEvent(new Event("focusin")),n})()
-)) {self.addEventListener("focus",function(e){e.target.dispatchEvent(new Event("focusin",{bubbles:!0,cancelable:!0}))},!0),self.addEventListener("blur",function(e){e.target.dispatchEvent(new Event("focusout",{bubbles:!0,cancelable:!0}))},!0);}if (!("onhashchange"in self&&(null==self.onhashchange||"function"==typeof self.onhashchange)
-)) {!function(n){function h(){a!==n.location.hash&&(a=n.location.hash,n.dispatchEvent(new Event("hashchange"))),setTimeout(h,500)}var a=n.location.hash;n.onhashchange=function(){},h()}(self);}if (!("XMLHttpRequest"in self&&"prototype"in self.XMLHttpRequest&&"addEventListener"in self.XMLHttpRequest.prototype
-)) {!function(e,t){e.XMLHttpRequest=function s(){var e=this,n=e._request=t?new t:new ActiveXObject("MSXML2.XMLHTTP.3.0");n.onreadystatechange=function(){e.readyState=n.readyState;var t=4===e.readyState;e.response=e.responseText=t?n.responseText:null,e.status=t?n.status:null,e.statusText=t?n.statusText:null,e.dispatchEvent(new Event("readystatechange")),t&&e.dispatchEvent(new Event("load"))},"onerror"in n&&(n.onerror=function(){e.dispatchEvent(new Event("error"))})},e.XMLHttpRequest.UNSENT=0,e.XMLHttpRequest.OPENED=1,e.XMLHttpRequest.HEADERS_RECEIVED=2,e.XMLHttpRequest.LOADING=3,e.XMLHttpRequest.DONE=4;var n=e.XMLHttpRequest.prototype;n.addEventListener=e.addEventListener,n.removeEventListener=e.removeEventListener,n.dispatchEvent=e.dispatchEvent,n.abort=function r(){return this._request()},n.getAllResponseHeaders=function u(){return this._request.getAllResponseHeaders()},n.getResponseHeader=function i(e){return this._request.getResponseHeader(e)},n.open=function a(e,t){this._request.open(e,t,arguments[2],arguments[3],arguments[4])},n.overrideMimeType=function o(e){this._request.overrideMimeType(e)},n.send=function p(){this._request.send(0 in arguments?arguments[0]:null)},n.setRequestHeader=function d(e,t){this._request.setRequestHeader(e,t)}}(self,self.XMLHttpRequest);}})('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+(function(self, undefined) {
+
+  // _ESAbstract.ArrayCreate
+  // 9.4.2.2. ArrayCreate ( length [ , proto ] )
+  function ArrayCreate(length /* [, proto] */) { // eslint-disable-line no-unused-vars
+    // 1. Assert: length is an integer Number ≥ 0.
+    // 2. If length is -0, set length to +0.
+    if (1 / length === -Infinity) {
+      length = 0;
+    }
+    // 3. If length>2^32-1, throw a RangeError exception.
+    if (length > (Math.pow(2, 32) - 1)) {
+      throw new RangeError('Invalid array length');
+    }
+    // 4. If proto is not present, set proto to the intrinsic object %ArrayPrototype%.
+    // 5. Let A be a newly created Array exotic object.
+    var A = [];
+    // 6. Set A's essential internal methods except for [[DefineOwnProperty]] to the default ordinary object definitions specified in 9.1.
+    // 7. Set A.[[DefineOwnProperty]] as specified in 9.4.2.1.
+    // 8. Set A.[[Prototype]] to proto.
+    // 9. Set A.[[Extensible]] to true.
+    // 10. Perform ! OrdinaryDefineOwnProperty(A, "length", PropertyDescriptor{[[Value]]: length, [[Writable]]: true, [[Enumerable]]: false, [[Configurable]]: false}).
+    A.length = length;
+    // 11. Return A.
+    return A;
+  }
+  
+  // _ESAbstract.Call
+  /* global IsCallable */
+  // 7.3.12. Call ( F, V [ , argumentsList ] )
+  function Call(F, V /* [, argumentsList] */) { // eslint-disable-line no-unused-vars
+    // 1. If argumentsList is not present, set argumentsList to a new empty List.
+    var argumentsList = arguments.length > 2 ? arguments[2] : [];
+    // 2. If IsCallable(F) is false, throw a TypeError exception.
+    if (IsCallable(F) === false) {
+      throw new TypeError(Object.prototype.toString.call(F) + 'is not a function.');
+    }
+    // 3. Return ? F.[[Call]](V, argumentsList).
+    return F.apply(V, argumentsList);
+  }
+  
+  // _ESAbstract.CreateDataProperty
+  // 7.3.4. CreateDataProperty ( O, P, V )
+  // NOTE
+  // This abstract operation creates a property whose attributes are set to the same defaults used for properties created by the ECMAScript language assignment operator.
+  // Normally, the property will not already exist. If it does exist and is not configurable or if O is not extensible, [[DefineOwnProperty]] will return false.
+  function CreateDataProperty(O, P, V) { // eslint-disable-line no-unused-vars
+    // 1. Assert: Type(O) is Object.
+    // 2. Assert: IsPropertyKey(P) is true.
+    // 3. Let newDesc be the PropertyDescriptor{ [[Value]]: V, [[Writable]]: true, [[Enumerable]]: true, [[Configurable]]: true }.
+    var newDesc = {
+      value: V,
+      writable: true,
+      enumerable: true,
+      configurable: true
+    };
+    // 4. Return ? O.[[DefineOwnProperty]](P, newDesc).
+    try {
+      Object.defineProperty(O, P, newDesc);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+  
+  // _ESAbstract.CreateDataPropertyOrThrow
+  /* global CreateDataProperty */
+  // 7.3.6. CreateDataPropertyOrThrow ( O, P, V )
+  function CreateDataPropertyOrThrow(O, P, V) { // eslint-disable-line no-unused-vars
+    // 1. Assert: Type(O) is Object.
+    // 2. Assert: IsPropertyKey(P) is true.
+    // 3. Let success be ? CreateDataProperty(O, P, V).
+    var success = CreateDataProperty(O, P, V);
+    // 4. If success is false, throw a TypeError exception.
+    if (!success) {
+      throw new TypeError('Cannot assign value `' + Object.prototype.toString.call(V) + '` to property `' + Object.prototype.toString.call(P) + '` on object `' + Object.prototype.toString.call(O) + '`');
+    }
+    // 5. Return success.
+    return success;
+  }
+  
+  // _ESAbstract.CreateMethodProperty
+  // 7.3.5. CreateMethodProperty ( O, P, V )
+  function CreateMethodProperty(O, P, V) { // eslint-disable-line no-unused-vars
+    // 1. Assert: Type(O) is Object.
+    // 2. Assert: IsPropertyKey(P) is true.
+    // 3. Let newDesc be the PropertyDescriptor{[[Value]]: V, [[Writable]]: true, [[Enumerable]]: false, [[Configurable]]: true}.
+    var newDesc = {
+      value: V,
+      writable: true,
+      enumerable: false,
+      configurable: true
+    };
+    // 4. Return ? O.[[DefineOwnProperty]](P, newDesc).
+    Object.defineProperty(O, P, newDesc);
+  }
+  
+  // _ESAbstract.Get
+  // 7.3.1. Get ( O, P )
+  function Get(O, P) { // eslint-disable-line no-unused-vars
+    // 1. Assert: Type(O) is Object.
+    // 2. Assert: IsPropertyKey(P) is true.
+    // 3. Return ? O.[[Get]](P, O).
+    return O[P];
+  }
+  
+  // _ESAbstract.HasOwnProperty
+  // 7.3.11 HasOwnProperty (O, P)
+  function HasOwnProperty(o, p) { // eslint-disable-line no-unused-vars
+    // 1. Assert: Type(O) is Object.
+    // 2. Assert: IsPropertyKey(P) is true.
+    // 3. Let desc be ? O.[[GetOwnProperty]](P).
+    // 4. If desc is undefined, return false.
+    // 5. Return true.
+    // Polyfill.io - As we expect user agents to support ES3 fully we can skip the above steps and use Object.prototype.hasOwnProperty to do them for us.
+    return Object.prototype.hasOwnProperty.call(o, p);
+  }
+  
+  // _ESAbstract.HasProperty
+  // 7.3.10. HasProperty ( O, P )
+  function HasProperty(O, P) { // eslint-disable-line no-unused-vars
+    // Assert: Type(O) is Object.
+    // Assert: IsPropertyKey(P) is true.
+    // Return ? O.[[HasProperty]](P).
+    return P in O;
+  }
+  
+  // _ESAbstract.IsArray
+  // 7.2.2. IsArray ( argument )
+  function IsArray(argument) { // eslint-disable-line no-unused-vars
+    // 1. If Type(argument) is not Object, return false.
+    // 2. If argument is an Array exotic object, return true.
+    // 3. If argument is a Proxy exotic object, then
+      // a. If argument.[[ProxyHandler]] is null, throw a TypeError exception.
+      // b. Let target be argument.[[ProxyTarget]].
+      // c. Return ? IsArray(target).
+    // 4. Return false.
+  
+    // Polyfill.io - We can skip all the above steps and check the string returned from Object.prototype.toString().
+    return Object.prototype.toString.call(argument) === '[object Array]';
+  }
+  
+  // _ESAbstract.IsCallable
+  // 7.2.3. IsCallable ( argument )
+  function IsCallable(argument) { // eslint-disable-line no-unused-vars
+    // 1. If Type(argument) is not Object, return false.
+    // 2. If argument has a [[Call]] internal method, return true.
+    // 3. Return false.
+  
+    // Polyfill.io - Only function objects have a [[Call]] internal method. This means we can simplify this function to check that the argument has a type of function.
+    return typeof argument === 'function';
+  }
+  
+  // _ESAbstract.SameValueNonNumber
+  // 7.2.12. SameValueNonNumber ( x, y )
+  function SameValueNonNumber(x, y) { // eslint-disable-line no-unused-vars
+    // 1. Assert: Type(x) is not Number.
+    // 2. Assert: Type(x) is the same as Type(y).
+    // 3. If Type(x) is Undefined, return true.
+    // 4. If Type(x) is Null, return true.
+    // 5. If Type(x) is String, then
+      // a. If x and y are exactly the same sequence of code units (same length and same code units at corresponding indices), return true; otherwise, return false.
+    // 6. If Type(x) is Boolean, then
+      // a. If x and y are both true or both false, return true; otherwise, return false.
+    // 7. If Type(x) is Symbol, then
+      // a. If x and y are both the same Symbol value, return true; otherwise, return false.
+    // 8. If x and y are the same Object value, return true. Otherwise, return false.
+  
+    // Polyfill.io - We can skip all above steps because the === operator does it all for us.
+    return x === y;
+  }
+  
+  // _ESAbstract.ToBoolean
+  // 7.1.2. ToBoolean ( argument )
+  // The abstract operation ToBoolean converts argument to a value of type Boolean according to Table 9:
+  /*
+  --------------------------------------------------------------------------------------------------------------
+  | Argument Type | Result                                                                                     |
+  --------------------------------------------------------------------------------------------------------------
+  | Undefined     | Return false.                                                                              |
+  | Null          | Return false.                                                                              |
+  | Boolean       | Return argument.                                                                           |
+  | Number        | If argument is +0, -0, or NaN, return false; otherwise return true.                        |
+  | String        | If argument is the empty String (its length is zero), return false; otherwise return true. |
+  | Symbol        | Return true.                                                                               |
+  | Object        | Return true.                                                                               |
+  --------------------------------------------------------------------------------------------------------------
+  */
+  function ToBoolean(argument) { // eslint-disable-line no-unused-vars
+    return Boolean(argument);
+  }
+  
+  // _ESAbstract.ToInteger
+  // 7.1.4. ToInteger ( argument )
+  function ToInteger(argument) { // eslint-disable-line no-unused-vars
+    // 1. Let number be ? ToNumber(argument).
+    var number = Number(argument);
+    // 2. If number is NaN, return +0.
+    if (isNaN(number)) {
+      return 0;
+    }
+    // 3. If number is +0, -0, +∞, or -∞, return number.
+    if (1/number === Infinity || 1/number === -Infinity || number === Infinity || number === -Infinity) {
+      return number;
+    }
+    // 4. Return the number value that is the same sign as number and whose magnitude is floor(abs(number)).
+    return ((number < 0) ? -1 : 1) * Math.floor(Math.abs(number));
+  }
+  
+  // _ESAbstract.ToLength
+  /* global ToInteger */
+  // 7.1.15. ToLength ( argument )
+  function ToLength(argument) { // eslint-disable-line no-unused-vars
+    // 1. Let len be ? ToInteger(argument).
+    var len = ToInteger(argument);
+    // 2. If len ≤ +0, return +0.
+    if (len <= 0) {
+      return 0;
+    }
+    // 3. Return min(len, 253-1).
+    return Math.min(len, Math.pow(2, 53) -1);
+  }
+  
+  // _ESAbstract.ToObject
+  // 7.1.13 ToObject ( argument )
+  // The abstract operation ToObject converts argument to a value of type Object according to Table 12:
+  // Table 12: ToObject Conversions
+  /*
+  |----------------------------------------------------------------------------------------------------------------------------------------------------|
+  | Argument Type | Result                                                                                                                             |
+  |----------------------------------------------------------------------------------------------------------------------------------------------------|
+  | Undefined     | Throw a TypeError exception.                                                                                                       |
+  | Null          | Throw a TypeError exception.                                                                                                       |
+  | Boolean       | Return a new Boolean object whose [[BooleanData]] internal slot is set to argument. See 19.3 for a description of Boolean objects. |
+  | Number        | Return a new Number object whose [[NumberData]] internal slot is set to argument. See 20.1 for a description of Number objects.    |
+  | String        | Return a new String object whose [[StringData]] internal slot is set to argument. See 21.1 for a description of String objects.    |
+  | Symbol        | Return a new Symbol object whose [[SymbolData]] internal slot is set to argument. See 19.4 for a description of Symbol objects.    |
+  | Object        | Return argument.                                                                                                                   |
+  |----------------------------------------------------------------------------------------------------------------------------------------------------|
+  */
+  function ToObject(argument) { // eslint-disable-line no-unused-vars
+    if (argument === null || argument === undefined) {
+      throw TypeError();
+    }
+    return Object(argument);
+  }
+  
+  // _ESAbstract.GetV
+  /* global ToObject */
+  // 7.3.2 GetV (V, P)
+  function GetV(v, p) { // eslint-disable-line no-unused-vars
+    // 1. Assert: IsPropertyKey(P) is true.
+    // 2. Let O be ? ToObject(V).
+    var o = ToObject(v);
+    // 3. Return ? O.[[Get]](P, V).
+    return o[p];
+  }
+  
+  // _ESAbstract.GetMethod
+  /* global GetV, IsCallable */
+  // 7.3.9. GetMethod ( V, P )
+  function GetMethod(V, P) { // eslint-disable-line no-unused-vars
+    // 1. Assert: IsPropertyKey(P) is true.
+    // 2. Let func be ? GetV(V, P).
+    var func = GetV(V, P);
+    // 3. If func is either undefined or null, return undefined.
+    if (func === null || func === undefined) {
+      return undefined;
+    }
+    // 4. If IsCallable(func) is false, throw a TypeError exception.
+    if (IsCallable(func) === false) {
+      throw new TypeError('Method not callable: ' + P);
+    }
+    // 5. Return func.
+    return func;
+  }
+  
+  // _ESAbstract.Type
+  // "Type(x)" is used as shorthand for "the type of x"...
+  function Type(x) { // eslint-disable-line no-unused-vars
+    switch (typeof x) {
+      case 'undefined':
+        return 'undefined';
+      case 'boolean':
+        return 'boolean';
+      case 'number':
+        return 'number';
+      case 'string':
+        return 'string';
+      case 'symbol':
+        return 'symbol';
+      default:
+        // typeof null is 'object'
+        if (x === null) return 'null';
+        // Polyfill.io - This is here because a Symbol polyfill will have a typeof `object`.
+        if ('Symbol' in self && (x instanceof self.Symbol || x.constructor === self.Symbol)) return 'symbol';
+        return 'object';
+    }
+  }
+  
+  // _ESAbstract.CreateIterResultObject
+  /* global Type, CreateDataProperty */
+  // 7.4.7. CreateIterResultObject ( value, done )
+  function CreateIterResultObject(value, done) { // eslint-disable-line no-unused-vars
+    // 1. Assert: Type(done) is Boolean.
+    if (Type(done) !== 'boolean') {
+      throw new Error();
+    }
+    // 2. Let obj be ObjectCreate(%ObjectPrototype%).
+    var obj = {};
+    // 3. Perform CreateDataProperty(obj, "value", value).
+    CreateDataProperty(obj, "value", value);
+    // 4. Perform CreateDataProperty(obj, "done", done).
+    CreateDataProperty(obj, "done", done);
+    // 5. Return obj.
+    return obj;
+  }
+  
+  // _ESAbstract.GetIterator
+  /* global GetMethod, Symbol, Call, Type, GetV */
+  // 7.4.1. GetIterator ( obj [ , method ] )
+  // The abstract operation GetIterator with argument obj and optional argument method performs the following steps:
+  function GetIterator(obj /*, method */) { // eslint-disable-line no-unused-vars
+    // 1. If method is not present, then
+      // a. Set method to ? GetMethod(obj, @@iterator).
+    var method = arguments.length > 1 ? arguments[1] : GetMethod(obj, Symbol.iterator);
+    // 2. Let iterator be ? Call(method, obj).
+    var iterator = Call(method, obj);
+    // 3. If Type(iterator) is not Object, throw a TypeError exception.
+    if (Type(iterator) !== 'object') {
+      throw new TypeError('bad iterator');
+    }
+    // 4. Let nextMethod be ? GetV(iterator, "next").
+    var nextMethod = GetV(iterator, "next");
+    // 5. Let iteratorRecord be Record {[[Iterator]]: iterator, [[NextMethod]]: nextMethod, [[Done]]: false}.
+    var iteratorRecord = Object.create(null);
+    iteratorRecord['[[Iterator]]'] = iterator;
+    iteratorRecord['[[NextMethod]]'] = nextMethod;
+    iteratorRecord['[[Done]]'] = false;
+    // 6. Return iteratorRecord.
+    return iteratorRecord;
+  }
+  
+  // _ESAbstract.GetPrototypeFromConstructor
+  /* global Get, Type */
+  // 9.1.14. GetPrototypeFromConstructor ( constructor, intrinsicDefaultProto )
+  function GetPrototypeFromConstructor(constructor, intrinsicDefaultProto) { // eslint-disable-line no-unused-vars
+    // 1. Assert: intrinsicDefaultProto is a String value that is this specification's name of an intrinsic object. The corresponding object must be an intrinsic that is intended to be used as the [[Prototype]] value of an object.
+    // 2. Assert: IsCallable(constructor) is true.
+    // 3. Let proto be ? Get(constructor, "prototype").
+    var proto = Get(constructor, "prototype");
+    // 4. If Type(proto) is not Object, then
+    if (Type(proto) !== 'object') {
+      // a. Let realm be ? GetFunctionRealm(constructor).
+      // b. Set proto to realm's intrinsic object named intrinsicDefaultProto.
+      proto = intrinsicDefaultProto;
+    }
+    // 5. Return proto.
+    return proto;
+  }
+  
+  // _ESAbstract.OrdinaryCreateFromConstructor
+  /* global GetPrototypeFromConstructor */
+  // 9.1.13. OrdinaryCreateFromConstructor ( constructor, intrinsicDefaultProto [ , internalSlotsList ] )
+  function OrdinaryCreateFromConstructor(constructor, intrinsicDefaultProto) { // eslint-disable-line no-unused-vars
+    var internalSlotsList = arguments[2] || {};
+    // 1. Assert: intrinsicDefaultProto is a String value that is this specification's name of an intrinsic object.
+    // The corresponding object must be an intrinsic that is intended to be used as the[[Prototype]] value of an object.
+  
+    // 2. Let proto be ? GetPrototypeFromConstructor(constructor, intrinsicDefaultProto).
+    var proto = GetPrototypeFromConstructor(constructor, intrinsicDefaultProto);
+  
+    // 3. Return ObjectCreate(proto, internalSlotsList).
+    // Polyfill.io - We do not pass internalSlotsList to Object.create because Object.create does not use the default ordinary object definitions specified in 9.1.
+    var obj = Object.create(proto);
+    for (var name in internalSlotsList) {
+      if (Object.prototype.hasOwnProperty.call(internalSlotsList, name)) {
+        Object.defineProperty(obj, name, {
+          configurable: true,
+          enumerable: false,
+          writable: true,
+          value: internalSlotsList[name]
+        });
+      }
+    }
+    return obj;
+  }
+  
+  // _ESAbstract.IsConstructor
+  /* global Type */
+  // 7.2.4. IsConstructor ( argument )
+  function IsConstructor(argument) { // eslint-disable-line no-unused-vars
+    // 1. If Type(argument) is not Object, return false.
+    if (Type(argument) !== 'object') {
+      return false;
+    }
+    // 2. If argument has a [[Construct]] internal method, return true.
+    // 3. Return false.
+  
+    // Polyfill.io - `new argument` is the only way  to truly test if a function is a constructor.
+    // We choose to not use`new argument` because the argument could have side effects when called.
+    // Instead we check to see if the argument is a function and if it has a prototype.
+    // Arrow functions do not have a [[Construct]] internal method, nor do they have a prototype.
+    return typeof argument === 'function' && !!argument.prototype;
+  }
+  
+  // _ESAbstract.Construct
+  /* global IsConstructor, OrdinaryCreateFromConstructor, Call */
+  // 7.3.13. Construct ( F [ , argumentsList [ , newTarget ]] )
+  function Construct(F /* [ , argumentsList [ , newTarget ]] */) { // eslint-disable-line no-unused-vars
+    // 1. If newTarget is not present, set newTarget to F.
+    var newTarget = arguments.length > 2 ? arguments[2] : F;
+  
+    // 2. If argumentsList is not present, set argumentsList to a new empty List.
+    var argumentsList = arguments.length > 1 ? arguments[1] : [];
+  
+    // 3. Assert: IsConstructor(F) is true.
+    if (!IsConstructor(F)) {
+      throw new TypeError('F must be a constructor.');
+    }
+  
+    // 4. Assert: IsConstructor(newTarget) is true.
+    if (!IsConstructor(newTarget)) {
+      throw new TypeError('newTarget must be a constructor.');
+    }
+  
+    // 5. Return ? F.[[Construct]](argumentsList, newTarget).
+    // Polyfill.io - If newTarget is the same as F, it is equivalent to new F(...argumentsList).
+    if (newTarget === F) {
+      return new (Function.prototype.bind.apply(F, [null].concat(argumentsList)))();
+    } else {
+      // Polyfill.io - This is mimicking section 9.2.2 step 5.a.
+      var obj = OrdinaryCreateFromConstructor(newTarget, Object.prototype);
+      return Call(F, obj, argumentsList);
+    }
+  }
+  
+  // _ESAbstract.ArraySpeciesCreate
+  /* global IsArray, ArrayCreate, Get, Type, IsConstructor, Construct */
+  // 9.4.2.3. ArraySpeciesCreate ( originalArray, length )
+  function ArraySpeciesCreate(originalArray, length) { // eslint-disable-line no-unused-vars
+    // 1. Assert: length is an integer Number ≥ 0.
+    // 2. If length is -0, set length to +0.
+    if (length === 0 && 1/length === -Infinity) {
+      length = 0;
+    }
+  
+    // 3. Let isArray be ? IsArray(originalArray).
+    var isArray = IsArray(originalArray);
+  
+    // 4. If isArray is false, return ? ArrayCreate(length).
+    if (isArray === false) {
+      return ArrayCreate(length);
+    }
+  
+    // 5. Let C be ? Get(originalArray, "constructor").
+    var C = Get(originalArray, 'constructor');
+  
+    // Polyfill.io - We skip this section as not sure how to make a cross-realm normal Array, a same-realm Array.
+    // 6. If IsConstructor(C) is true, then
+    // if (IsConstructor(C)) {
+      // a. Let thisRealm be the current Realm Record.
+      // b. Let realmC be ? GetFunctionRealm(C).
+      // c. If thisRealm and realmC are not the same Realm Record, then
+        // i. If SameValue(C, realmC.[[Intrinsics]].[[%Array%]]) is true, set C to undefined.
+    // }
+    // 7. If Type(C) is Object, then
+    if (Type(C) === 'object') {
+      // a. Set C to ? Get(C, @@species).
+      C = 'Symbol' in self && 'species' in self.Symbol ? Get(C, self.Symbol.species) : undefined;
+      // b. If C is null, set C to undefined.
+      if (C === null) {
+        C = undefined;
+      }
+    }
+    // 8. If C is undefined, return ? ArrayCreate(length).
+    if (C === undefined) {
+      return ArrayCreate(length);
+    }
+    // 9. If IsConstructor(C) is false, throw a TypeError exception.
+    if (!IsConstructor(C)) {
+      throw new TypeError('C must be a constructor');
+    }
+    // 10. Return ? Construct(C, « length »).
+    return Construct(C, [length]);
+  }
+  
+  // _ESAbstract.IteratorClose
+  /* global GetMethod, Type, Call */
+  // 7.4.6. IteratorClose ( iteratorRecord, completion )
+  function IteratorClose(iteratorRecord, completion) { // eslint-disable-line no-unused-vars
+    // 1. Assert: Type(iteratorRecord.[[Iterator]]) is Object.
+    if (Type(iteratorRecord['[[Iterator]]']) !== 'object') {
+      throw new Error(Object.prototype.toString.call(iteratorRecord['[[Iterator]]']) + 'is not an Object.');
+    }
+    // 2. Assert: completion is a Completion Record.
+    // Polyfill.io - Ignoring this step as there is no way to check if something is a Completion Record in userland JavaScript.
+  
+    // 3. Let iterator be iteratorRecord.[[Iterator]].
+    var iterator = iteratorRecord['[[Iterator]]'];
+    // 4. Let return be ? GetMethod(iterator, "return").
+    // Polyfill.io - We name it  returnMethod because return is a keyword and can not be used as an identifier (E.G. variable name, function name etc).
+    var returnMethod = GetMethod(iterator, "return");
+    // 5. If return is undefined, return Completion(completion).
+    if (returnMethod === undefined) {
+      return completion;
+    }
+    // 6. Let innerResult be Call(return, iterator, « »).
+    try {
+      var innerResult = Call(returnMethod, iterator);
+    } catch (error) {
+      var innerException = error;
+    }
+    // 7. If completion.[[Type]] is throw, return Completion(completion).
+    if (completion) {
+      return completion;
+    }
+    // 8. If innerResult.[[Type]] is throw, return Completion(innerResult).
+    if (innerException) {
+      throw innerException;
+    }
+    // 9. If Type(innerResult.[[Value]]) is not Object, throw a TypeError exception.
+    if (Type(innerResult) !== 'object') {
+      throw new TypeError("Iterator's return method returned a non-object.");
+    }
+    // 10. Return Completion(completion).
+    return completion;
+  }
+  
+  // _ESAbstract.IteratorComplete
+  /* global Type, ToBoolean, Get */
+  // 7.4.3 IteratorComplete ( iterResult )
+  function IteratorComplete(iterResult) { // eslint-disable-line no-unused-vars
+    // 1. Assert: Type(iterResult) is Object.
+    if (Type(iterResult) !== 'object') {
+      throw new Error(Object.prototype.toString.call(iterResult) + 'is not an Object.');
+    }
+    // 2. Return ToBoolean(? Get(iterResult, "done")).
+    return ToBoolean(Get(iterResult, "done"));
+  }
+  
+  // _ESAbstract.IteratorNext
+  /* global Call, Type */
+  // 7.4.2. IteratorNext ( iteratorRecord [ , value ] )
+  function IteratorNext(iteratorRecord /* [, value] */) { // eslint-disable-line no-unused-vars
+    // 1. If value is not present, then
+    if (arguments.length < 2) {
+      // a. Let result be ? Call(iteratorRecord.[[NextMethod]], iteratorRecord.[[Iterator]], « »).
+      var result = Call(iteratorRecord['[[NextMethod]]'], iteratorRecord['[[Iterator]]']);
+    // 2. Else,
+    } else {
+      // a. Let result be ? Call(iteratorRecord.[[NextMethod]], iteratorRecord.[[Iterator]], « value »).
+      result = Call(iteratorRecord['[[NextMethod]]'], iteratorRecord['[[Iterator]]'], [arguments[1]]);
+    }
+    // 3. If Type(result) is not Object, throw a TypeError exception.
+    if (Type(result) !== 'object') {
+      throw new TypeError('bad iterator');
+    }
+    // 4. Return result.
+    return result;
+  }
+  
+  // _ESAbstract.IteratorStep
+  /* global IteratorNext, IteratorComplete */
+  // 7.4.5. IteratorStep ( iteratorRecord )
+  function IteratorStep(iteratorRecord) { // eslint-disable-line no-unused-vars
+    // 1. Let result be ? IteratorNext(iteratorRecord).
+    var result = IteratorNext(iteratorRecord);
+    // 2. Let done be ? IteratorComplete(result).
+    var done = IteratorComplete(result);
+    // 3. If done is true, return false.
+    if (done === true) {
+      return false;
+    }
+    // 4. Return result.
+    return result;
+  }
+  
+  // _ESAbstract.IteratorValue
+  /* global Type, Get */
+  // 7.4.4 IteratorValue ( iterResult )
+  function IteratorValue(iterResult) { // eslint-disable-line no-unused-vars
+    // Assert: Type(iterResult) is Object.
+    if (Type(iterResult) !== 'object') {
+      throw new Error(Object.prototype.toString.call(iterResult) + 'is not an Object.');
+    }
+    // Return ? Get(iterResult, "value").
+    return Get(iterResult, "value");
+  }
+  
+  // _ESAbstract.OrdinaryToPrimitive
+  /* global Get, IsCallable, Call, Type */
+  // 7.1.1.1. OrdinaryToPrimitive ( O, hint )
+  function OrdinaryToPrimitive(O, hint) { // eslint-disable-line no-unused-vars
+    // 1. Assert: Type(O) is Object.
+    // 2. Assert: Type(hint) is String and its value is either "string" or "number".
+    // 3. If hint is "string", then
+    if (hint === 'string') {
+      // a. Let methodNames be « "toString", "valueOf" ».
+      var methodNames = ['toString', 'valueOf'];
+      // 4. Else,
+    } else {
+      // a. Let methodNames be « "valueOf", "toString" ».
+      methodNames = ['valueOf', 'toString'];
+    }
+    // 5. For each name in methodNames in List order, do
+    for (var i = 0; i < methodNames.length; ++i) {
+      var name = methodNames[i];
+      // a. Let method be ? Get(O, name).
+      var method = Get(O, name);
+      // b. If IsCallable(method) is true, then
+      if (IsCallable(method)) {
+        // i. Let result be ? Call(method, O).
+        var result = Call(method, O);
+        // ii. If Type(result) is not Object, return result.
+        if (Type(result) !== 'object') {
+          return result;
+        }
+      }
+    }
+    // 6. Throw a TypeError exception.
+    throw new TypeError('Cannot convert to primitive.');
+  }
+  
+  // _ESAbstract.SameValue
+  /* global Type, SameValueNonNumber */
+  // 7.2.10. SameValue ( x, y )
+  function SameValue(x, y) { // eslint-disable-line no-unused-vars
+    // 1. If Type(x) is different from Type(y), return false.
+    if (Type(x) !== Type(y)) {
+      return false;
+    }
+    // 2. If Type(x) is Number, then
+    if (Type(x) === 'number') {
+      // a. If x is NaN and y is NaN, return true.
+      if (isNaN(x) && isNaN(y)) {
+        return true;
+      }
+      // Polyfill.io - 0 === -0 is true, but they are not the same value.
+      // b. If x is +0 and y is -0, return false.
+      // c. If x is -0 and y is +0, return false.
+      if (x === 0 && y === 0 && 1/x !== 1/y) {
+        return false;
+      }
+      // d. If x is the same Number value as y, return true.
+      if (x === y) {
+        return true;
+      }
+      // e. Return false.
+      return false;
+    }
+    // 3. Return SameValueNonNumber(x, y).
+    return SameValueNonNumber(x, y);
+  }
+  
+  // _ESAbstract.SameValueZero
+  /* global Type, SameValueNonNumber */
+  // 7.2.11. SameValueZero ( x, y )
+  function SameValueZero (x, y) { // eslint-disable-line no-unused-vars
+    // 1. If Type(x) is different from Type(y), return false.
+    if (Type(x) !== Type(y)) {
+      return false;
+    }
+    // 2. If Type(x) is Number, then
+    if (Type(x) === 'number') {
+      // a. If x is NaN and y is NaN, return true.
+      if (isNaN(x) && isNaN(y)) {
+        return true;
+      }
+      // b. If x is +0 and y is -0, return true.
+      if (1/x === Infinity && 1/y === -Infinity) {
+        return true;
+      }
+      // c. If x is -0 and y is +0, return true.
+      if (1/x === -Infinity && 1/y === Infinity) {
+        return true;
+      }
+      // d. If x is the same Number value as y, return true.
+      if (x === y) {
+        return true;
+      }
+      // e. Return false.
+      return false;
+    }
+    // 3. Return SameValueNonNumber(x, y).
+    return SameValueNonNumber(x, y);
+  }
+  
+  // _ESAbstract.ToPrimitive
+  /* global Type, GetMethod, Call, OrdinaryToPrimitive */
+  // 7.1.1. ToPrimitive ( input [ , PreferredType ] )
+  function ToPrimitive(input /* [, PreferredType] */) { // eslint-disable-line no-unused-vars
+    var PreferredType = arguments.length > 1 ? arguments[1] : undefined;
+    // 1. Assert: input is an ECMAScript language value.
+    // 2. If Type(input) is Object, then
+    if (Type(input) === 'object') {
+      // a. If PreferredType is not present, let hint be "default".
+      if (arguments.length < 2) {
+        var hint = 'default';
+        // b. Else if PreferredType is hint String, let hint be "string".
+      } else if (PreferredType === String) {
+        hint = 'string';
+        // c. Else PreferredType is hint Number, let hint be "number".
+      } else if (PreferredType === Number) {
+        hint = 'number';
+      }
+      // d. Let exoticToPrim be ? GetMethod(input, @@toPrimitive).
+      var exoticToPrim = typeof self.Symbol === 'function' && typeof self.Symbol.toPrimitive === 'symbol' ? GetMethod(input, self.Symbol.toPrimitive) : undefined;
+      // e. If exoticToPrim is not undefined, then
+      if (exoticToPrim !== undefined) {
+        // i. Let result be ? Call(exoticToPrim, input, « hint »).
+        var result = Call(exoticToPrim, input, [hint]);
+        // ii. If Type(result) is not Object, return result.
+        if (Type(result) !== 'object') {
+          return result;
+        }
+        // iii. Throw a TypeError exception.
+        throw new TypeError('Cannot convert exotic object to primitive.');
+      }
+      // f. If hint is "default", set hint to "number".
+      if (hint === 'default') {
+        hint = 'number';
+      }
+      // g. Return ? OrdinaryToPrimitive(input, hint).
+      return OrdinaryToPrimitive(input, hint);
+    }
+    // 3. Return input
+    return input;
+  }
+  // _ESAbstract.ToString
+  /* global Type, ToPrimitive */
+  // 7.1.12. ToString ( argument )
+  // The abstract operation ToString converts argument to a value of type String according to Table 11:
+  // Table 11: ToString Conversions
+  /*
+  |---------------|--------------------------------------------------------|
+  | Argument Type | Result                                                 |
+  |---------------|--------------------------------------------------------|
+  | Undefined     | Return "undefined".                                    |
+  |---------------|--------------------------------------------------------|
+  | Null	        | Return "null".                                         |
+  |---------------|--------------------------------------------------------|
+  | Boolean       | If argument is true, return "true".                    |
+  |               | If argument is false, return "false".                  |
+  |---------------|--------------------------------------------------------|
+  | Number        | Return NumberToString(argument).                       |
+  |---------------|--------------------------------------------------------|
+  | String        | Return argument.                                       |
+  |---------------|--------------------------------------------------------|
+  | Symbol        | Throw a TypeError exception.                           |
+  |---------------|--------------------------------------------------------|
+  | Object        | Apply the following steps:                             |
+  |               | Let primValue be ? ToPrimitive(argument, hint String). |
+  |               | Return ? ToString(primValue).                          |
+  |---------------|--------------------------------------------------------|
+  */
+  function ToString(argument) { // eslint-disable-line no-unused-vars
+    switch(Type(argument)) {
+      case 'symbol':
+        throw new TypeError('Cannot convert a Symbol value to a string');
+      case 'object':
+        var primValue = ToPrimitive(argument, String);
+        return ToString(primValue);
+      default:
+        return String(argument);
+    }
+  }
+  
+  // _ESAbstract.ToPropertyKey
+  /* globals ToPrimitive, Type, ToString */
+  // 7.1.14. ToPropertyKey ( argument )
+  function ToPropertyKey(argument) { // eslint-disable-line no-unused-vars
+    // 1. Let key be ? ToPrimitive(argument, hint String).
+    var key = ToPrimitive(argument, String);
+    // 2. If Type(key) is Symbol, then
+    if (Type(key) === 'symbol') {
+      // a. Return key.
+      return key;
+    }
+    // 3. Return ! ToString(key).
+    return ToString(key);
+  }
+  
+  // _TypedArray
+  /*
+   Copyright (c) 2010, Linden Research, Inc.
+   Copyright (c) 2014, Joshua Bell
+  
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+  
+   The above copyright notice and this permission notice shall be included in
+   all copies or substantial portions of the Software.
+  
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+   THE SOFTWARE.
+   $/LicenseInfo$
+   */
+  
+  // Original can be found at:
+  //   https://bitbucket.org/lindenlab/llsd
+  // Modifications by Joshua Bell inexorabletash@gmail.com
+  //   https://github.com/inexorabletash/polyfill
+  
+  // ES3/ES5 implementation of the Krhonos Typed Array Specification
+  //   Ref: http://www.khronos.org/registry/typedarray/specs/latest/
+  //   Date: 2011-02-01
+  //
+  // Variations:
+  //  * Allows typed_array.get/set() as alias for subscripts (typed_array[])
+  //  * Gradually migrating structure from Khronos spec to ES2015 spec
+  //
+  // Caveats:
+  //  * Beyond 10000 or so entries, polyfilled array accessors (ta[0],
+  //    etc) become memory-prohibitive, so array creation will fail. Set
+  //    self.TYPED_ARRAY_POLYFILL_NO_ARRAY_ACCESSORS=true to disable
+  //    creation of accessors. Your code will need to use the
+  //    non-standard get()/set() instead, and will need to add those to
+  //    native arrays for interop.
+  (function(global) {
+    'use strict';
+    var undefined = (void 0); // Paranoia
+  
+    // Beyond this value, index getters/setters (i.e. array[0], array[1]) are so slow to
+    // create, and consume so much memory, that the browser appears frozen.
+    var MAX_ARRAY_LENGTH = 1e5;
+  
+    // Approximations of internal ECMAScript conversion functions
+    function Type(v) {
+      switch(typeof v) {
+      case 'undefined': return 'undefined';
+      case 'boolean': return 'boolean';
+      case 'number': return 'number';
+      case 'string': return 'string';
+      default: return v === null ? 'null' : 'object';
+      }
+    }
+  
+    // Class returns internal [[Class]] property, used to avoid cross-frame instanceof issues:
+    function Class(v) { return Object.prototype.toString.call(v).replace(/^\[object *|\]$/g, ''); }
+    function IsCallable(o) { return typeof o === 'function'; }
+    function ToObject(v) {
+      if (v === null || v === undefined) throw TypeError();
+      return Object(v);
+    }
+    function ToInt32(v) { return v >> 0; }
+    function ToUint32(v) { return v >>> 0; }
+  
+    // Snapshot intrinsics
+    var LN2 = Math.LN2,
+        abs = Math.abs,
+        floor = Math.floor,
+        log = Math.log,
+        max = Math.max,
+        min = Math.min,
+        pow = Math.pow,
+        round = Math.round;
+  
+    // emulate ES5 getter/setter API using legacy APIs
+    // http://blogs.msdn.com/b/ie/archive/2010/09/07/transitioning-existing-code-to-the-es5-getter-setter-apis.aspx
+    // (second clause tests for Object.defineProperty() in IE<9 that only supports extending DOM prototypes, but
+    // note that IE<9 does not support __defineGetter__ or __defineSetter__ so it just renders the method harmless)
+  
+    (function() {
+      var orig = Object.defineProperty;
+      var dom_only = !(function(){try{return Object.defineProperty({},'x',{});}catch(_){return false;}}());
+  
+      if (!orig || dom_only) {
+        Object.defineProperty = function (o, prop, desc) {
+          // In IE8 try built-in implementation for defining properties on DOM prototypes.
+          if (orig)
+            try { return orig(o, prop, desc); } catch (_) {}
+          if (o !== Object(o))
+            throw TypeError('Object.defineProperty called on non-object');
+          if (Object.prototype.__defineGetter__ && ('get' in desc))
+            Object.prototype.__defineGetter__.call(o, prop, desc.get);
+          if (Object.prototype.__defineSetter__ && ('set' in desc))
+            Object.prototype.__defineSetter__.call(o, prop, desc.set);
+          if ('value' in desc)
+            o[prop] = desc.value;
+          return o;
+        };
+      }
+    }());
+  
+    // ES5: Make obj[index] an alias for obj._getter(index)/obj._setter(index, value)
+    // for index in 0 ... obj.length
+    function makeArrayAccessors(obj) {
+      if ('TYPED_ARRAY_POLYFILL_NO_ARRAY_ACCESSORS' in global)
+        return;
+  
+      if (obj.length > MAX_ARRAY_LENGTH) throw RangeError('Array too large for polyfill');
+  
+      function makeArrayAccessor(index) {
+        Object.defineProperty(obj, index, {
+          'get': function() { return obj._getter(index); },
+          'set': function(v) { obj._setter(index, v); },
+          enumerable: true,
+          configurable: false
+        });
+      }
+  
+      var i;
+      for (i = 0; i < obj.length; i += 1) {
+        makeArrayAccessor(i);
+      }
+    }
+  
+    // Internal conversion functions:
+    //    pack<Type>()   - take a number (interpreted as Type), output a byte array
+    //    unpack<Type>() - take a byte array, output a Type-like number
+  
+    function as_signed(value, bits) { var s = 32 - bits; return (value << s) >> s; }
+    function as_unsigned(value, bits) { var s = 32 - bits; return (value << s) >>> s; }
+  
+    function packI8(n) { return [n & 0xff]; }
+    function unpackI8(bytes) { return as_signed(bytes[0], 8); }
+  
+    function packU8(n) { return [n & 0xff]; }
+    function unpackU8(bytes) { return as_unsigned(bytes[0], 8); }
+  
+    function packU8Clamped(n) { n = round(Number(n)); return [n < 0 ? 0 : n > 0xff ? 0xff : n & 0xff]; }
+  
+    function packI16(n) { return [n & 0xff, (n >> 8) & 0xff]; }
+    function unpackI16(bytes) { return as_signed(bytes[1] << 8 | bytes[0], 16); }
+  
+    function packU16(n) { return [n & 0xff, (n >> 8) & 0xff]; }
+    function unpackU16(bytes) { return as_unsigned(bytes[1] << 8 | bytes[0], 16); }
+  
+    function packI32(n) { return [n & 0xff, (n >> 8) & 0xff, (n >> 16) & 0xff, (n >> 24) & 0xff]; }
+    function unpackI32(bytes) { return as_signed(bytes[3] << 24 | bytes[2] << 16 | bytes[1] << 8 | bytes[0], 32); }
+  
+    function packU32(n) { return [n & 0xff, (n >> 8) & 0xff, (n >> 16) & 0xff, (n >> 24) & 0xff]; }
+    function unpackU32(bytes) { return as_unsigned(bytes[3] << 24 | bytes[2] << 16 | bytes[1] << 8 | bytes[0], 32); }
+  
+    function packIEEE754(v, ebits, fbits) {
+  
+      var bias = (1 << (ebits - 1)) - 1;
+  
+      function roundToEven(n) {
+        var w = floor(n), f = n - w;
+        if (f < 0.5)
+          return w;
+        if (f > 0.5)
+          return w + 1;
+        return w % 2 ? w + 1 : w;
+      }
+  
+      // Compute sign, exponent, fraction
+      var s, e, f;
+      if (v !== v) {
+        // NaN
+        // http://dev.w3.org/2006/webapi/WebIDL/#es-type-mapping
+        e = (1 << ebits) - 1; f = pow(2, fbits - 1); s = 0;
+      } else if (v === Infinity || v === -Infinity) {
+        e = (1 << ebits) - 1; f = 0; s = (v < 0) ? 1 : 0;
+      } else if (v === 0) {
+        e = 0; f = 0; s = (1 / v === -Infinity) ? 1 : 0;
+      } else {
+        s = v < 0;
+        v = abs(v);
+  
+        if (v >= pow(2, 1 - bias)) {
+          // Normalized
+          e = min(floor(log(v) / LN2), 1023);
+          var significand = v / pow(2, e);
+          if (significand < 1) {
+            e -= 1;
+            significand *= 2;
+          }
+          if (significand >= 2) {
+            e += 1;
+            significand /= 2;
+          }
+          var d = pow(2, fbits);
+          f = roundToEven(significand * d) - d;
+          e += bias;
+          if (f / d >= 1) {
+            e += 1;
+            f = 0;
+          }
+          if (e > 2 * bias) {
+            // Overflow
+            e = (1 << ebits) - 1;
+            f = 0;
+          }
+        } else {
+          // Denormalized
+          e = 0;
+          f = roundToEven(v / pow(2, 1 - bias - fbits));
+        }
+      }
+  
+      // Pack sign, exponent, fraction
+      var bits = [], i;
+      for (i = fbits; i; i -= 1) { bits.push(f % 2 ? 1 : 0); f = floor(f / 2); }
+      for (i = ebits; i; i -= 1) { bits.push(e % 2 ? 1 : 0); e = floor(e / 2); }
+      bits.push(s ? 1 : 0);
+      bits.reverse();
+      var str = bits.join('');
+  
+      // Bits to bytes
+      var bytes = [];
+      while (str.length) {
+        bytes.unshift(parseInt(str.substring(0, 8), 2));
+        str = str.substring(8);
+      }
+      return bytes;
+    }
+  
+    function unpackIEEE754(bytes, ebits, fbits) {
+      // Bytes to bits
+      var bits = [], i, j, b, str,
+          bias, s, e, f;
+  
+      for (i = 0; i < bytes.length; ++i) {
+        b = bytes[i];
+        for (j = 8; j; j -= 1) {
+          bits.push(b % 2 ? 1 : 0); b = b >> 1;
+        }
+      }
+      bits.reverse();
+      str = bits.join('');
+  
+      // Unpack sign, exponent, fraction
+      bias = (1 << (ebits - 1)) - 1;
+      s = parseInt(str.substring(0, 1), 2) ? -1 : 1;
+      e = parseInt(str.substring(1, 1 + ebits), 2);
+      f = parseInt(str.substring(1 + ebits), 2);
+  
+      // Produce number
+      if (e === (1 << ebits) - 1) {
+        return f !== 0 ? NaN : s * Infinity;
+      } else if (e > 0) {
+        // Normalized
+        return s * pow(2, e - bias) * (1 + f / pow(2, fbits));
+      } else if (f !== 0) {
+        // Denormalized
+        return s * pow(2, -(bias - 1)) * (f / pow(2, fbits));
+      } else {
+        return s < 0 ? -0 : 0;
+      }
+    }
+  
+    function unpackF64(b) { return unpackIEEE754(b, 11, 52); }
+    function packF64(v) { return packIEEE754(v, 11, 52); }
+    function unpackF32(b) { return unpackIEEE754(b, 8, 23); }
+    function packF32(v) { return packIEEE754(v, 8, 23); }
+  
+    //
+    // 3 The ArrayBuffer Type
+    //
+  
+    (function() {
+  
+      function ArrayBuffer(length) {
+        length = ToInt32(length);
+        if (length < 0) throw RangeError('ArrayBuffer size is not a small enough positive integer.');
+        Object.defineProperty(this, 'byteLength', {value: length});
+        Object.defineProperty(this, '_bytes', {value: Array(length)});
+  
+        for (var i = 0; i < length; i += 1)
+          this._bytes[i] = 0;
+      }
+  
+      global.ArrayBuffer = global.ArrayBuffer || ArrayBuffer;
+  
+      //
+      // 5 The Typed Array View Types
+      //
+  
+      function $TypedArray$() {
+  
+        // %TypedArray% ( length )
+        if (!arguments.length || typeof arguments[0] !== 'object') {
+          return (function(length) {
+            length = ToInt32(length);
+            if (length < 0) throw RangeError('length is not a small enough positive integer.');
+            Object.defineProperty(this, 'length', {value: length});
+            Object.defineProperty(this, 'byteLength', {value: length * this.BYTES_PER_ELEMENT});
+            Object.defineProperty(this, 'buffer', {value: new ArrayBuffer(this.byteLength)});
+            Object.defineProperty(this, 'byteOffset', {value: 0});
+  
+           }).apply(this, arguments);
+        }
+  
+        // %TypedArray% ( typedArray )
+        if (arguments.length >= 1 &&
+            Type(arguments[0]) === 'object' &&
+            arguments[0] instanceof $TypedArray$) {
+          return (function(typedArray){
+            if (this.constructor !== typedArray.constructor) throw TypeError();
+  
+            var byteLength = typedArray.length * this.BYTES_PER_ELEMENT;
+            Object.defineProperty(this, 'buffer', {value: new ArrayBuffer(byteLength)});
+            Object.defineProperty(this, 'byteLength', {value: byteLength});
+            Object.defineProperty(this, 'byteOffset', {value: 0});
+            Object.defineProperty(this, 'length', {value: typedArray.length});
+  
+            for (var i = 0; i < this.length; i += 1)
+              this._setter(i, typedArray._getter(i));
+  
+          }).apply(this, arguments);
+        }
+  
+        // %TypedArray% ( array )
+        if (arguments.length >= 1 &&
+            Type(arguments[0]) === 'object' &&
+            !(arguments[0] instanceof $TypedArray$) &&
+            !(arguments[0] instanceof ArrayBuffer || Class(arguments[0]) === 'ArrayBuffer')) {
+          return (function(array) {
+  
+            var byteLength = array.length * this.BYTES_PER_ELEMENT;
+            Object.defineProperty(this, 'buffer', {value: new ArrayBuffer(byteLength)});
+            Object.defineProperty(this, 'byteLength', {value: byteLength});
+            Object.defineProperty(this, 'byteOffset', {value: 0});
+            Object.defineProperty(this, 'length', {value: array.length});
+  
+            for (var i = 0; i < this.length; i += 1) {
+              var s = array[i];
+              this._setter(i, Number(s));
+            }
+          }).apply(this, arguments);
+        }
+  
+        // %TypedArray% ( buffer, byteOffset=0, length=undefined )
+        if (arguments.length >= 1 &&
+            Type(arguments[0]) === 'object' &&
+            (arguments[0] instanceof ArrayBuffer || Class(arguments[0]) === 'ArrayBuffer')) {
+          return (function(buffer, byteOffset, length) {
+  
+            byteOffset = ToUint32(byteOffset);
+            if (byteOffset > buffer.byteLength)
+              throw RangeError('byteOffset out of range');
+  
+            // The given byteOffset must be a multiple of the element
+            // size of the specific type, otherwise an exception is raised.
+            if (byteOffset % this.BYTES_PER_ELEMENT)
+              throw RangeError('buffer length minus the byteOffset is not a multiple of the element size.');
+  
+            if (length === undefined) {
+              var byteLength = buffer.byteLength - byteOffset;
+              if (byteLength % this.BYTES_PER_ELEMENT)
+                throw RangeError('length of buffer minus byteOffset not a multiple of the element size');
+              length = byteLength / this.BYTES_PER_ELEMENT;
+  
+            } else {
+              length = ToUint32(length);
+              byteLength = length * this.BYTES_PER_ELEMENT;
+            }
+  
+            if ((byteOffset + byteLength) > buffer.byteLength)
+              throw RangeError('byteOffset and length reference an area beyond the end of the buffer');
+  
+            Object.defineProperty(this, 'buffer', {value: buffer});
+            Object.defineProperty(this, 'byteLength', {value: byteLength});
+            Object.defineProperty(this, 'byteOffset', {value: byteOffset});
+            Object.defineProperty(this, 'length', {value: length});
+  
+          }).apply(this, arguments);
+        }
+  
+        // %TypedArray% ( all other argument combinations )
+        throw TypeError();
+      }
+  
+      // Properties of the %TypedArray Instrinsic Object
+  
+      // %TypedArray%.from ( source , mapfn=undefined, thisArg=undefined )
+      Object.defineProperty($TypedArray$, 'from', {value: function(iterable) {
+        return new this(iterable);
+      }});
+  
+      // %TypedArray%.of ( ...items )
+      Object.defineProperty($TypedArray$, 'of', {value: function(/*...items*/) {
+        return new this(arguments);
+      }});
+  
+      // %TypedArray%.prototype
+      var $TypedArrayPrototype$ = {};
+      $TypedArray$.prototype = $TypedArrayPrototype$;
+  
+      // WebIDL: getter type (unsigned long index);
+      Object.defineProperty($TypedArray$.prototype, '_getter', {value: function(index) {
+        if (arguments.length < 1) throw SyntaxError('Not enough arguments');
+  
+        index = ToUint32(index);
+        if (index >= this.length)
+          return undefined;
+  
+        var bytes = [], i, o;
+        for (i = 0, o = this.byteOffset + index * this.BYTES_PER_ELEMENT;
+             i < this.BYTES_PER_ELEMENT;
+             i += 1, o += 1) {
+          bytes.push(this.buffer._bytes[o]);
+        }
+        return this._unpack(bytes);
+      }});
+  
+      // NONSTANDARD: convenience alias for getter: type get(unsigned long index);
+      Object.defineProperty($TypedArray$.prototype, 'get', {value: $TypedArray$.prototype._getter});
+  
+      // WebIDL: setter void (unsigned long index, type value);
+      Object.defineProperty($TypedArray$.prototype, '_setter', {value: function(index, value) {
+        if (arguments.length < 2) throw SyntaxError('Not enough arguments');
+  
+        index = ToUint32(index);
+        if (index >= this.length)
+          return;
+  
+        var bytes = this._pack(value), i, o;
+        for (i = 0, o = this.byteOffset + index * this.BYTES_PER_ELEMENT;
+             i < this.BYTES_PER_ELEMENT;
+             i += 1, o += 1) {
+          this.buffer._bytes[o] = bytes[i];
+        }
+      }});
+  
+      // get %TypedArray%.prototype.buffer
+      // get %TypedArray%.prototype.byteLength
+      // get %TypedArray%.prototype.byteOffset
+      // -- applied directly to the object in the constructor
+  
+      // %TypedArray%.prototype.constructor
+      Object.defineProperty($TypedArray$.prototype, 'constructor', {value: $TypedArray$});
+  
+      // %TypedArray%.prototype.copyWithin (target, start, end = this.length )
+      Object.defineProperty($TypedArray$.prototype, 'copyWithin', {value: function(target, start) {
+        var end = arguments[2];
+  
+        var o = ToObject(this);
+        var lenVal = o.length;
+        var len = ToUint32(lenVal);
+        len = max(len, 0);
+        var relativeTarget = ToInt32(target);
+        var to;
+        if (relativeTarget < 0)
+          to = max(len + relativeTarget, 0);
+        else
+          to = min(relativeTarget, len);
+        var relativeStart = ToInt32(start);
+        var from;
+        if (relativeStart < 0)
+          from = max(len + relativeStart, 0);
+        else
+          from = min(relativeStart, len);
+        var relativeEnd;
+        if (end === undefined)
+          relativeEnd = len;
+        else
+          relativeEnd = ToInt32(end);
+        var final;
+        if (relativeEnd < 0)
+          final = max(len + relativeEnd, 0);
+        else
+          final = min(relativeEnd, len);
+        var count = min(final - from, len - to);
+        var direction;
+        if (from < to && to < from + count) {
+          direction = -1;
+          from = from + count - 1;
+          to = to + count - 1;
+        } else {
+          direction = 1;
+        }
+        while (count > 0) {
+          o._setter(to, o._getter(from));
+          from = from + direction;
+          to = to + direction;
+          count = count - 1;
+        }
+        return o;
+      }});
+  
+      // %TypedArray%.prototype.entries ( )
+      // -- defined in es6.js to shim browsers w/ native TypedArrays
+  
+      // %TypedArray%.prototype.every ( callbackfn, thisArg = undefined )
+      Object.defineProperty($TypedArray$.prototype, 'every', {value: function(callbackfn) {
+        if (this === undefined || this === null) throw TypeError();
+        var t = Object(this);
+        var len = ToUint32(t.length);
+        if (!IsCallable(callbackfn)) throw TypeError();
+        var thisArg = arguments[1];
+        for (var i = 0; i < len; i++) {
+          if (!callbackfn.call(thisArg, t._getter(i), i, t))
+            return false;
+        }
+        return true;
+      }});
+  
+      // %TypedArray%.prototype.fill (value, start = 0, end = this.length )
+      Object.defineProperty($TypedArray$.prototype, 'fill', {value: function(value) {
+        var start = arguments[1],
+            end = arguments[2];
+  
+        var o = ToObject(this);
+        var lenVal = o.length;
+        var len = ToUint32(lenVal);
+        len = max(len, 0);
+        var relativeStart = ToInt32(start);
+        var k;
+        if (relativeStart < 0)
+          k = max((len + relativeStart), 0);
+        else
+          k = min(relativeStart, len);
+        var relativeEnd;
+        if (end === undefined)
+          relativeEnd = len;
+        else
+          relativeEnd = ToInt32(end);
+        var final;
+        if (relativeEnd < 0)
+          final = max((len + relativeEnd), 0);
+        else
+          final = min(relativeEnd, len);
+        while (k < final) {
+          o._setter(k, value);
+          k += 1;
+        }
+        return o;
+      }});
+  
+      // %TypedArray%.prototype.filter ( callbackfn, thisArg = undefined )
+      Object.defineProperty($TypedArray$.prototype, 'filter', {value: function(callbackfn) {
+        if (this === undefined || this === null) throw TypeError();
+        var t = Object(this);
+        var len = ToUint32(t.length);
+        if (!IsCallable(callbackfn)) throw TypeError();
+        var res = [];
+        var thisp = arguments[1];
+        for (var i = 0; i < len; i++) {
+          var val = t._getter(i); // in case fun mutates this
+          if (callbackfn.call(thisp, val, i, t))
+            res.push(val);
+        }
+        return new this.constructor(res);
+      }});
+  
+      // %TypedArray%.prototype.find (predicate, thisArg = undefined)
+      Object.defineProperty($TypedArray$.prototype, 'find', {value: function(predicate) {
+        var o = ToObject(this);
+        var lenValue = o.length;
+        var len = ToUint32(lenValue);
+        if (!IsCallable(predicate)) throw TypeError();
+        var t = arguments.length > 1 ? arguments[1] : undefined;
+        var k = 0;
+        while (k < len) {
+          var kValue = o._getter(k);
+          var testResult = predicate.call(t, kValue, k, o);
+          if (Boolean(testResult))
+            return kValue;
+          ++k;
+        }
+        return undefined;
+      }});
+  
+      // %TypedArray%.prototype.findIndex ( predicate, thisArg = undefined )
+      Object.defineProperty($TypedArray$.prototype, 'findIndex', {value: function(predicate) {
+        var o = ToObject(this);
+        var lenValue = o.length;
+        var len = ToUint32(lenValue);
+        if (!IsCallable(predicate)) throw TypeError();
+        var t = arguments.length > 1 ? arguments[1] : undefined;
+        var k = 0;
+        while (k < len) {
+          var kValue = o._getter(k);
+          var testResult = predicate.call(t, kValue, k, o);
+          if (Boolean(testResult))
+            return k;
+          ++k;
+        }
+        return -1;
+      }});
+  
+      // %TypedArray%.prototype.forEach ( callbackfn, thisArg = undefined )
+      Object.defineProperty($TypedArray$.prototype, 'forEach', {value: function(callbackfn) {
+        if (this === undefined || this === null) throw TypeError();
+        var t = Object(this);
+        var len = ToUint32(t.length);
+        if (!IsCallable(callbackfn)) throw TypeError();
+        var thisp = arguments[1];
+        for (var i = 0; i < len; i++)
+          callbackfn.call(thisp, t._getter(i), i, t);
+      }});
+  
+      // %TypedArray%.prototype.indexOf (searchElement, fromIndex = 0 )
+      Object.defineProperty($TypedArray$.prototype, 'indexOf', {value: function(searchElement) {
+        if (this === undefined || this === null) throw TypeError();
+        var t = Object(this);
+        var len = ToUint32(t.length);
+        if (len === 0) return -1;
+        var n = 0;
+        if (arguments.length > 0) {
+          n = Number(arguments[1]);
+          if (n !== n) {
+            n = 0;
+          } else if (n !== 0 && n !== (1 / 0) && n !== -(1 / 0)) {
+            n = (n > 0 || -1) * floor(abs(n));
+          }
+        }
+        if (n >= len) return -1;
+        var k = n >= 0 ? n : max(len - abs(n), 0);
+        for (; k < len; k++) {
+          if (t._getter(k) === searchElement) {
+            return k;
+          }
+        }
+        return -1;
+      }});
+  
+      // %TypedArray%.prototype.join ( separator )
+      Object.defineProperty($TypedArray$.prototype, 'join', {value: function(separator) {
+        if (this === undefined || this === null) throw TypeError();
+        var t = Object(this);
+        var len = ToUint32(t.length);
+        var tmp = Array(len);
+        for (var i = 0; i < len; ++i)
+          tmp[i] = t._getter(i);
+        return tmp.join(separator === undefined ? ',' : separator); // Hack for IE7
+      }});
+  
+      // %TypedArray%.prototype.keys ( )
+      // -- defined in es6.js to shim browsers w/ native TypedArrays
+  
+      // %TypedArray%.prototype.lastIndexOf ( searchElement, fromIndex = this.length-1 )
+      Object.defineProperty($TypedArray$.prototype, 'lastIndexOf', {value: function(searchElement) {
+        if (this === undefined || this === null) throw TypeError();
+        var t = Object(this);
+        var len = ToUint32(t.length);
+        if (len === 0) return -1;
+        var n = len;
+        if (arguments.length > 1) {
+          n = Number(arguments[1]);
+          if (n !== n) {
+            n = 0;
+          } else if (n !== 0 && n !== (1 / 0) && n !== -(1 / 0)) {
+            n = (n > 0 || -1) * floor(abs(n));
+          }
+        }
+        var k = n >= 0 ? min(n, len - 1) : len - abs(n);
+        for (; k >= 0; k--) {
+          if (t._getter(k) === searchElement)
+            return k;
+        }
+        return -1;
+      }});
+  
+      // get %TypedArray%.prototype.length
+      // -- applied directly to the object in the constructor
+  
+      // %TypedArray%.prototype.map ( callbackfn, thisArg = undefined )
+      Object.defineProperty($TypedArray$.prototype, 'map', {value: function(callbackfn) {
+        if (this === undefined || this === null) throw TypeError();
+        var t = Object(this);
+        var len = ToUint32(t.length);
+        if (!IsCallable(callbackfn)) throw TypeError();
+        var res = []; res.length = len;
+        var thisp = arguments[1];
+        for (var i = 0; i < len; i++)
+          res[i] = callbackfn.call(thisp, t._getter(i), i, t);
+        return new this.constructor(res);
+      }});
+  
+      // %TypedArray%.prototype.reduce ( callbackfn [, initialValue] )
+      Object.defineProperty($TypedArray$.prototype, 'reduce', {value: function(callbackfn) {
+        if (this === undefined || this === null) throw TypeError();
+        var t = Object(this);
+        var len = ToUint32(t.length);
+        if (!IsCallable(callbackfn)) throw TypeError();
+        // no value to return if no initial value and an empty array
+        if (len === 0 && arguments.length === 1) throw TypeError();
+        var k = 0;
+        var accumulator;
+        if (arguments.length >= 2) {
+          accumulator = arguments[1];
+        } else {
+          accumulator = t._getter(k++);
+        }
+        while (k < len) {
+          accumulator = callbackfn.call(undefined, accumulator, t._getter(k), k, t);
+          k++;
+        }
+        return accumulator;
+      }});
+  
+      // %TypedArray%.prototype.reduceRight ( callbackfn [, initialValue] )
+      Object.defineProperty($TypedArray$.prototype, 'reduceRight', {value: function(callbackfn) {
+        if (this === undefined || this === null) throw TypeError();
+        var t = Object(this);
+        var len = ToUint32(t.length);
+        if (!IsCallable(callbackfn)) throw TypeError();
+        // no value to return if no initial value, empty array
+        if (len === 0 && arguments.length === 1) throw TypeError();
+        var k = len - 1;
+        var accumulator;
+        if (arguments.length >= 2) {
+          accumulator = arguments[1];
+        } else {
+          accumulator = t._getter(k--);
+        }
+        while (k >= 0) {
+          accumulator = callbackfn.call(undefined, accumulator, t._getter(k), k, t);
+          k--;
+        }
+        return accumulator;
+      }});
+  
+      // %TypedArray%.prototype.reverse ( )
+      Object.defineProperty($TypedArray$.prototype, 'reverse', {value: function() {
+        if (this === undefined || this === null) throw TypeError();
+        var t = Object(this);
+        var len = ToUint32(t.length);
+        var half = floor(len / 2);
+        for (var i = 0, j = len - 1; i < half; ++i, --j) {
+          var tmp = t._getter(i);
+          t._setter(i, t._getter(j));
+          t._setter(j, tmp);
+        }
+        return t;
+      }});
+  
+      // %TypedArray%.prototype.set(array, offset = 0 )
+      // %TypedArray%.prototype.set(typedArray, offset = 0 )
+      // WebIDL: void set(TypedArray array, optional unsigned long offset);
+      // WebIDL: void set(sequence<type> array, optional unsigned long offset);
+      Object.defineProperty($TypedArray$.prototype, 'set', {value: function(index, value) {
+        if (arguments.length < 1) throw SyntaxError('Not enough arguments');
+        var array, sequence, offset, len,
+            i, s, d,
+            byteOffset, byteLength, tmp;
+  
+        if (typeof arguments[0] === 'object' && arguments[0].constructor === this.constructor) {
+          // void set(TypedArray array, optional unsigned long offset);
+          array = arguments[0];
+          offset = ToUint32(arguments[1]);
+  
+          if (offset + array.length > this.length) {
+            throw RangeError('Offset plus length of array is out of range');
+          }
+  
+          byteOffset = this.byteOffset + offset * this.BYTES_PER_ELEMENT;
+          byteLength = array.length * this.BYTES_PER_ELEMENT;
+  
+          if (array.buffer === this.buffer) {
+            tmp = [];
+            for (i = 0, s = array.byteOffset; i < byteLength; i += 1, s += 1) {
+              tmp[i] = array.buffer._bytes[s];
+            }
+            for (i = 0, d = byteOffset; i < byteLength; i += 1, d += 1) {
+              this.buffer._bytes[d] = tmp[i];
+            }
+          } else {
+            for (i = 0, s = array.byteOffset, d = byteOffset;
+                 i < byteLength; i += 1, s += 1, d += 1) {
+              this.buffer._bytes[d] = array.buffer._bytes[s];
+            }
+          }
+        } else if (typeof arguments[0] === 'object' && typeof arguments[0].length !== 'undefined') {
+          // void set(sequence<type> array, optional unsigned long offset);
+          sequence = arguments[0];
+          len = ToUint32(sequence.length);
+          offset = ToUint32(arguments[1]);
+  
+          if (offset + len > this.length) {
+            throw RangeError('Offset plus length of array is out of range');
+          }
+  
+          for (i = 0; i < len; i += 1) {
+            s = sequence[i];
+            this._setter(offset + i, Number(s));
+          }
+        } else {
+          throw TypeError('Unexpected argument type(s)');
+        }
+      }});
+  
+      // %TypedArray%.prototype.slice ( start, end )
+      Object.defineProperty($TypedArray$.prototype, 'slice', {value: function(start, end) {
+        var o = ToObject(this);
+        var lenVal = o.length;
+        var len = ToUint32(lenVal);
+        var relativeStart = ToInt32(start);
+        var k = (relativeStart < 0) ? max(len + relativeStart, 0) : min(relativeStart, len);
+        var relativeEnd = (end === undefined) ? len : ToInt32(end);
+        var final = (relativeEnd < 0) ? max(len + relativeEnd, 0) : min(relativeEnd, len);
+        var count = final - k;
+        var c = o.constructor;
+        var a = new c(count);
+        var n = 0;
+        while (k < final) {
+          var kValue = o._getter(k);
+          a._setter(n, kValue);
+          ++k;
+          ++n;
+        }
+        return a;
+      }});
+  
+      // %TypedArray%.prototype.some ( callbackfn, thisArg = undefined )
+      Object.defineProperty($TypedArray$.prototype, 'some', {value: function(callbackfn) {
+        if (this === undefined || this === null) throw TypeError();
+        var t = Object(this);
+        var len = ToUint32(t.length);
+        if (!IsCallable(callbackfn)) throw TypeError();
+        var thisp = arguments[1];
+        for (var i = 0; i < len; i++) {
+          if (callbackfn.call(thisp, t._getter(i), i, t)) {
+            return true;
+          }
+        }
+        return false;
+      }});
+  
+      // %TypedArray%.prototype.sort ( comparefn )
+      Object.defineProperty($TypedArray$.prototype, 'sort', {value: function(comparefn) {
+        if (this === undefined || this === null) throw TypeError();
+        var t = Object(this);
+        var len = ToUint32(t.length);
+        var tmp = Array(len);
+        for (var i = 0; i < len; ++i)
+          tmp[i] = t._getter(i);
+        function sortCompare(x, y) {
+          if (x !== x && y !== y) return +0;
+          if (x !== x) return 1;
+          if (y !== y) return -1;
+          if (comparefn !== undefined) {
+            return comparefn(x, y);
+          }
+          if (x < y) return -1;
+          if (x > y) return 1;
+          return +0;
+        }
+        tmp.sort(sortCompare);
+        for (i = 0; i < len; ++i)
+          t._setter(i, tmp[i]);
+        return t;
+      }});
+  
+      // %TypedArray%.prototype.subarray(begin = 0, end = this.length )
+      // WebIDL: TypedArray subarray(long begin, optional long end);
+      Object.defineProperty($TypedArray$.prototype, 'subarray', {value: function(start, end) {
+        function clamp(v, min, max) { return v < min ? min : v > max ? max : v; }
+  
+        start = ToInt32(start);
+        end = ToInt32(end);
+  
+        if (arguments.length < 1) { start = 0; }
+        if (arguments.length < 2) { end = this.length; }
+  
+        if (start < 0) { start = this.length + start; }
+        if (end < 0) { end = this.length + end; }
+  
+        start = clamp(start, 0, this.length);
+        end = clamp(end, 0, this.length);
+  
+        var len = end - start;
+        if (len < 0) {
+          len = 0;
+        }
+  
+        return new this.constructor(
+          this.buffer, this.byteOffset + start * this.BYTES_PER_ELEMENT, len);
+      }});
+  
+      // %TypedArray%.prototype.toLocaleString ( )
+      // %TypedArray%.prototype.toString ( )
+      // %TypedArray%.prototype.values ( )
+      // %TypedArray%.prototype [ @@iterator ] ( )
+      // get %TypedArray%.prototype [ @@toStringTag ]
+      // -- defined in es6.js to shim browsers w/ native TypedArrays
+  
+      function makeTypedArray(elementSize, pack, unpack) {
+        // Each TypedArray type requires a distinct constructor instance with
+        // identical logic, which this produces.
+        var TypedArray = function() {
+          Object.defineProperty(this, 'constructor', {value: TypedArray});
+          $TypedArray$.apply(this, arguments);
+          makeArrayAccessors(this);
+        };
+        if ('__proto__' in TypedArray) {
+          TypedArray.__proto__ = $TypedArray$;
+        } else {
+          TypedArray.from = $TypedArray$.from;
+          TypedArray.of = $TypedArray$.of;
+        }
+  
+        TypedArray.BYTES_PER_ELEMENT = elementSize;
+  
+        var TypedArrayPrototype = function() {};
+        TypedArrayPrototype.prototype = $TypedArrayPrototype$;
+  
+        TypedArray.prototype = new TypedArrayPrototype();
+  
+        Object.defineProperty(TypedArray.prototype, 'BYTES_PER_ELEMENT', {value: elementSize});
+        Object.defineProperty(TypedArray.prototype, '_pack', {value: pack});
+        Object.defineProperty(TypedArray.prototype, '_unpack', {value: unpack});
+  
+        return TypedArray;
+      }
+  
+      var Int8Array = makeTypedArray(1, packI8, unpackI8);
+      var Uint8Array = makeTypedArray(1, packU8, unpackU8);
+      var Uint8ClampedArray = makeTypedArray(1, packU8Clamped, unpackU8);
+      var Int16Array = makeTypedArray(2, packI16, unpackI16);
+      var Uint16Array = makeTypedArray(2, packU16, unpackU16);
+      var Int32Array = makeTypedArray(4, packI32, unpackI32);
+      var Uint32Array = makeTypedArray(4, packU32, unpackU32);
+      var Float32Array = makeTypedArray(4, packF32, unpackF32);
+      var Float64Array = makeTypedArray(8, packF64, unpackF64);
+  
+      global.Int8Array = global.Int8Array || Int8Array;
+      global.Uint8Array = global.Uint8Array || Uint8Array;
+      global.Uint8ClampedArray = global.Uint8ClampedArray || Uint8ClampedArray;
+      global.Int16Array = global.Int16Array || Int16Array;
+      global.Uint16Array = global.Uint16Array || Uint16Array;
+      global.Int32Array = global.Int32Array || Int32Array;
+      global.Uint32Array = global.Uint32Array || Uint32Array;
+      global.Float32Array = global.Float32Array || Float32Array;
+      global.Float64Array = global.Float64Array || Float64Array;
+    }());
+  
+    //
+    // 6 The DataView View Type
+    //
+  
+    (function() {
+      function r(array, index) {
+        return IsCallable(array.get) ? array.get(index) : array[index];
+      }
+  
+      var IS_BIG_ENDIAN = (function() {
+        var u16array = new Uint16Array([0x1234]),
+            u8array = new Uint8Array(u16array.buffer);
+        return r(u8array, 0) === 0x12;
+      }());
+  
+      // DataView(buffer, byteOffset=0, byteLength=undefined)
+      // WebIDL: Constructor(ArrayBuffer buffer,
+      //                     optional unsigned long byteOffset,
+      //                     optional unsigned long byteLength)
+      function DataView(buffer, byteOffset, byteLength) {
+        if (!(buffer instanceof ArrayBuffer || Class(buffer) === 'ArrayBuffer')) throw TypeError();
+  
+        byteOffset = ToUint32(byteOffset);
+        if (byteOffset > buffer.byteLength)
+          throw RangeError('byteOffset out of range');
+  
+        if (byteLength === undefined)
+          byteLength = buffer.byteLength - byteOffset;
+        else
+          byteLength = ToUint32(byteLength);
+  
+        if ((byteOffset + byteLength) > buffer.byteLength)
+          throw RangeError('byteOffset and length reference an area beyond the end of the buffer');
+  
+        Object.defineProperty(this, 'buffer', {value: buffer});
+        Object.defineProperty(this, 'byteLength', {value: byteLength});
+        Object.defineProperty(this, 'byteOffset', {value: byteOffset});
+      };
+  
+      // get DataView.prototype.buffer
+      // get DataView.prototype.byteLength
+      // get DataView.prototype.byteOffset
+      // -- applied directly to instances by the constructor
+  
+      function makeGetter(arrayType) {
+        return function GetViewValue(byteOffset, littleEndian) {
+          byteOffset = ToUint32(byteOffset);
+  
+          if (byteOffset + arrayType.BYTES_PER_ELEMENT > this.byteLength)
+            throw RangeError('Array index out of range');
+  
+          byteOffset += this.byteOffset;
+  
+          var uint8Array = new Uint8Array(this.buffer, byteOffset, arrayType.BYTES_PER_ELEMENT),
+              bytes = [];
+          for (var i = 0; i < arrayType.BYTES_PER_ELEMENT; i += 1)
+            bytes.push(r(uint8Array, i));
+  
+          if (Boolean(littleEndian) === Boolean(IS_BIG_ENDIAN))
+            bytes.reverse();
+  
+          return r(new arrayType(new Uint8Array(bytes).buffer), 0);
+        };
+      }
+  
+      Object.defineProperty(DataView.prototype, 'getUint8', {value: makeGetter(Uint8Array)});
+      Object.defineProperty(DataView.prototype, 'getInt8', {value: makeGetter(Int8Array)});
+      Object.defineProperty(DataView.prototype, 'getUint16', {value: makeGetter(Uint16Array)});
+      Object.defineProperty(DataView.prototype, 'getInt16', {value: makeGetter(Int16Array)});
+      Object.defineProperty(DataView.prototype, 'getUint32', {value: makeGetter(Uint32Array)});
+      Object.defineProperty(DataView.prototype, 'getInt32', {value: makeGetter(Int32Array)});
+      Object.defineProperty(DataView.prototype, 'getFloat32', {value: makeGetter(Float32Array)});
+      Object.defineProperty(DataView.prototype, 'getFloat64', {value: makeGetter(Float64Array)});
+  
+      function makeSetter(arrayType) {
+        return function SetViewValue(byteOffset, value, littleEndian) {
+          byteOffset = ToUint32(byteOffset);
+          if (byteOffset + arrayType.BYTES_PER_ELEMENT > this.byteLength)
+            throw RangeError('Array index out of range');
+  
+          // Get bytes
+          var typeArray = new arrayType([value]),
+              byteArray = new Uint8Array(typeArray.buffer),
+              bytes = [], i, byteView;
+  
+          for (i = 0; i < arrayType.BYTES_PER_ELEMENT; i += 1)
+            bytes.push(r(byteArray, i));
+  
+          // Flip if necessary
+          if (Boolean(littleEndian) === Boolean(IS_BIG_ENDIAN))
+            bytes.reverse();
+  
+          // Write them
+          byteView = new Uint8Array(this.buffer, byteOffset, arrayType.BYTES_PER_ELEMENT);
+          byteView.set(bytes);
+        };
+      }
+  
+      Object.defineProperty(DataView.prototype, 'setUint8', {value: makeSetter(Uint8Array)});
+      Object.defineProperty(DataView.prototype, 'setInt8', {value: makeSetter(Int8Array)});
+      Object.defineProperty(DataView.prototype, 'setUint16', {value: makeSetter(Uint16Array)});
+      Object.defineProperty(DataView.prototype, 'setInt16', {value: makeSetter(Int16Array)});
+      Object.defineProperty(DataView.prototype, 'setUint32', {value: makeSetter(Uint32Array)});
+      Object.defineProperty(DataView.prototype, 'setInt32', {value: makeSetter(Int32Array)});
+      Object.defineProperty(DataView.prototype, 'setFloat32', {value: makeSetter(Float32Array)});
+      Object.defineProperty(DataView.prototype, 'setFloat64', {value: makeSetter(Float64Array)});
+  
+      global.DataView = global.DataView || DataView;
+  
+    }());
+  
+  }(self));
+  
+  // Element.prototype.inert
+  /* global Set, Map */
+  (function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+    // eslint-disable-next-line no-undef
+    typeof define === 'function' && define.amd ? define('inert', factory) :
+    (factory());
+  }(this, (function () { 'use strict';
+  
+    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+  
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  
+    /**
+     * This work is licensed under the W3C Software and Document License
+     * (http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document).
+     */
+  
+    // Convenience function for converting NodeLists.
+    /** @type {typeof Array.prototype.slice} */
+    var slice = Array.prototype.slice;
+  
+    /**
+     * IE has a non-standard name for "matches".
+     * @type {typeof Element.prototype.matches}
+     */
+    var matches = Element.prototype.matches || Element.prototype.msMatchesSelector;
+  
+    /** @type {string} */
+    var _focusableElementsString = ['a[href]', 'area[href]', 'input:not([disabled])', 'select:not([disabled])', 'textarea:not([disabled])', 'button:not([disabled])', 'details', 'summary', 'iframe', 'object', 'embed', '[contenteditable]'].join(',');
+  
+    /**
+     * `InertRoot` manages a single inert subtree, i.e. a DOM subtree whose root element has an `inert`
+     * attribute.
+     *
+     * Its main functions are:
+     *
+     * - to create and maintain a set of managed `InertNode`s, including when mutations occur in the
+     *   subtree. The `makeSubtreeUnfocusable()` method handles collecting `InertNode`s via registering
+     *   each focusable node in the subtree with the singleton `InertManager` which manages all known
+     *   focusable nodes within inert subtrees. `InertManager` ensures that a single `InertNode`
+     *   instance exists for each focusable node which has at least one inert root as an ancestor.
+     *
+     * - to notify all managed `InertNode`s when this subtree stops being inert (i.e. when the `inert`
+     *   attribute is removed from the root node). This is handled in the destructor, which calls the
+     *   `deregister` method on `InertManager` for each managed inert node.
+     */
+  
+    var InertRoot = function () {
+      /**
+       * @param {!Element} rootElement The Element at the root of the inert subtree.
+       * @param {!InertManager} inertManager The global singleton InertManager object.
+       */
+      function InertRoot(rootElement, inertManager) {
+        _classCallCheck(this, InertRoot);
+  
+        /** @type {!InertManager} */
+        this._inertManager = inertManager;
+  
+        /** @type {!Element} */
+        this._rootElement = rootElement;
+  
+        /**
+         * @type {!Set<!InertNode>}
+         * All managed focusable nodes in this InertRoot's subtree.
+         */
+        this._managedNodes = new Set();
+  
+        // Make the subtree hidden from assistive technology
+        if (this._rootElement.hasAttribute('aria-hidden')) {
+          /** @type {?string} */
+          this._savedAriaHidden = this._rootElement.getAttribute('aria-hidden');
+        } else {
+          this._savedAriaHidden = null;
+        }
+        this._rootElement.setAttribute('aria-hidden', 'true');
+  
+        // Make all focusable elements in the subtree unfocusable and add them to _managedNodes
+        this._makeSubtreeUnfocusable(this._rootElement);
+  
+        // Watch for:
+        // - any additions in the subtree: make them unfocusable too
+        // - any removals from the subtree: remove them from this inert root's managed nodes
+        // - attribute changes: if `tabindex` is added, or removed from an intrinsically focusable
+        //   element, make that node a managed node.
+        this._observer = new MutationObserver(this._onMutation.bind(this));
+        this._observer.observe(this._rootElement, { attributes: true, childList: true, subtree: true });
+      }
+  
+      /**
+       * Call this whenever this object is about to become obsolete.  This unwinds all of the state
+       * stored in this object and updates the state of all of the managed nodes.
+       */
+  
+  
+      _createClass(InertRoot, [{
+        key: 'destructor',
+        value: function destructor() {
+          this._observer.disconnect();
+  
+          if (this._rootElement) {
+            if (this._savedAriaHidden !== null) {
+              this._rootElement.setAttribute('aria-hidden', this._savedAriaHidden);
+            } else {
+              this._rootElement.removeAttribute('aria-hidden');
+            }
+          }
+  
+          this._managedNodes.forEach(function (inertNode) {
+            this._unmanageNode(inertNode.node);
+          }, this);
+  
+          // Note we cast the nulls to the ANY type here because:
+          // 1) We want the class properties to be declared as non-null, or else we
+          //    need even more casts throughout this code. All bets are off if an
+          //    instance has been destroyed and a method is called.
+          // 2) We don't want to cast "this", because we want type-aware optimizations
+          //    to know which properties we're setting.
+          this._observer = /** @type {?} */null;
+          this._rootElement = /** @type {?} */null;
+          this._managedNodes = /** @type {?} */null;
+          this._inertManager = /** @type {?} */null;
+        }
+  
+        /**
+         * @return {!Set<!InertNode>} A copy of this InertRoot's managed nodes set.
+         */
+  
+      }, {
+        key: '_makeSubtreeUnfocusable',
+  
+  
+        /**
+         * @param {!Node} startNode
+         */
+        value: function _makeSubtreeUnfocusable(startNode) {
+          var _this2 = this;
+  
+          composedTreeWalk(startNode, function (node) {
+            return _this2._visitNode(node);
+          });
+  
+          var activeElement = document.activeElement;
+  
+          if (!document.body.contains(startNode)) {
+            // startNode may be in shadow DOM, so find its nearest shadowRoot to get the activeElement.
+            var node = startNode;
+            /** @type {!ShadowRoot|undefined} */
+            var root = undefined;
+            while (node) {
+              if (node.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+                root = /** @type {!ShadowRoot} */node;
+                break;
+              }
+              node = node.parentNode;
+            }
+            if (root) {
+              activeElement = root.activeElement;
+            }
+          }
+          if (startNode.contains(activeElement)) {
+            activeElement.blur();
+            // In IE11, if an element is already focused, and then set to tabindex=-1
+            // calling blur() will not actually move the focus.
+            // To work around this we call focus() on the body instead.
+            if (activeElement === document.activeElement) {
+              document.body.focus();
+            }
+          }
+        }
+  
+        /**
+         * @param {!Node} node
+         */
+  
+      }, {
+        key: '_visitNode',
+        value: function _visitNode(node) {
+          if (node.nodeType !== Node.ELEMENT_NODE) {
+            return;
+          }
+          var element = /** @type {!Element} */node;
+  
+          // If a descendant inert root becomes un-inert, its descendants will still be inert because of
+          // this inert root, so all of its managed nodes need to be adopted by this InertRoot.
+          if (element !== this._rootElement && element.hasAttribute('inert')) {
+            this._adoptInertRoot(element);
+          }
+  
+          if (matches.call(element, _focusableElementsString) || element.hasAttribute('tabindex')) {
+            this._manageNode(element);
+          }
+        }
+  
+        /**
+         * Register the given node with this InertRoot and with InertManager.
+         * @param {!Node} node
+         */
+  
+      }, {
+        key: '_manageNode',
+        value: function _manageNode(node) {
+          var inertNode = this._inertManager.register(node, this);
+          this._managedNodes.add(inertNode);
+        }
+  
+        /**
+         * Unregister the given node with this InertRoot and with InertManager.
+         * @param {!Node} node
+         */
+  
+      }, {
+        key: '_unmanageNode',
+        value: function _unmanageNode(node) {
+          var inertNode = this._inertManager.deregister(node, this);
+          if (inertNode) {
+            this._managedNodes['delete'](inertNode);
+          }
+        }
+  
+        /**
+         * Unregister the entire subtree starting at `startNode`.
+         * @param {!Node} startNode
+         */
+  
+      }, {
+        key: '_unmanageSubtree',
+        value: function _unmanageSubtree(startNode) {
+          var _this3 = this;
+  
+          composedTreeWalk(startNode, function (node) {
+            return _this3._unmanageNode(node);
+          });
+        }
+  
+        /**
+         * If a descendant node is found with an `inert` attribute, adopt its managed nodes.
+         * @param {!Element} node
+         */
+  
+      }, {
+        key: '_adoptInertRoot',
+        value: function _adoptInertRoot(node) {
+          var inertSubroot = this._inertManager.getInertRoot(node);
+  
+          // During initialisation this inert root may not have been registered yet,
+          // so register it now if need be.
+          if (!inertSubroot) {
+            this._inertManager.setInert(node, true);
+            inertSubroot = this._inertManager.getInertRoot(node);
+          }
+  
+          inertSubroot.managedNodes.forEach(function (savedInertNode) {
+            this._manageNode(savedInertNode.node);
+          }, this);
+        }
+  
+        /**
+         * Callback used when mutation observer detects subtree additions, removals, or attribute changes.
+         * @param {!Array<!MutationRecord>} records
+         * @param {!MutationObserver} self
+         */
+  
+      }, {
+        key: '_onMutation',
+        value: function _onMutation(records, _self) {
+          records.forEach(function (record) {
+            var target = /** @type {!Element} */record.target;
+            if (record.type === 'childList') {
+              // Manage added nodes
+              slice.call(record.addedNodes).forEach(function (node) {
+                this._makeSubtreeUnfocusable(node);
+              }, this);
+  
+              // Un-manage removed nodes
+              slice.call(record.removedNodes).forEach(function (node) {
+                this._unmanageSubtree(node);
+              }, this);
+            } else if (record.type === 'attributes') {
+              if (record.attributeName === 'tabindex') {
+                // Re-initialise inert node if tabindex changes
+                this._manageNode(target);
+              } else if (target !== this._rootElement && record.attributeName === 'inert' && target.hasAttribute('inert')) {
+                // If a new inert root is added, adopt its managed nodes and make sure it knows about the
+                // already managed nodes from this inert subroot.
+                this._adoptInertRoot(target);
+                var inertSubroot = this._inertManager.getInertRoot(target);
+                this._managedNodes.forEach(function (managedNode) {
+                  if (target.contains(managedNode.node)) {
+                    inertSubroot._manageNode(managedNode.node);
+                  }
+                });
+              }
+            }
+          }, this);
+        }
+      }, {
+        key: 'managedNodes',
+        get: function get() {
+          return new Set(this._managedNodes);
+        }
+  
+        /** @return {boolean} */
+  
+      }, {
+        key: 'hasSavedAriaHidden',
+        get: function get() {
+          return this._savedAriaHidden !== null;
+        }
+  
+        /** @param {?string} ariaHidden */
+  
+      }, {
+        key: 'savedAriaHidden',
+        set: function set(ariaHidden) {
+          this._savedAriaHidden = ariaHidden;
+        }
+  
+        /** @return {?string} */
+        ,
+        get: function get() {
+          return this._savedAriaHidden;
+        }
+      }]);
+  
+      return InertRoot;
+    }();
+  
+    /**
+     * `InertNode` initialises and manages a single inert node.
+     * A node is inert if it is a descendant of one or more inert root elements.
+     *
+     * On construction, `InertNode` saves the existing `tabindex` value for the node, if any, and
+     * either removes the `tabindex` attribute or sets it to `-1`, depending on whether the element
+     * is intrinsically focusable or not.
+     *
+     * `InertNode` maintains a set of `InertRoot`s which are descendants of this `InertNode`. When an
+     * `InertRoot` is destroyed, and calls `InertManager.deregister()`, the `InertManager` notifies the
+     * `InertNode` via `removeInertRoot()`, which in turn destroys the `InertNode` if no `InertRoot`s
+     * remain in the set. On destruction, `InertNode` reinstates the stored `tabindex` if one exists,
+     * or removes the `tabindex` attribute if the element is intrinsically focusable.
+     */
+  
+  
+    var InertNode = function () {
+      /**
+       * @param {!Node} node A focusable element to be made inert.
+       * @param {!InertRoot} inertRoot The inert root element associated with this inert node.
+       */
+      function InertNode(node, inertRoot) {
+        _classCallCheck(this, InertNode);
+  
+        /** @type {!Node} */
+        this._node = node;
+  
+        /** @type {boolean} */
+        this._overrodeFocusMethod = false;
+  
+        /**
+         * @type {!Set<!InertRoot>} The set of descendant inert roots.
+         *    If and only if this set becomes empty, this node is no longer inert.
+         */
+        this._inertRoots = new Set([inertRoot]);
+  
+        /** @type {?number} */
+        this._savedTabIndex = null;
+  
+        /** @type {boolean} */
+        this._destroyed = false;
+  
+        // Save any prior tabindex info and make this node untabbable
+        this.ensureUntabbable();
+      }
+  
+      /**
+       * Call this whenever this object is about to become obsolete.
+       * This makes the managed node focusable again and deletes all of the previously stored state.
+       */
+  
+  
+      _createClass(InertNode, [{
+        key: 'destructor',
+        value: function destructor() {
+          this._throwIfDestroyed();
+  
+          if (this._node && this._node.nodeType === Node.ELEMENT_NODE) {
+            var element = /** @type {!Element} */this._node;
+            if (this._savedTabIndex !== null) {
+              element.setAttribute('tabindex', this._savedTabIndex);
+            } else {
+              element.removeAttribute('tabindex');
+            }
+  
+            // Use `delete` to restore native focus method.
+            if (this._overrodeFocusMethod) {
+              delete element.focus;
+            }
+          }
+  
+          // See note in InertRoot.destructor for why we cast these nulls to ANY.
+          this._node = /** @type {?} */null;
+          this._inertRoots = /** @type {?} */null;
+          this._destroyed = true;
+        }
+  
+        /**
+         * @type {boolean} Whether this object is obsolete because the managed node is no longer inert.
+         * If the object has been destroyed, any attempt to access it will cause an exception.
+         */
+  
+      }, {
+        key: '_throwIfDestroyed',
+  
+  
+        /**
+         * Throw if user tries to access destroyed InertNode.
+         */
+        value: function _throwIfDestroyed() {
+          if (this.destroyed) {
+            throw new Error('Trying to access destroyed InertNode');
+          }
+        }
+  
+        /** @return {boolean} */
+  
+      }, {
+        key: 'ensureUntabbable',
+  
+  
+        /** Save the existing tabindex value and make the node untabbable and unfocusable */
+        value: function ensureUntabbable() {
+          if (this.node.nodeType !== Node.ELEMENT_NODE) {
+            return;
+          }
+          var element = /** @type {!Element} */this.node;
+          if (matches.call(element, _focusableElementsString)) {
+            if ( /** @type {!HTMLElement} */element.tabIndex === -1 && this.hasSavedTabIndex) {
+              return;
+            }
+  
+            if (element.hasAttribute('tabindex')) {
+              this._savedTabIndex = /** @type {!HTMLElement} */element.tabIndex;
+            }
+            element.setAttribute('tabindex', '-1');
+            if (element.nodeType === Node.ELEMENT_NODE) {
+              element.focus = function () {};
+              this._overrodeFocusMethod = true;
+            }
+          } else if (element.hasAttribute('tabindex')) {
+            this._savedTabIndex = /** @type {!HTMLElement} */element.tabIndex;
+            element.removeAttribute('tabindex');
+          }
+        }
+  
+        /**
+         * Add another inert root to this inert node's set of managing inert roots.
+         * @param {!InertRoot} inertRoot
+         */
+  
+      }, {
+        key: 'addInertRoot',
+        value: function addInertRoot(inertRoot) {
+          this._throwIfDestroyed();
+          this._inertRoots.add(inertRoot);
+        }
+  
+        /**
+         * Remove the given inert root from this inert node's set of managing inert roots.
+         * If the set of managing inert roots becomes empty, this node is no longer inert,
+         * so the object should be destroyed.
+         * @param {!InertRoot} inertRoot
+         */
+  
+      }, {
+        key: 'removeInertRoot',
+        value: function removeInertRoot(inertRoot) {
+          this._throwIfDestroyed();
+          this._inertRoots['delete'](inertRoot);
+          if (this._inertRoots.size === 0) {
+            this.destructor();
+          }
+        }
+      }, {
+        key: 'destroyed',
+        get: function get() {
+          return (/** @type {!InertNode} */this._destroyed
+          );
+        }
+      }, {
+        key: 'hasSavedTabIndex',
+        get: function get() {
+          return this._savedTabIndex !== null;
+        }
+  
+        /** @return {!Node} */
+  
+      }, {
+        key: 'node',
+        get: function get() {
+          this._throwIfDestroyed();
+          return this._node;
+        }
+  
+        /** @param {?number} tabIndex */
+  
+      }, {
+        key: 'savedTabIndex',
+        set: function set(tabIndex) {
+          this._throwIfDestroyed();
+          this._savedTabIndex = tabIndex;
+        }
+  
+        /** @return {?number} */
+        ,
+        get: function get() {
+          this._throwIfDestroyed();
+          return this._savedTabIndex;
+        }
+      }]);
+  
+      return InertNode;
+    }();
+  
+    /**
+     * InertManager is a per-document singleton object which manages all inert roots and nodes.
+     *
+     * When an element becomes an inert root by having an `inert` attribute set and/or its `inert`
+     * property set to `true`, the `setInert` method creates an `InertRoot` object for the element.
+     * The `InertRoot` in turn registers itself as managing all of the element's focusable descendant
+     * nodes via the `register()` method. The `InertManager` ensures that a single `InertNode` instance
+     * is created for each such node, via the `_managedNodes` map.
+     */
+  
+  
+    var InertManager = function () {
+      /**
+       * @param {!Document} document
+       */
+      function InertManager(document) {
+        _classCallCheck(this, InertManager);
+  
+        if (!document) {
+          throw new Error('Missing required argument; InertManager needs to wrap a document.');
+        }
+  
+        /** @type {!Document} */
+        this._document = document;
+  
+        /**
+         * All managed nodes known to this InertManager. In a map to allow looking up by Node.
+         * @type {!Map<!Node, !InertNode>}
+         */
+        this._managedNodes = new Map();
+  
+        /**
+         * All inert roots known to this InertManager. In a map to allow looking up by Node.
+         * @type {!Map<!Node, !InertRoot>}
+         */
+        this._inertRoots = new Map();
+  
+        /**
+         * Observer for mutations on `document.body`.
+         * @type {!MutationObserver}
+         */
+        this._observer = new MutationObserver(this._watchForInert.bind(this));
+  
+        // Add inert style.
+        addInertStyle(document.head || document.body || document.documentElement);
+  
+        // Wait for document to be loaded.
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', this._onDocumentLoaded.bind(this));
+        } else {
+          this._onDocumentLoaded();
+        }
+      }
+  
+      /**
+       * Set whether the given element should be an inert root or not.
+       * @param {!Element} root
+       * @param {boolean} inert
+       */
+  
+  
+      _createClass(InertManager, [{
+        key: 'setInert',
+        value: function setInert(root, inert) {
+          if (inert) {
+            if (this._inertRoots.has(root)) {
+              // element is already inert
+              return;
+            }
+  
+            var inertRoot = new InertRoot(root, this);
+            root.setAttribute('inert', '');
+            this._inertRoots.set(root, inertRoot);
+            // If not contained in the document, it must be in a shadowRoot.
+            // Ensure inert styles are added there.
+            if (!this._document.body.contains(root)) {
+              var parent = root.parentNode;
+              while (parent) {
+                if (parent.nodeType === 11) {
+                  addInertStyle(parent);
+                }
+                parent = parent.parentNode;
+              }
+            }
+          } else {
+            if (!this._inertRoots.has(root)) {
+              // element is already non-inert
+              return;
+            }
+  
+            var _inertRoot = this._inertRoots.get(root);
+            _inertRoot.destructor();
+            this._inertRoots['delete'](root);
+            root.removeAttribute('inert');
+          }
+        }
+  
+        /**
+         * Get the InertRoot object corresponding to the given inert root element, if any.
+         * @param {!Node} element
+         * @return {!InertRoot|undefined}
+         */
+  
+      }, {
+        key: 'getInertRoot',
+        value: function getInertRoot(element) {
+          return this._inertRoots.get(element);
+        }
+  
+        /**
+         * Register the given InertRoot as managing the given node.
+         * In the case where the node has a previously existing inert root, this inert root will
+         * be added to its set of inert roots.
+         * @param {!Node} node
+         * @param {!InertRoot} inertRoot
+         * @return {!InertNode} inertNode
+         */
+  
+      }, {
+        key: 'register',
+        value: function register(node, inertRoot) {
+          var inertNode = this._managedNodes.get(node);
+          if (inertNode !== undefined) {
+            // node was already in an inert subtree
+            inertNode.addInertRoot(inertRoot);
+          } else {
+            inertNode = new InertNode(node, inertRoot);
+          }
+  
+          this._managedNodes.set(node, inertNode);
+  
+          return inertNode;
+        }
+  
+        /**
+         * De-register the given InertRoot as managing the given inert node.
+         * Removes the inert root from the InertNode's set of managing inert roots, and remove the inert
+         * node from the InertManager's set of managed nodes if it is destroyed.
+         * If the node is not currently managed, this is essentially a no-op.
+         * @param {!Node} node
+         * @param {!InertRoot} inertRoot
+         * @return {?InertNode} The potentially destroyed InertNode associated with this node, if any.
+         */
+  
+      }, {
+        key: 'deregister',
+        value: function deregister(node, inertRoot) {
+          var inertNode = this._managedNodes.get(node);
+          if (!inertNode) {
+            return null;
+          }
+  
+          inertNode.removeInertRoot(inertRoot);
+          if (inertNode.destroyed) {
+            this._managedNodes['delete'](node);
+          }
+  
+          return inertNode;
+        }
+  
+        /**
+         * Callback used when document has finished loading.
+         */
+  
+      }, {
+        key: '_onDocumentLoaded',
+        value: function _onDocumentLoaded() {
+          // Find all inert roots in document and make them actually inert.
+          var inertElements = slice.call(this._document.querySelectorAll('[inert]'));
+          inertElements.forEach(function (inertElement) {
+            this.setInert(inertElement, true);
+          }, this);
+  
+          // Comment this out to use programmatic API only.
+          this._observer.observe(this._document.body || this._document.documentElement, {attributes: true, subtree: true, childList: true});
+        }
+  
+        /**
+         * Callback used when mutation observer detects attribute changes.
+         * @param {!Array<!MutationRecord>} records
+         * @param {!MutationObserver} self
+         */
+  
+      }, {
+        key: '_watchForInert',
+        value: function _watchForInert(records, _self) {
+          var _this = this;
+          records.forEach(function (record) {
+            switch (record.type) {
+              case 'childList':
+                slice.call(record.addedNodes).forEach(function (node) {
+                  if (node.nodeType !== Node.ELEMENT_NODE) {
+                    return;
+                  }
+                  var inertElements = slice.call(node.querySelectorAll('[inert]'));
+                  if (matches.call(node, '[inert]')) {
+                    inertElements.unshift(node);
+                  }
+                  inertElements.forEach(function (inertElement) {
+                    this.setInert(inertElement, true);
+                  }, _this);
+                }, _this);
+                break;
+              case 'attributes':
+                if (record.attributeName !== 'inert') {
+                  return;
+                }
+                var target = /** @type {!Element} */record.target;
+                var inert = target.hasAttribute('inert');
+                _this.setInert(target, inert);
+                break;
+            }
+          }, this);
+        }
+      }]);
+  
+      return InertManager;
+    }();
+  
+    /**
+     * Recursively walk the composed tree from |node|.
+     * @param {!Node} node
+     * @param {(function (!Element))=} callback Callback to be called for each element traversed,
+     *     before descending into child nodes.
+     * @param {?ShadowRoot=} shadowRootAncestor The nearest ShadowRoot ancestor, if any.
+     */
+  
+  
+    function composedTreeWalk(node, callback, shadowRootAncestor) {
+      if (node.nodeType == Node.ELEMENT_NODE) {
+        var element = /** @type {!Element} */node;
+        if (callback) {
+          callback(element);
+        }
+  
+        // Descend into node:
+        // If it has a ShadowRoot, ignore all child elements - these will be picked
+        // up by the <content> or <shadow> elements. Descend straight into the
+        // ShadowRoot.
+        var shadowRoot = /** @type {!HTMLElement} */element.shadowRoot;
+        if (shadowRoot) {
+          composedTreeWalk(shadowRoot, callback, shadowRoot);
+          return;
+        }
+  
+        // If it is a <content> element, descend into distributed elements - these
+        // are elements from outside the shadow root which are rendered inside the
+        // shadow DOM.
+        if (element.localName == 'content') {
+          var content = /** @type {!HTMLContentElement} */element;
+          // Verifies if ShadowDom v0 is supported.
+          var distributedNodes = content.getDistributedNodes ? content.getDistributedNodes() : [];
+          for (var i = 0; i < distributedNodes.length; i++) {
+            composedTreeWalk(distributedNodes[i], callback, shadowRootAncestor);
+          }
+          return;
+        }
+  
+        // If it is a <slot> element, descend into assigned nodes - these
+        // are elements from outside the shadow root which are rendered inside the
+        // shadow DOM.
+        if (element.localName == 'slot') {
+          var slot = /** @type {!HTMLSlotElement} */element;
+          // Verify if ShadowDom v1 is supported.
+          var _distributedNodes = slot.assignedNodes ? slot.assignedNodes({ flatten: true }) : [];
+          for (var _i = 0; _i < _distributedNodes.length; _i++) {
+            composedTreeWalk(_distributedNodes[_i], callback, shadowRootAncestor);
+          }
+          return;
+        }
+      }
+  
+      // If it is neither the parent of a ShadowRoot, a <content> element, a <slot>
+      // element, nor a <shadow> element recurse normally.
+      var child = node.firstChild;
+      while (child != null) {
+        composedTreeWalk(child, callback, shadowRootAncestor);
+        child = child.nextSibling;
+      }
+    }
+  
+    /**
+     * Adds a style element to the node containing the inert specific styles
+     * @param {!Node} node
+     */
+    function addInertStyle(node) {
+      if (node.querySelector('style#inert-style')) {
+        return;
+      }
+      var style = document.createElement('style');
+      style.setAttribute('id', 'inert-style');
+      style.textContent = '\n' + '[inert] {\n' + '  pointer-events: none;\n' + '  cursor: default;\n' + '}\n' + '\n' + '[inert], [inert] * {\n' + '  user-select: none;\n' + '  -webkit-user-select: none;\n' + '  -moz-user-select: none;\n' + '  -ms-user-select: none;\n' + '}\n';
+      node.appendChild(style);
+    }
+  
+    /** @type {!InertManager} */
+    var inertManager = new InertManager(document);
+  
+    // eslint-disable-next-line no-prototype-builtins
+    if (!Element.prototype.hasOwnProperty('inert')) {
+      Object.defineProperty(Element.prototype, 'inert', {
+        enumerable: true,
+        /** @this {!Element} */
+        get: function get() {
+          return this.hasAttribute('inert');
+        },
+        /** @this {!Element} */
+        set: function set(inert) {
+          inertManager.setInert(this, inert);
+        }
+      });
+    }
+  
+  })));
+  })
+  ('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
