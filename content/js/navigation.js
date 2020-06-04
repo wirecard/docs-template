@@ -32,12 +32,7 @@ function trackVisit(...args) {
  */
 function enableToc() {
   console.log('enableToc');
-  /* scroll toc to currents main section */
-  const pageID = document.querySelector('body').getAttribute('id');
-
-  /* TODO: doesn#t work. minor issue but check why */
-  document.querySelector('#toc_cb_' + pageID).scrollIntoView({ behavior: "smooth" });
-
+  
   /* if page is openen with a deep link (hash), check the correct box (if it exists) */
   var hash = window.location.hash.substring(1);
   if (hash) {

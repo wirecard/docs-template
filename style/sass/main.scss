@@ -67,6 +67,14 @@ div#content {
     min-height: 100vh;
     max-width: 82.5em;
     padding-right: 16em; // leave room for minitoc
+    transition: padding 1s ease; // for search
+}
+
+#logo {
+    display: block;
+    position: fixed;
+    width: 19em;
+    z-index: 2;
 }
 
 // HEADER
