@@ -197,20 +197,10 @@ function addMobileNavFunctions() {
   var specifiedElement = document.getElementById('toc');
 
   //I'm using "click" but it works with any event
-  document.addEventListener('click', function (event) {
-    var isClickInside = specifiedElement.contains(event.target);
-    if (!isClickInside) {
-      // add nav.closed
+  document.getElementById('content').addEventListener('click', function (event) {
       console.log('close nav')
       document.getElementById('toc').classList.add('closed');
       document.getElementById('search-results-wrapper').classList.add('hidden');
-    }
-    else {
-      console.log('open nav')
-      document.getElementById('toc').classList.remove('closed');
-      document.getElementById('search-results-wrapper').classList.remove('hidden');
-      // open nav == remove closed class
-    }
   });
 }
 
