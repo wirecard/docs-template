@@ -167,6 +167,7 @@ function reinitializeAfterPageSwitch() {
   if(overlayOpen == true) {
     openOverlay();
   } // to adjust div#content padding-top if search field is open,
+  addMobileNavFunctions();
 }
 
 /**
