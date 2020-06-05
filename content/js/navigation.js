@@ -186,7 +186,7 @@ function getIDfromURL() {
 
 function addMobileNavFunctions() {
   if (!document.getElementById('burger')) {
-    var burger = document.createElement('button');
+    var burger = document.createElement('div');
     burger.setAttribute('id', 'burger');
     burger.classList.add('fa');
     burger.innerHTML = '';

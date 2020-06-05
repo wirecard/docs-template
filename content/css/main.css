@@ -1448,7 +1448,7 @@ table.r-details > caption.title.hide-show-enabled { font-style: normal; font-wei
 #toc.toc2 input[type="checkbox"]:checked + label ~ ul { max-height: 500vh; transition: max-height 1s cubic-bezier(1, 0, 0.91, 0.78); }
 
 /* line 118, ../../style/sass/elements/_global-toc.scss */
-button#burger { display: none; }
+#burger { display: none; }
 
 /* line 1, ../../style/sass/elements/_highlight-hash.scss */
 h2:target, h3:target, #toctitle:target, .sidebarblock > .content > .title:target, h4:target, h5:target, h6:target { animation-name: headline-target-animation; animation-duration: 0.8s; animation-delay: 0.5s; }
@@ -1547,7 +1547,7 @@ span.nav-text { color: #425563; font-size: 1.2rem; line-height: 1.2rem; }
   /* line 26, ../../style/sass/components/_mobile.scss */
   #toc.toc2 { width: 19em; position: fixed; height: 100vh; z-index: 2; top: 0; border-bottom: 1px; border-right: 1px; overflow-x: hidden; transition: all 0.5s linear; }
   /* line 37, ../../style/sass/components/_mobile.scss */
-  #toc.toc2 button#burger { display: block; padding: 0.5em; position: fixed; left: 0; font-size: 1.8em; border: none; color: #000; }
+  #toc.toc2 #burger { display: block; padding: 0.5em; position: fixed; left: 0; font-size: 1.8em; border: none; color: #000; }
   /* line 47, ../../style/sass/components/_mobile.scss */
   #toc.toc2.closed { margin-left: -19em; }
   /* line 54, ../../style/sass/components/_mobile.scss */
