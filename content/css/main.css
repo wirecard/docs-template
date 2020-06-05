@@ -1538,7 +1538,7 @@ span.nav-text { color: #425563; font-size: 1.2rem; line-height: 1.2rem; }
 /* line 42, ../../style/sass/elements/_minitoc.scss */
 #minitoc li.active a { font-weight: bold; }
 
-@media only screen and (max-width: 375px) { /* line 9, ../../style/sass/components/_mobile.scss */
+@media only screen and (max-width: 415px) { /* line 9, ../../style/sass/components/_mobile.scss */
   div#content { position: absolute; left: 0; padding-right: 0; }
   /* line 15, ../../style/sass/components/_mobile.scss */
   div.sect3 { padding-top: 2em; }
