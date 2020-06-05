@@ -11,11 +11,14 @@ $information-phone: "only screen and (max-width : 375px)";
     left: 0;
     padding-right: 0;
   }
+
   div.sect3 {
-    padding-top:2em;
+    padding-top: 2em;
   }
 
-  h6,h5,h4 {
+  h6,
+  h5,
+  h4 {
     padding-top: 2.5em;
   }
 
@@ -29,58 +32,67 @@ $information-phone: "only screen and (max-width : 375px)";
     border-right: 1px;
     overflow-x: hidden;
     transition: all 0.5s linear;
+
     button#burger {
       display: block;
-      transition: all 2.5s linear;
-      padding:0.5em;
-      opacity: 0;
+      padding: 0.5em;
       position: fixed;
       left: 0;
       font-size: 1.8em;
-      border:none;
+      border: none;
+      color: #000;
     }
+
     &.closed {
       margin-left: -19em;
-      #burger {
-        opacity: 1;
-      }
+
+      #burger {}
     }
   }
+
   #minitoc {
     display: none;
   }
+
   #search-results-wrapper {
     transition: all 0.5s linear;
+
     &.hidden {
       margin-left: -19em;
     }
+
     h2 {
       font-size: 1.2em;
       color: #fff;
     }
+
     ul#search-results {
-      
+
       li>div {
         a {
           p {
             color: #fff;
             font-size: 0.7em;
           }
+
           h4 {
-            padding-top:0;
+            padding-top: 0;
             font-size: 1em;
             color: #fff;
           }
+
           span.label {
-            font-size:0.85em
+            font-size: 0.85em
           }
         }
       }
     }
   }
+
   #search-results-wrapper ul#search-results {
     height: calc(100% - 9em);
   }
+
   div#search-results-wrapper {
     z-index: 2;
     left: 0;
