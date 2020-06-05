@@ -49,7 +49,6 @@ p {
 
 @import "components/print";
 
-
 // ======================== //
 // ======== CUSTOM ======== //
 // ======================== //
@@ -66,8 +65,6 @@ body {
 div#content {
     min-height: 100vh;
     max-width: 82.5em;
-    padding-right: 16em; // leave room for minitoc
-    transition: padding 1s ease; // for search
 }
 
 #logo {
@@ -195,3 +192,7 @@ td.tableblock div.content div.paragraph p {
 // ======== MINI TOC ====== //
 // ======================== //
 @import "elements/minitoc";
+
+
+// MOBILE LAST TO OVERRIDE
+@import "components/mobile";

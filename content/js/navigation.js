@@ -32,7 +32,7 @@ function trackVisit(...args) {
  */
 function enableToc() {
   console.log('enableToc');
-  
+
   /* if page is openen with a deep link (hash), check the correct box (if it exists) */
   var hash = window.location.hash.substring(1);
   if (hash) {
@@ -49,6 +49,7 @@ function enableToc() {
       closeOverlay();
     })
   })
+  addMobileNavFunctions();
   document.tocInitialized = true;
 }
 
@@ -151,6 +152,36 @@ function initSearchResultsLinks() {
 }
 
 
+function addMobileNavFunctions() {
+  if(!document.getElementById('burger')) {
+  var burger = document.createElement('button');
+  burger.setAttribute('id', 'burger');
+  burger.classList.add('fa');
+  burger.innerHTML = '';
+  document.getElementById('toc').insertBefore(burger,document.getElementById('logo'));
+  }
+
+
+  var specifiedElement = document.getElementById('toc');
+
+  //I'm using "click" but it works with any event
+  document.addEventListener('click', function (event) {
+    var isClickInside = specifiedElement.contains(event.target);
+    if (!isClickInside) {
+      // add nav.closed
+      console.log('close nav')
+      document.getElementById('toc').classList.add('closed');
+      document.getElementById('search-results-wrapper').classList.add('hidden');
+    }
+    else {
+      console.log('open nav')
+      document.getElementById('toc').classList.remove('closed');
+      document.getElementById('search-results-wrapper').classList.remove('hidden');
+      // open nav == remove closed class
+    }
+  });
+}
+
 
 
 
@@ -159,9 +190,9 @@ function initSearchResultsLinks() {
  * SCROLLSPY FOR TOC
  */
 
- /* TODO: rewrite with Intersection_Observer_API for all scroll events
-    see minitoc.js IntersectionObserver
-  */
+/* TODO: rewrite with Intersection_Observer_API for all scroll events
+   see minitoc.js IntersectionObserver
+ */
 
 document.scrollspy = { disabled: false };
 
@@ -238,7 +269,7 @@ function handleScrollEvent(skipScrollSpy = true) {
       if (window.scrollY >= etopY && window.scrollY <= ebottomY) {
         const anchorElement = document.querySelectorAll('#toc_cb_' + element.id + ' + label > a')[0];
         if (anchorElement && lastScroll.navAnchorElement != anchorElement) {
-          if(initBoxes(anchorElement)) {
+          if (initBoxes(anchorElement)) {
             lastScroll.navAnchorElement = anchorElement;
           }
         }
