@@ -1542,31 +1542,31 @@ span.nav-text { color: #425563; font-size: 1.2rem; line-height: 1.2rem; }
   div#content { position: absolute; left: 0; padding-right: 0; }
   /* line 15, ../../style/sass/components/_mobile.scss */
   div.sect3 { padding-top: 2em; }
-  /* line 21, ../../style/sass/components/_mobile.scss */
-  h6, h5, h4 { padding-top: 2.5em; }
-  /* line 25, ../../style/sass/components/_mobile.scss */
+  /* line 22, ../../style/sass/components/_mobile.scss */
+  h6, h5, h4, h3, #toctitle, .sidebarblock > .content > .title { padding-top: 2.5em; }
+  /* line 26, ../../style/sass/components/_mobile.scss */
   #toc.toc2 { width: 19em; position: fixed; height: 100vh; z-index: 2; top: 0; border-bottom: 1px; border-right: 1px; overflow-x: hidden; transition: all 0.5s linear; }
-  /* line 36, ../../style/sass/components/_mobile.scss */
+  /* line 37, ../../style/sass/components/_mobile.scss */
   #toc.toc2 button#burger { display: block; padding: 0.5em; position: fixed; left: 0; font-size: 1.8em; border: none; color: #000; }
-  /* line 46, ../../style/sass/components/_mobile.scss */
+  /* line 47, ../../style/sass/components/_mobile.scss */
   #toc.toc2.closed { margin-left: -19em; }
-  /* line 53, ../../style/sass/components/_mobile.scss */
+  /* line 54, ../../style/sass/components/_mobile.scss */
   #minitoc { display: none; }
-  /* line 57, ../../style/sass/components/_mobile.scss */
+  /* line 58, ../../style/sass/components/_mobile.scss */
   #search-results-wrapper { transition: all 0.5s linear; }
-  /* line 60, ../../style/sass/components/_mobile.scss */
+  /* line 61, ../../style/sass/components/_mobile.scss */
   #search-results-wrapper.hidden { margin-left: -19em; }
-  /* line 64, ../../style/sass/components/_mobile.scss */
+  /* line 65, ../../style/sass/components/_mobile.scss */
   #search-results-wrapper h2 { font-size: 1.2em; color: #fff; }
-  /* line 73, ../../style/sass/components/_mobile.scss */
+  /* line 74, ../../style/sass/components/_mobile.scss */
   #search-results-wrapper ul#search-results li > div a p { color: #fff; font-size: 0.7em; }
-  /* line 78, ../../style/sass/components/_mobile.scss */
+  /* line 79, ../../style/sass/components/_mobile.scss */
   #search-results-wrapper ul#search-results li > div a h4 { padding-top: 0; font-size: 1em; color: #fff; }
-  /* line 84, ../../style/sass/components/_mobile.scss */
+  /* line 85, ../../style/sass/components/_mobile.scss */
   #search-results-wrapper ul#search-results li > div a span.label { font-size: 0.85em; }
-  /* line 92, ../../style/sass/components/_mobile.scss */
+  /* line 93, ../../style/sass/components/_mobile.scss */
   #search-results-wrapper ul#search-results { height: calc(100% - 9em); }
-  /* line 96, ../../style/sass/components/_mobile.scss */
+  /* line 97, ../../style/sass/components/_mobile.scss */
   div#search-results-wrapper { z-index: 2; left: 0; top: 9em; width: 19em; background: unset; background-color: #123; }
-  /* line 104, ../../style/sass/components/_mobile.scss */
+  /* line 105, ../../style/sass/components/_mobile.scss */
   div#search-results-wrapper.open { height: calc(100% - 9em); } }
