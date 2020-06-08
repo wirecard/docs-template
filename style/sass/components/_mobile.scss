@@ -35,6 +35,11 @@ $mobdev: "only screen and (max-width : 768px)";
     &.closed {
       margin-left: -19em;
     }
+
+    ul {
+      /* because search is hidden, reduce top padding */
+      padding-top: 8em;
+    }
   }
 
   #burger {
