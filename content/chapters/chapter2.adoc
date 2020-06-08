@@ -2,15 +2,19 @@
 = Second Section
 
 Example document number 2.
+Test
 
 [#admonitions_and_icons]
 == Admonitions and Icons
+Test test
 
 [TIP]
 Use http://asciidoctor.org[Asciidoctor] for the best AsciiDoc experience. Not to mention the best looking output!
 Then icon:twitter[role=aqua] about it!
 
 == Sample Switch
+
+Sample Switch test
 
 [discrete.sample-tabs]
 === Hello World

@@ -3,11 +3,11 @@
 #toc.toc2 {
     background: $midnight-blue;
     > ul {
-        // padding-top: 35px;
-        // background-image: url(https://doc.wirecard.com/images/logo/wirecard_logo.png);
-        // background-repeat: no-repeat;
-        // background-size: 7em;
         background-position-x: right;
+        position: absolute;
+        padding-top: 10em;
+        width: 21em;
+        padding-bottom: 3em;
     }
     a {
         color: white;
@@ -114,4 +114,7 @@
 
         }
     }
+}
+#burger {
+    display: none;
 }

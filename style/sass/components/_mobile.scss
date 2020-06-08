@@ -1,0 +1,108 @@
+// Modifications for mobile view
+// this overrides certain default settings of asciidoc.scss
+
+
+
+$mobdev: "only screen and (max-width : 768px)";
+
+@media #{$mobdev} {
+  div#content {
+    position: absolute;
+    left: 0;
+    padding-right: 0;
+  }
+
+  div.sect3 {
+    padding-top: 2em;
+  }
+
+  h6,
+  h5,
+  h4 {
+    padding-top: 2.5em;
+  }
+
+  #toc.toc2 {
+    width: 19em;
+    position: fixed;
+    height: 100vh;
+    z-index: 2;
+    top: 0;
+    border-bottom: 1px;
+    border-right: 1px;
+    overflow-x: hidden;
+    transition: all 0.5s linear;
+
+    &.closed {
+      margin-left: -19em;
+    }
+  }
+
+  #burger {
+    display: block;
+    padding: 0.5em;
+    position: fixed;
+    left: 0;
+    font-size: 1.8em;
+    border: none;
+    color: $primary;
+    background-color: #fff;
+    z-index: 1;
+  }
+
+  #minitoc {
+    display: none;
+  }
+
+  #search-results-wrapper {
+    transition: all 0.5s linear;
+
+    &.hidden {
+      margin-left: -19em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+      color: #fff;
+    }
+
+    ul#search-results {
+
+      li>div {
+        a {
+          p {
+            color: #fff;
+            font-size: 0.7em;
+          }
+
+          h4 {
+            padding-top: 0;
+            font-size: 1em;
+            color: #fff;
+          }
+
+          span.label {
+            font-size: 0.85em
+          }
+        }
+      }
+    }
+  }
+
+  #search-results-wrapper ul#search-results {
+    height: calc(100% - 9em);
+  }
+
+  div#search-results-wrapper {
+    z-index: 2;
+    left: 0;
+    top: 9em;
+    width: 19em;
+    background: unset;
+    background-color: #123;
+
+    &.open {
+      height: calc(100% - 9em);
+    }
+  }
+}

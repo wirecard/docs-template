@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   enableToc();
   initPageLinks();
   trackVisit();
+  scrollToNavigationItem('auto');
 });
 
 /**
@@ -32,11 +33,6 @@ function trackVisit(...args) {
  */
 function enableToc() {
   console.log('enableToc');
-  /* scroll toc to currents main section */
-  const pageID = document.querySelector('body').getAttribute('id');
-
-  /* TODO: doesn#t work. minor issue but check why */
-  document.querySelector('#toc_cb_' + pageID).scrollIntoView({ behavior: "smooth" });
 
   /* if page is openen with a deep link (hash), check the correct box (if it exists) */
   var hash = window.location.hash.substring(1);
@@ -54,6 +50,7 @@ function enableToc() {
       closeOverlay();
     })
   })
+  addMobileNavFunctions();
   document.tocInitialized = true;
 }
 
@@ -97,10 +94,9 @@ function initBoxes(anchorElement) {
   }
 
   requestAnimationFrame(() => {
-    for (var cb of sameLevelCheckboxes.entries()) {
-      var other_cb = cb[1];
-      other_cb.checked = false;
-    }
+    Array.prototype.forEach.call(sameLevelCheckboxes, function (cb) {
+      cb.checked = false;
+    });
     checkbox.checked = true;
     /* tick parent boxes */
     try {
@@ -130,7 +126,7 @@ function addClickHander(selector) {
 
     a.addEventListener('click', function (e) {
       console.log('click triggered')
-      const id = a.href.split('.html#') ? a.href.split('.html#')[1] : a.href.splice(0, -5);
+      const id = a.href.split('.html#') ? a.href.split('.html#')[1] : a.href.slice(0, -5);
       console.log(id)
       var toc_anchor = document.querySelector('#toc_li_' + id + ' a');
       console.log(toc_anchor);
@@ -141,6 +137,7 @@ function addClickHander(selector) {
         initBoxes(pageRootElementAnchor);
       }
       scrollToHash(id);
+      scrollToNavigationItem(id);
     })
   });
 }
@@ -155,6 +152,56 @@ function initSearchResultsLinks() {
   addClickHander('div#search-results > li a');
 }
 
+/**
+ * Scrolls to and centers the appropriate navigation item
+ * @param {String} id id of target
+ */
+function scrollToNavigationItem(id = 'auto') {
+  // TODO: see if we can utilize scrollspy highlight code for getting current nav item but avoid jittery scrolling
+  setTimeout(() => {
+    console.log('Nav scroll to ' + id);
+    // if no id given, determine ID by URL filename or hash
+    if (id == 'auto') {
+      id = getIDfromURL();
+      console.log('Resolved auto to: ' + id)
+    }
+    var toc = document.getElementById('toc');
+    var target = document.getElementById('toc_li_' + id);
+    if (target == null) {
+      return false;
+    }
+    var pos = parseInt(target.offsetTop - window.innerHeight / 2);
+    toc.scroll({ top: pos, left: 0, behavior: 'smooth' });
+  }, 1350);
+}
+
+/**
+ * Returns current ID from URL Hash or filename
+ */
+function getIDfromURL() {
+  return window.location.href.split('.html#')[1]
+    ? window.location.href.split('.html#')[1]
+    : window.location.href.split('/').pop().split('#')[0].split('?')[0].slice(0, -5);
+}
+
+function addMobileNavFunctions() {
+  if (!document.getElementById('burger')) {
+    var burger = document.createElement('div');
+    burger.setAttribute('id', 'burger');
+    burger.classList.add('fa');
+    burger.innerHTML = '';
+    burger.addEventListener('click', () => {
+      document.getElementById('toc').classList.remove('closed');
+      document.getElementById('search-results-wrapper').classList.remove('hidden');
+    });
+    document.body.insertBefore(burger, document.getElementById('content'));
+  }
+  document.getElementById('content').addEventListener('click', function (event) {
+    console.log('close nav')
+    document.getElementById('toc').classList.add('closed');
+    document.getElementById('search-results-wrapper').classList.add('hidden');
+  });
+}
 
 
 
@@ -164,9 +211,9 @@ function initSearchResultsLinks() {
  * SCROLLSPY FOR TOC
  */
 
- /* TODO: rewrite with Intersection_Observer_API for all scroll events
-    see minitoc.js IntersectionObserver
-  */
+/* TODO: rewrite with Intersection_Observer_API for all scroll events
+   see minitoc.js IntersectionObserver
+ */
 
 document.scrollspy = { disabled: false };
 
@@ -243,7 +290,7 @@ function handleScrollEvent(skipScrollSpy = true) {
       if (window.scrollY >= etopY && window.scrollY <= ebottomY) {
         const anchorElement = document.querySelectorAll('#toc_cb_' + element.id + ' + label > a')[0];
         if (anchorElement && lastScroll.navAnchorElement != anchorElement) {
-          if(initBoxes(anchorElement)) {
+          if (initBoxes(anchorElement)) {
             lastScroll.navAnchorElement = anchorElement;
           }
         }

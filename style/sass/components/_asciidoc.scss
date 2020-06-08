@@ -386,15 +386,16 @@ b.button:after {
   font-size: 1.2em;
 }
 
-// IMPORTANT below this breakpoint, toc2 acts as the header toc!!
-@media #{$small} {
+
   #toctitle {
     // restore font size above breakpoint
     font-size: 1.375em;
   }
-
+  div#content {
+    padding-right: 0;
+  }
   body.toc2 {
-    padding-left: 15em;
+    padding-left: 20em;
     padding-right: 0;
   }
 
@@ -402,7 +403,7 @@ b.button:after {
     margin-top: 0 !important;
     background: $panel-bg;
     position: fixed;
-    width: 15em;
+    width: 20em;
     left: 0;
     top: 0;
     // why not panel border color?
@@ -445,9 +446,19 @@ b.button:after {
       right: 0;
     }
   }
-}
+
+  div#content {
+    padding-right:0;
+  }
 
 @media #{$medium} {
+
+}
+@media #{$large} {
+  div#content {
+    padding-right: 16em; // leave room for minitoc
+  }
+
   body.toc2 {
     padding-left: 20em;
     padding-right: 0;
