@@ -1549,7 +1549,7 @@ span.nav-text { color: #425563; font-size: 1.2rem; line-height: 1.2rem; }
   /* line 36, ../../style/sass/components/_mobile.scss */
   #toc.toc2.closed { margin-left: -19em; }
   /* line 41, ../../style/sass/components/_mobile.scss */
-  #burger { display: block; padding: 0.5em; position: fixed; left: 0; font-size: 1.8em; border: none; color: #000; background-color: #fff; z-index: 1; }
+  #burger { display: block; padding: 0.5em; position: fixed; left: 0; font-size: 1.8em; border: none; color: #002846; background-color: #fff; z-index: 1; }
   /* line 53, ../../style/sass/components/_mobile.scss */
   #minitoc { display: none; }
   /* line 57, ../../style/sass/components/_mobile.scss */
