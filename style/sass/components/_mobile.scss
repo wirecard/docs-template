@@ -25,7 +25,6 @@ $mobdev: "only screen and (max-width : 768px)";
   #toc.toc2 {
     width: 19em;
     position: fixed;
-    height: 100vh;
     z-index: 2;
     top: 0;
     border-bottom: 1px;
@@ -36,9 +35,15 @@ $mobdev: "only screen and (max-width : 768px)";
     &.closed {
       margin-left: -19em;
     }
+
+    ul {
+      /* because search is hidden, reduce top padding */
+      padding-top: 8em;
+    }
   }
 
   #burger {
+    width: 100vw;
     display: block;
     padding: 0.5em;
     position: fixed;
@@ -48,13 +53,25 @@ $mobdev: "only screen and (max-width : 768px)";
     color: $primary;
     background-color: #fff;
     z-index: 1;
+    #mobile-pageheader {
+      padding-left: 0.4em;
+      font-family: $body-font-family;
+    }
   }
 
   #minitoc {
     display: none;
   }
 
+  #search-overlay-wrapper {
+    // hide search in mobile view as requested
+    display: none;
+  }
+
   #search-results-wrapper {
+    // hide search in mobile view as requested
+    display: none;
+
     transition: all 0.5s linear;
 
     &.hidden {
