@@ -194,7 +194,7 @@ function addMobileNavFunctions() {
       document.getElementById('toc').classList.remove('closed');
       document.getElementById('search-results-wrapper').classList.remove('hidden');
     });
-    document.getElementById('toc').insertBefore(burger, document.getElementById('logo'));
+    document.body.insertBefore(burger, document.getElementById('content'));
   }
 
 
