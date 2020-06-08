@@ -9,8 +9,9 @@
         width: 21em;
         padding-bottom: 3em;
     }
-    a {
+    a#logo {
         color: white;
+        background: $midnight-blue;
     }
 
     /* overwrite asciidoctor default margins,paddings */
