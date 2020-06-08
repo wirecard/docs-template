@@ -39,6 +39,7 @@ $mobdev: "only screen and (max-width : 768px)";
   }
 
   #burger {
+    width: 100vw;
     display: block;
     padding: 0.5em;
     position: fixed;
@@ -48,13 +49,25 @@ $mobdev: "only screen and (max-width : 768px)";
     color: $primary;
     background-color: #fff;
     z-index: 1;
+    #mobile-pageheader {
+      padding-left: 0.4em;
+      font-family: $body-font-family;
+    }
   }
 
   #minitoc {
     display: none;
   }
 
+  #search-overlay-wrapper {
+    // hide search in mobile view as requested
+    display: none;
+  }
+
   #search-results-wrapper {
+    // hide search in mobile view as requested
+    display: none;
+
     transition: all 0.5s linear;
 
     &.hidden {
