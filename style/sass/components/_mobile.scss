@@ -33,7 +33,6 @@ $mobdev: "only screen and (max-width : 768px)";
     overflow-x: hidden;
     transition: all 0.5s linear;
 
-
     &.closed {
       margin-left: -19em;
     }
@@ -48,6 +47,7 @@ $mobdev: "only screen and (max-width : 768px)";
     border: none;
     color: #000;
     background-color: #fff;
+    z-index: 1;
   }
 
   #minitoc {
