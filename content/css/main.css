@@ -1407,47 +1407,49 @@ table.r-details > caption ~ thead, table.r-details > caption ~ tbody { display: 
 table.r-details > caption.title.hide-show-enabled { font-style: normal; font-weight: bold; font-size: larger; color: white; background-color: #112233; border: 0; margin: 0; padding: .25em 0 .2em .5em; cursor: pointer; }
 
 /* line 3, ../../style/sass/elements/_global-toc.scss */
-#toc.toc2 { background: #112233; /* overwrite asciidoctor default margins,paddings */ padding: 0; /* indent manually to allow <a> width of 100% */ /* have a span the whole width of the TOC to avoid doing this with JS trickery */ /* do not display anything below level 5 in main toc */ /* do not display a real checkbox in front of the label*/ /* hide children of unchecked toc items */ /* show children of checked toc items */ }
-/* line 5, ../../style/sass/elements/_global-toc.scss */
+#toc.toc2 { background: #112233; overflow-x: hidden; /* overwrite asciidoctor default margins,paddings */ padding: 0; /* indent manually to allow <a> width of 100% */ /* have a span the whole width of the TOC to avoid doing this with JS trickery */ /* do not display anything below level 5 in main toc */ /* do not display a real checkbox in front of the label*/ /* hide children of unchecked toc items */ /* show children of checked toc items */ }
+/* line 7, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 > ul { background-position-x: right; position: absolute; padding-top: 10em; width: 21em; padding-bottom: 3em; }
-/* line 12, ../../style/sass/elements/_global-toc.scss */
-#toc.toc2 a#logo { color: white; background: #112233; }
+/* line 15, ../../style/sass/elements/_global-toc.scss */
+#toc.toc2 a { color: white; }
 /* line 19, ../../style/sass/elements/_global-toc.scss */
+#toc.toc2 #logo { background: #112233; }
+/* line 26, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 ul { margin: 0; }
-/* line 22, ../../style/sass/elements/_global-toc.scss */
+/* line 30, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 ul ul { padding: 0; }
-/* line 27, ../../style/sass/elements/_global-toc.scss */
-#toc.toc2 li[data-level="1"] > input[type="checkbox"] + label > a { background-color: rgba(0, 0, 0, 0.2); padding-left: 1em; font-weight: bold; }
-/* line 32, ../../style/sass/elements/_global-toc.scss */
-#toc.toc2 li[data-level="2"] > input[type="checkbox"] + label > a { padding-left: 2em; }
 /* line 35, ../../style/sass/elements/_global-toc.scss */
+#toc.toc2 li[data-level="1"] > input[type="checkbox"] + label > a { background-color: rgba(0, 0, 0, 0.2); padding-left: 1em; font-weight: bold; }
+/* line 41, ../../style/sass/elements/_global-toc.scss */
+#toc.toc2 li[data-level="2"] > input[type="checkbox"] + label > a { padding-left: 2em; }
+/* line 45, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 li[data-level="3"] > input[type="checkbox"] + label > a { padding-left: 3em; font-size: 1.1em; }
-/* line 39, ../../style/sass/elements/_global-toc.scss */
+/* line 50, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 li[data-level="4"] > input[type="checkbox"] + label > a { padding-left: 4em; font-size: 1em; }
-/* line 46, ../../style/sass/elements/_global-toc.scss */
+/* line 57, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 input[type="checkbox"] + label > a { width: 100%; display: inline-block; padding-top: 0.5em; padding-bottom: 0.5em; font-size: 1.2em; }
-/* line 54, ../../style/sass/elements/_global-toc.scss */
+/* line 66, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 input[type="checkbox"] + label > a:hover { background-color: rgba(0, 0, 0, 0.05); color: #8ee6ff; transition: background-color 0.5s ease-out; }
-/* line 61, ../../style/sass/elements/_global-toc.scss */
-#toc.toc2 input[type="checkbox"]:checked + label > a { background-color: rgba(0, 0, 0, 0.12); font-weight: bold; }
-/* line 68, ../../style/sass/elements/_global-toc.scss */
-#toc.toc2 li[data-level="1"] > input[type="checkbox"]:checked + label > a { background-color: rgba(255, 255, 255, 0.08); }
 /* line 74, ../../style/sass/elements/_global-toc.scss */
+#toc.toc2 input[type="checkbox"]:checked + label > a { background-color: rgba(0, 0, 0, 0.12); font-weight: bold; }
+/* line 82, ../../style/sass/elements/_global-toc.scss */
+#toc.toc2 li[data-level="1"] > input[type="checkbox"]:checked + label > a { background-color: rgba(255, 255, 255, 0.08); }
+/* line 89, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 li[data-level="2"] > input[type="checkbox"]:checked + label > a { background-color: rgba(255, 255, 255, 0.05); }
-/* line 80, ../../style/sass/elements/_global-toc.scss */
+/* line 96, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 li[data-level="3"] > input[type="checkbox"]:checked + label > a { background-color: rgba(255, 255, 255, 0.04); }
-/* line 86, ../../style/sass/elements/_global-toc.scss */
+/* line 103, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 li[data-level="4"] > input[type="checkbox"]:checked + label > a { background-color: rgba(255, 255, 255, 0.03); }
-/* line 92, ../../style/sass/elements/_global-toc.scss */
+/* line 110, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 li[data-level="5"] { display: none; }
-/* line 97, ../../style/sass/elements/_global-toc.scss */
+/* line 115, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 input[type="checkbox"] { display: none; }
-/* line 102, ../../style/sass/elements/_global-toc.scss */
+/* line 120, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 input[type="checkbox"] + label ~ ul { max-height: 0; overflow: hidden; }
-/* line 108, ../../style/sass/elements/_global-toc.scss */
+/* line 126, ../../style/sass/elements/_global-toc.scss */
 #toc.toc2 input[type="checkbox"]:checked + label ~ ul { max-height: 500vh; transition: max-height 1s cubic-bezier(1, 0, 0.91, 0.78); }
 
-/* line 119, ../../style/sass/elements/_global-toc.scss */
+/* line 136, ../../style/sass/elements/_global-toc.scss */
 #burger { display: none; }
 
 /* line 1, ../../style/sass/elements/_highlight-hash.scss */
@@ -1492,7 +1494,7 @@ span.nav-key { border: 1px solid #425563; border-radius: 3px; padding: 3px 5px; 
 span.nav-text { color: #425563; font-size: 1.2rem; line-height: 1.2rem; }
 
 /* line 97, ../../style/sass/elements/_search.scss */
-#search-overlay-wrapper { position: absolute; display: inline-block; padding-top: 6em; background-color: #112233; width: 19em; z-index: 1; }
+#search-overlay-wrapper { position: fixed; display: inline-block; padding-top: 6.5em; background-color: #112233; width: 19em; z-index: 1; }
 
 /* line 106, ../../style/sass/elements/_search.scss */
 #search-results-wrapper { width: 35em; right: 0; position: fixed; z-index: 1; top: 0; background: linear-gradient(0deg, #e7e7e7 0%, #e7e7e7 60%, #ffffff 100%); padding: 1.5em; transition: all 0.2s ease; overflow: hidden; padding-top: 0; padding-bottom: 0; max-height: 0; box-shadow: inset 0px 0px 15px #888; box-shadow: none; }
@@ -1500,27 +1502,27 @@ span.nav-text { color: #425563; font-size: 1.2rem; line-height: 1.2rem; }
 #search-results-wrapper.open { max-height: 100vh; }
 
 /* line 127, ../../style/sass/elements/_search.scss */
-#search-results-wrapper ul#search-results { display: block; list-style: none; overflow-x: hidden; margin-top: 0em; margin: 0; min-height: 2em; transition: all 0.5s ease; }
+#search-results-wrapper ul#search-results { display: block; list-style: none; overflow-x: hidden; margin-top: 0em; margin: 0; min-height: 2em; max-height: calc(100vh - 14em); transition: all 0.5s ease; }
 
-/* line 137, ../../style/sass/elements/_search.scss */
+/* line 138, ../../style/sass/elements/_search.scss */
 #search-results-wrapper ul#search-results li { display: block; margin-bottom: 2em; }
 
-/* line 142, ../../style/sass/elements/_search.scss */
+/* line 143, ../../style/sass/elements/_search.scss */
 #search-results-wrapper ul#search-results li > div { position: relative; }
 
-/* line 146, ../../style/sass/elements/_search.scss */
+/* line 147, ../../style/sass/elements/_search.scss */
 #search-results-wrapper ul#search-results li > div * { margin: 0; text-decoration: none; }
 
-/* line 152, ../../style/sass/elements/_search.scss */
+/* line 153, ../../style/sass/elements/_search.scss */
 #search-results-wrapper ul#search-results li > div a h4, #search-results-wrapper ul#search-results li > div a p { color: #002846; }
 
-/* line 156, ../../style/sass/elements/_search.scss */
+/* line 157, ../../style/sass/elements/_search.scss */
 #search-results-wrapper ul#search-results li > div a span.label { display: inline-block; color: white; background-color: #425563; padding: 0.25em 0.6em; font-weight: bold; margin-top: 0.1em; }
 
-/* line 165, ../../style/sass/elements/_search.scss */
+/* line 166, ../../style/sass/elements/_search.scss */
 #search-results-wrapper ul#search-results li > div a:hover { text-decoration: none; color: #002846; }
 
-/* line 170, ../../style/sass/elements/_search.scss */
+/* line 171, ../../style/sass/elements/_search.scss */
 #search-results-wrapper ul#search-results li.selected > div a > span.label { background-color: #2983fb; }
 
 /* line 1, ../../style/sass/elements/_minitoc.scss */
