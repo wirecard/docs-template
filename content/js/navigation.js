@@ -139,6 +139,7 @@ function addClickHander(selector) {
       }
       scrollToHash(id);
       scrollToNavigationItem(id);
+      closeNavMobile();
     })
   });
 }
