@@ -54,6 +54,7 @@ $mobdev: "only screen and (max-width : 768px)";
     background-color: #fff;
     z-index: 1;
     #mobile-pageheader {
+      white-space: nowrap;
       padding-left: 0.4em;
       font-family: $body-font-family;
     }

@@ -420,7 +420,7 @@ b.button:after {
       font-size: 1.2em;
     }
     > ul {
-      font-size: 0.9em;
+      font-size: 0.95em;
       // FIXME this removes all space below last item in TOC in Firefox (but not Chrome)
       margin-bottom: 0;
     }
@@ -469,10 +469,6 @@ b.button:after {
 
     #toctitle {
       font-size: 1.375em;
-    }
-
-    > ul {
-      font-size: 0.95em;
     }
 
     ul ul {
