@@ -1,8 +1,10 @@
-@font-face { font-family: "Wirecard"; src: url("../fonts/DINWebPro.woff") format("woff"); }
+@font-face { font-family: "Wirecard"; font-weight: 300; src: url("../fonts/wd-regular.woff") format("woff"); }
 
-@font-face { font-family: "Wirecard"; font-weight: 700; src: url("../fonts/DINWebPro-Bold.woff") format("woff"); }
+@font-face { font-family: "Wirecard"; font-weight: 500; src: url("../fonts/wd-medium.woff") format("woff"); }
 
-@font-face { font-family: "Wirecard"; font-style: italic; src: url("../fonts/DINWebPro-Ita.woff") format("woff"); }
+@font-face { font-family: "Wirecard"; font-weight: 900; src: url("../fonts/wd-bold.woff") format("woff"); }
+
+@font-face { font-family: "Wirecard"; font-style: italic; src: url("../fonts/wd-italic.woff") format("woff"); }
 
 @font-face { font-family: "Ubuntu Mono"; src: url("../fonts/UbuntuMono-Regular.ttf") format("truetype"); }
 
@@ -155,7 +157,7 @@ meta.foundation-mq-large { font-family: "only screen and (min-width:1440px)"; wi
 html, body { font-size: 100%; }
 
 /* line 300, ../../../../../../../../usr/local/lib/ruby/gems/2.6.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-body { background: white; color: #000f23; padding: 0; margin: 0; font-family: "Wirecard", "Noto Serif", "DejaVu Serif", serif; font-weight: normal; font-style: normal; line-height: 1; position: relative; cursor: auto; }
+body { background: white; color: #000f23; padding: 0; margin: 0; font-family: "Wirecard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; font-weight: normal; font-style: normal; line-height: 1; position: relative; cursor: auto; }
 
 /* line 313, ../../../../../../../../usr/local/lib/ruby/gems/2.6.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
 a:hover { cursor: pointer; }
@@ -597,7 +599,7 @@ details, .audioblock, .imageblock, .literalblock, .listingblock, .stemblock, .vi
 details > summary:first-of-type { cursor: pointer; display: list-item; outline: none; margin-bottom: 0.75em; }
 
 /* line 606, ../../style/sass/components/_asciidoc.scss */
-.admonitionblock td.content > .title, .audioblock > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .stemblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, table.tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title { text-rendering: optimizeLegibility; text-align: left; font-family: "Wirecard", "Noto Serif", "DejaVu Serif", serif; font-size: 1.5rem; font-style: italic; }
+.admonitionblock td.content > .title, .audioblock > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .stemblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, table.tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title { text-rendering: optimizeLegibility; text-align: left; font-family: "Wirecard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; font-size: 1.5rem; font-style: italic; }
 
 /* line 623, ../../style/sass/components/_asciidoc.scss */
 table.tableblock.fit-content > caption.title { white-space: nowrap; width: 0; }
@@ -1569,7 +1571,7 @@ span.nav-text { color: #425563; font-size: 1.2rem; line-height: 1.2rem; }
   /* line 45, ../../style/sass/components/_mobile.scss */
   #burger { width: 100vw; display: block; padding: 0.5em; position: fixed; left: 0; font-size: 1.8em; border: none; color: #002846; background-color: #fff; z-index: 1; }
   /* line 56, ../../style/sass/components/_mobile.scss */
-  #burger #mobile-pageheader { white-space: nowrap; padding-left: 0.4em; font-family: "Wirecard", "Noto Serif", "DejaVu Serif", serif; }
+  #burger #mobile-pageheader { white-space: nowrap; padding-left: 0.4em; font-family: "Wirecard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
   /* line 63, ../../style/sass/components/_mobile.scss */
   #minitoc { display: none; }
   /* line 67, ../../style/sass/components/_mobile.scss */
