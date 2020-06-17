@@ -1,12 +1,12 @@
 @font-face {
     font-family: "Wirecard";
-    font-weight: 300;
+    font-weight: normal; /* is 300 */
     src: url("../fonts/wd-regular.woff") format("woff");
 }
 
 @font-face {
     font-family: "Wirecard";
-    font-weight: 500;
+    font-weight: 700; /* is a 500 really */
     src: url("../fonts/wd-medium.woff") format("woff");
 }
 
