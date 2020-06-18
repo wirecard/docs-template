@@ -2,7 +2,7 @@
 // Body (IMPORTANT $body-* variables must be defined above the defaults import)
 $body-bg: white;
 $body-font-color: $black-blue; // #414b56; // rgba(0,0,0,0.8);
-$body-font-family: "Wirecard", "Noto Serif", "DejaVu Serif", serif;
+$body-font-family: "Wirecard",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 
 @import "defaults";
 

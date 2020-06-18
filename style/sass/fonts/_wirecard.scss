@@ -1,21 +1,26 @@
 @font-face {
     font-family: "Wirecard";
-    src: url("../fonts/DINWebPro.woff") format("woff");
+    font-weight: normal; /* is 300 */
+    src: url("../fonts/wd-regular.woff") format("woff");
 }
 
 @font-face {
     font-family: "Wirecard";
-    font-weight: 700;
-    src: url("../fonts/DINWebPro-Bold.woff") format("woff");
+    font-weight: 700; /* is a 500 really */
+    src: url("../fonts/wd-medium.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Wirecard";
+    font-weight: 900;
+    src: url("../fonts/wd-bold.woff") format("woff");
 }
 
 @font-face {
     font-family: "Wirecard";
     font-style: italic;
-    src: url("../fonts/DINWebPro-Ita.woff") format("woff");
+    src: url("../fonts/wd-italic.woff") format("woff");
 }
-
-
 
 @font-face {
     font-family: "Ubuntu Mono";
