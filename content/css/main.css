@@ -1304,72 +1304,74 @@ button.secondary, button.close { color: #ff7373; border: 1px solid #ff7373; }
 } */
 /* line 12, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock { -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); border-collapse: separate; }
-/* line 17, ../../style/sass/pages/_startpage.scss */
+/* line 18, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block a { font-size: 18px; }
-/* line 20, ../../style/sass/pages/_startpage.scss */
+/* line 22, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block p { font-size: 1.0625rem; }
-/* line 23, ../../style/sass/pages/_startpage.scss */
+/* line 26, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock { border: 0; vertical-align: middle; }
-/* line 25, ../../style/sass/pages/_startpage.scss */
+/* line 30, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock > tbody tr, .openblock.startpage-block table.tableblock > tbody td { border: 0; background-color: white; padding: 30px; -webkit-transition: all 0.4s ease-in-out; -moz-transition: all 0.4s ease-in-out; -ms-transition: all 0.4s ease-in-out; -o-transition: all 0.4s ease-in-out; transition: all 0.4s ease-in-out; }
-/* line 33, ../../style/sass/pages/_startpage.scss */
+/* line 39, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock.signpost > tbody tr:nth-child(2) > td:nth-child(1) > div { margin-top: 68px; }
-/* line 38, ../../style/sass/pages/_startpage.scss */
-.openblock.startpage-block table.tableblock > tbody td:hover { background-color: rgba(0, 0, 0, 0.03); }
-/* line 41, ../../style/sass/pages/_startpage.scss */
-.openblock.startpage-block table.tableblock > tbody .content div.imageblock { width: 71px; margin-left: auto; margin-right: auto; }
 /* line 45, ../../style/sass/pages/_startpage.scss */
+.openblock.startpage-block table.tableblock > tbody td:hover { background-color: rgba(0, 0, 0, 0.03); }
+/* line 49, ../../style/sass/pages/_startpage.scss */
+.openblock.startpage-block table.tableblock > tbody .content div.imageblock { width: 71px; margin-left: auto; margin-right: auto; }
+/* line 54, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock > tbody .content div.imageblock.icon-large { width: 200px; }
-/* line 47, ../../style/sass/pages/_startpage.scss */
+/* line 57, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock > tbody .content div.imageblock.icon-large img { -webkit-transform: rotate(-45deg); -ms-transform: rotate(-45deg); transform: rotate(-45deg); scale: 0.7; -ms-transform: rotate(-45deg) scale(0.7); -webkit-transform: scale(0.7, 0.7) rotate(-45deg); max-height: 100%; }
-/* line 53, ../../style/sass/pages/_startpage.scss */
+/* line 64, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock > tbody .content div.imageblock.icon img { max-height: 100%; -webkit-transform: rotate(-45deg); -ms-transform: rotate(-45deg); transform: rotate(-45deg); scale: 0.7; -ms-transform: rotate(-45deg) scale(0.7); -webkit-transform: scale(0.7, 0.7) rotate(-45deg); }
-/* line 58, ../../style/sass/pages/_startpage.scss */
+/* line 71, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock > tbody .content div.imageblock.icon-large div, .openblock.startpage-block table.tableblock > tbody .content div.imageblock.icon div { border-radius: 15px; background: white; }
-/* line 62, ../../style/sass/pages/_startpage.scss */
+/* line 76, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock > tbody .content div.imageblock.icon-large div { border-radius: 30px; }
-/* line 65, ../../style/sass/pages/_startpage.scss */
-.openblock.startpage-block table.tableblock > tbody .content div.imageblock.icon { border-radius: 15px; border: 1pt solid #a2aaad; }
-/* line 69, ../../style/sass/pages/_startpage.scss */
-.openblock.startpage-block table.tableblock > tbody .content div.imageblock.icon-large { border-radius: 30px; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); margin-top: 20px; padding: 1.5px; }
-/* line 75, ../../style/sass/pages/_startpage.scss */
-.openblock.startpage-block table.tableblock > tbody .content div.imageblock.icon { -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); margin-top: 20px; padding: 1.5px; }
 /* line 80, ../../style/sass/pages/_startpage.scss */
+.openblock.startpage-block table.tableblock > tbody .content div.imageblock.icon { border-radius: 15px; border: 1pt solid #a2aaad; }
+/* line 85, ../../style/sass/pages/_startpage.scss */
+.openblock.startpage-block table.tableblock > tbody .content div.imageblock.icon-large { border-radius: 30px; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); margin-top: 20px; padding: 1.5px; }
+/* line 92, ../../style/sass/pages/_startpage.scss */
+.openblock.startpage-block table.tableblock > tbody .content div.imageblock.icon { -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); margin-top: 20px; padding: 1.5px; }
+/* line 98, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock > tbody .content div.imageblock.icon-large { background: -webkit-gradient(linear, left top, left bottom, #ff7373, #2983fb); background: -o-linear-gradient(top, #ff7373, #2983fb); background: linear-gradient(180deg, #ff7373, #2983fb); }
-/* line 87, ../../style/sass/pages/_startpage.scss */
+/* line 106, ../../style/sass/pages/_startpage.scss */
+.openblock.startpage-block table.tableblock.payment_methods > tbody tr:last-child td { vertical-align: unset; }
+/* line 110, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock.payment_methods > tbody .content div.imageblock.icon { margin-bottom: 60px; }
-/* line 90, ../../style/sass/pages/_startpage.scss */
+/* line 114, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock > tbody td:hover .content div.imageblock.icon { -webkit-box-shadow: 0px 0px 30px 0 rgba(0, 0, 0, 0.2); box-shadow: 0px 0px 30px 0 rgba(0, 0, 0, 0.2); -webkit-transition: -webkit-box-shadow 2.5s ease-in-out; transition: -webkit-box-shadow 2.5s ease-in-out; -o-transition: box-shadow 2.5s ease-in-out; transition: box-shadow 2.5s ease-in-out; transition: box-shadow 2.5s ease-in-out, -webkit-box-shadow 2.5s ease-in-out; border-collapse: separate; }
-/* line 100, ../../style/sass/pages/_startpage.scss */
-.openblock.startpage-block table.tableblock.tile_headline { -webkit-box-shadow: none; box-shadow: none; margin-top: 40px; }
-/* line 104, ../../style/sass/pages/_startpage.scss */
-.openblock.startpage-block table.tableblock.tile_headline td p { font-size: 1.6875em; font-weight: normal; color: #002846; line-height: 1.2; word-spacing: -.05em; margin-top: 1em; margin-bottom: 0; text-align: center; }
-/* line 116, ../../style/sass/pages/_startpage.scss */
-.openblock.startpage-block table.tableblock.signpost tr:first-child > td:first-child div.paragraph > p { font-size: 20px; font-weight: bold; }
-/* line 120, ../../style/sass/pages/_startpage.scss */
-.openblock.startpage-block table.tableblock.signpost tr:nth-child(2) > td:first-child div.paragraph > p { font-weight: bold; text-align: center; }
 /* line 125, ../../style/sass/pages/_startpage.scss */
-.openblock.startpage-block table.tableblock ul > li { list-style: none; }
-/* line 126, ../../style/sass/pages/_startpage.scss */
-.openblock.startpage-block table.tableblock ul > li > p > a { display: inline-block; }
-/* line 128, ../../style/sass/pages/_startpage.scss */
-.openblock.startpage-block table.tableblock ul > li > p > a:before { content: ' '; display: block; height: 18px; width: 18px; position: absolute; margin-left: -26px; margin-top: 5px; background-size: contain; background-image: url("../icons/docs_1.png"); }
+.openblock.startpage-block table.tableblock.tile_headline { -webkit-box-shadow: none; box-shadow: none; margin-top: 40px; }
+/* line 130, ../../style/sass/pages/_startpage.scss */
+.openblock.startpage-block table.tableblock.tile_headline td p { font-size: 1.6875em; font-weight: normal; color: #002846; line-height: 1.2; word-spacing: -.05em; margin-top: 1em; margin-bottom: 0; text-align: center; }
 /* line 143, ../../style/sass/pages/_startpage.scss */
-.openblock.startpage-block table.tableblock.tile_headline div.paragraph::before { height: auto; margin: auto; }
-/* line 147, ../../style/sass/pages/_startpage.scss */
-.openblock.startpage-block table.tableblock.tile_headline > tbody td { padding: 0; }
-/* line 150, ../../style/sass/pages/_startpage.scss */
-.openblock.startpage-block table.tableblock.tile_headline td:hover { background-color: transparent; }
+.openblock.startpage-block table.tableblock.signpost tr:first-child > td:first-child div.paragraph > p { font-size: 20px; font-weight: bold; }
+/* line 148, ../../style/sass/pages/_startpage.scss */
+.openblock.startpage-block table.tableblock.signpost tr:nth-child(2) > td:first-child div.paragraph > p { font-weight: bold; text-align: center; }
+/* line 154, ../../style/sass/pages/_startpage.scss */
+.openblock.startpage-block table.tableblock ul > li { list-style: none; }
 /* line 155, ../../style/sass/pages/_startpage.scss */
+.openblock.startpage-block table.tableblock ul > li > p > a { display: inline-block; }
+/* line 158, ../../style/sass/pages/_startpage.scss */
+.openblock.startpage-block table.tableblock ul > li > p > a:before { content: ' '; display: block; height: 18px; width: 18px; position: absolute; margin-left: -26px; margin-top: 5px; background-size: contain; background-image: url("../icons/docs_1.png"); }
+/* line 175, ../../style/sass/pages/_startpage.scss */
+.openblock.startpage-block table.tableblock.tile_headline div.paragraph::before { height: auto; margin: auto; }
+/* line 180, ../../style/sass/pages/_startpage.scss */
+.openblock.startpage-block table.tableblock.tile_headline > tbody td { padding: 0; }
+/* line 184, ../../style/sass/pages/_startpage.scss */
+.openblock.startpage-block table.tableblock.tile_headline td:hover { background-color: transparent; }
+/* line 190, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock > tbody td { border-bottom: 1px solid #d0d3d4; }
-/* line 159, ../../style/sass/pages/_startpage.scss */
+/* line 197, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock > tbody tr:first-child td:first-child, .openblock.startpage-block table.tableblock > tbody tr:last-child td { border: 0; vertical-align: middle; }
-/* line 168, ../../style/sass/pages/_startpage.scss */
+/* line 210, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock.signpost tr:nth-child(2) td:first-child:hover, .openblock.startpage-block table.tableblock.signpost tr:first-child td:first-child:hover { background-color: transparent; }
-/* line 172, ../../style/sass/pages/_startpage.scss */
+/* line 217, ../../style/sass/pages/_startpage.scss */
 .openblock.startpage-block table.tableblock.note tr:first-child td:first-child:hover, .openblock.startpage-block table.tableblock.contact tr:first-child td:first-child:hover, .openblock.startpage-block table.tableblock.guides tr:first-child td:first-child:hover { background-color: transparent; }
 
-/* line 178, ../../style/sass/pages/_startpage.scss */
+/* line 223, ../../style/sass/pages/_startpage.scss */
 .intro > p { font-size: 23px; }
 
 /* line 7, ../../style/sass/elements/_sample-tabs.scss */
