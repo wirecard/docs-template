@@ -193,6 +193,8 @@ td.tableblock div.content div.paragraph p {
 // ======================== //
 @import "elements/minitoc";
 
+// MOBILE LAST TO OVERRIDE
+@import "elements/image-zoom";
 
 // MOBILE LAST TO OVERRIDE
 @import "components/mobile";
