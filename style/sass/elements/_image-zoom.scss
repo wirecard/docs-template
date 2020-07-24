@@ -14,10 +14,10 @@ img[data-action="zoom"]+.zoom-box {
 }
 
 img[data-action="zoom"]+.zoom-box::before {
-  height: 2em;
-  margin-top: -2em;
-  margin-left: 1em;
-  position: absolute;
+  left: 1em;
+  display: block;
+  position: relative;
+  bottom: 1em;
 }
 
 img[data-action="zoom"]:hover+.zoom-box {
