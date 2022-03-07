@@ -7,6 +7,6 @@ class TestHome < Minitest::Test
       browser.navigate.to 'https://doc.wirecard.com'
       browser.title
     end
-    assert_equal('Home - Wirecard Documentation', title)
+    assert_equal('Home', title)
   end
 end
